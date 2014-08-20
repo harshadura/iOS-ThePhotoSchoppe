@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface LoginViewController : UIViewController
+
+@property(nonatomic,retain) UITextField *textFieldUsername;
+@property(nonatomic,retain) UITextField *textFieldPassword;
 
 @end

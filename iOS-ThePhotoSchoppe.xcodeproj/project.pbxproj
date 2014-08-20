@@ -16,27 +16,33 @@
 		3A3D113A19A222F5003FB729 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A3D113919A222F5003FB729 /* Default.png */; };
 		3A3D113C19A222F5003FB729 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A3D113B19A222F5003FB729 /* Default@2x.png */; };
 		3A3D113E19A222F5003FB729 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A3D113D19A222F5003FB729 /* Default-568h@2x.png */; };
-		3A3D114119A222F5003FB729 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3D114019A222F5003FB729 /* ViewController.m */; };
+		3A3D114119A222F5003FB729 /* NewUserRegViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3D114019A222F5003FB729 /* NewUserRegViewController.m */; };
 		3A3D114419A222F5003FB729 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A3D114219A222F5003FB729 /* ViewController.xib */; };
+		3A3D114C19A2289A003FB729 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3D114B19A2289A003FB729 /* LoginViewController.m */; };
+		3AB3CA6C19A3794C00EDA940 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB3CA6B19A3794C00EDA940 /* MainMenuViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3A3D112419A222F5003FB729 /* Test_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A3D112419A222F5003FB729 /* iOS-ThePhotoSchoppe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-ThePhotoSchoppe.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A3D112719A222F5003FB729 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3A3D112919A222F5003FB729 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3A3D112B19A222F5003FB729 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		3A3D112F19A222F5003FB729 /* Test_App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Test_App-Info.plist"; sourceTree = "<group>"; };
+		3A3D112F19A222F5003FB729 /* iOS-ThePhotoSchoppe-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iOS-ThePhotoSchoppe-Info.plist"; sourceTree = "<group>"; };
 		3A3D113119A222F5003FB729 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3A3D113319A222F5003FB729 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		3A3D113519A222F5003FB729 /* Test_App-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Test_App-Prefix.pch"; sourceTree = "<group>"; };
+		3A3D113519A222F5003FB729 /* iOS-ThePhotoSchoppe-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOS-ThePhotoSchoppe-Prefix.pch"; sourceTree = "<group>"; };
 		3A3D113619A222F5003FB729 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3A3D113719A222F5003FB729 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3A3D113919A222F5003FB729 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		3A3D113B19A222F5003FB729 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		3A3D113D19A222F5003FB729 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		3A3D113F19A222F5003FB729 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		3A3D114019A222F5003FB729 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		3A3D113F19A222F5003FB729 /* NewUserRegViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewUserRegViewController.h; sourceTree = "<group>"; };
+		3A3D114019A222F5003FB729 /* NewUserRegViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewUserRegViewController.m; sourceTree = "<group>"; };
 		3A3D114319A222F5003FB729 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		3A3D114A19A22885003FB729 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		3A3D114B19A2289A003FB729 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		3AB3CA6B19A3794C00EDA940 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
+		3AB3CA6D19A3795C00EDA940 /* MainMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +62,7 @@
 		3A3D111B19A222F5003FB729 = {
 			isa = PBXGroup;
 			children = (
-				3A3D112D19A222F5003FB729 /* Test_App */,
+				3A3D112D19A222F5003FB729 /* iOS-ThePhotoSchoppe */,
 				3A3D112619A222F5003FB729 /* Frameworks */,
 				3A3D112519A222F5003FB729 /* Products */,
 			);
@@ -65,7 +71,7 @@
 		3A3D112519A222F5003FB729 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3A3D112419A222F5003FB729 /* Test_App.app */,
+				3A3D112419A222F5003FB729 /* iOS-ThePhotoSchoppe.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -80,26 +86,31 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		3A3D112D19A222F5003FB729 /* Test_App */ = {
+		3A3D112D19A222F5003FB729 /* iOS-ThePhotoSchoppe */ = {
 			isa = PBXGroup;
 			children = (
+				3AB3CA6D19A3795C00EDA940 /* MainMenuViewController.h */,
+				3AB3CA6B19A3794C00EDA940 /* MainMenuViewController.m */,
+				3A3D114B19A2289A003FB729 /* LoginViewController.m */,
+				3A3D114A19A22885003FB729 /* LoginViewController.h */,
 				3A3D113619A222F5003FB729 /* AppDelegate.h */,
 				3A3D113719A222F5003FB729 /* AppDelegate.m */,
-				3A3D113F19A222F5003FB729 /* ViewController.h */,
-				3A3D114019A222F5003FB729 /* ViewController.m */,
+				3A3D113F19A222F5003FB729 /* NewUserRegViewController.h */,
+				3A3D114019A222F5003FB729 /* NewUserRegViewController.m */,
 				3A3D114219A222F5003FB729 /* ViewController.xib */,
 				3A3D112E19A222F5003FB729 /* Supporting Files */,
 			);
+			name = "iOS-ThePhotoSchoppe";
 			path = Test_App;
 			sourceTree = "<group>";
 		};
 		3A3D112E19A222F5003FB729 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3A3D112F19A222F5003FB729 /* Test_App-Info.plist */,
+				3A3D112F19A222F5003FB729 /* iOS-ThePhotoSchoppe-Info.plist */,
 				3A3D113019A222F5003FB729 /* InfoPlist.strings */,
 				3A3D113319A222F5003FB729 /* main.m */,
-				3A3D113519A222F5003FB729 /* Test_App-Prefix.pch */,
+				3A3D113519A222F5003FB729 /* iOS-ThePhotoSchoppe-Prefix.pch */,
 				3A3D113919A222F5003FB729 /* Default.png */,
 				3A3D113B19A222F5003FB729 /* Default@2x.png */,
 				3A3D113D19A222F5003FB729 /* Default-568h@2x.png */,
@@ -110,9 +121,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3A3D112319A222F5003FB729 /* Test_App */ = {
+		3A3D112319A222F5003FB729 /* iOS-ThePhotoSchoppe */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3A3D114719A222F5003FB729 /* Build configuration list for PBXNativeTarget "Test_App" */;
+			buildConfigurationList = 3A3D114719A222F5003FB729 /* Build configuration list for PBXNativeTarget "iOS-ThePhotoSchoppe" */;
 			buildPhases = (
 				3A3D112019A222F5003FB729 /* Sources */,
 				3A3D112119A222F5003FB729 /* Frameworks */,
@@ -122,9 +133,9 @@
 			);
 			dependencies = (
 			);
-			name = Test_App;
+			name = "iOS-ThePhotoSchoppe";
 			productName = Test_App;
-			productReference = 3A3D112419A222F5003FB729 /* Test_App.app */;
+			productReference = 3A3D112419A222F5003FB729 /* iOS-ThePhotoSchoppe.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -136,7 +147,7 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = Harsha;
 			};
-			buildConfigurationList = 3A3D111F19A222F5003FB729 /* Build configuration list for PBXProject "Test_App" */;
+			buildConfigurationList = 3A3D111F19A222F5003FB729 /* Build configuration list for PBXProject "iOS-ThePhotoSchoppe" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -148,7 +159,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3A3D112319A222F5003FB729 /* Test_App */,
+				3A3D112319A222F5003FB729 /* iOS-ThePhotoSchoppe */,
 			);
 		};
 /* End PBXProject section */
@@ -175,7 +186,9 @@
 			files = (
 				3A3D113419A222F5003FB729 /* main.m in Sources */,
 				3A3D113819A222F5003FB729 /* AppDelegate.m in Sources */,
-				3A3D114119A222F5003FB729 /* ViewController.m in Sources */,
+				3A3D114119A222F5003FB729 /* NewUserRegViewController.m in Sources */,
+				3A3D114C19A2289A003FB729 /* LoginViewController.m in Sources */,
+				3AB3CA6C19A3794C00EDA940 /* MainMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,10 +273,15 @@
 		3A3D114819A222F5003FB729 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Harsha Siriwardena (SD49463U8J)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Harsha Siriwardena (SD49463U8J)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Test_App/Test_App-Prefix.pch";
-				INFOPLIST_FILE = "Test_App/Test_App-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Test_App/iOS-ThePhotoSchoppe-Prefix.pch";
+				INFOPLIST_FILE = "Test_App/iOS-ThePhotoSchoppe-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "iOS-ThePhotoSchoppe";
+				PROVISIONING_PROFILE = "66F69ED8-7CA3-493A-ABCD-49FACAA3C5EC";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "66F69ED8-7CA3-493A-ABCD-49FACAA3C5EC";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -271,10 +289,15 @@
 		3A3D114919A222F5003FB729 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Harsha Siriwardena (SD49463U8J)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Harsha Siriwardena (SD49463U8J)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Test_App/Test_App-Prefix.pch";
-				INFOPLIST_FILE = "Test_App/Test_App-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Test_App/iOS-ThePhotoSchoppe-Prefix.pch";
+				INFOPLIST_FILE = "Test_App/iOS-ThePhotoSchoppe-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "iOS-ThePhotoSchoppe";
+				PROVISIONING_PROFILE = "66F69ED8-7CA3-493A-ABCD-49FACAA3C5EC";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "66F69ED8-7CA3-493A-ABCD-49FACAA3C5EC";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -282,7 +305,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3A3D111F19A222F5003FB729 /* Build configuration list for PBXProject "Test_App" */ = {
+		3A3D111F19A222F5003FB729 /* Build configuration list for PBXProject "iOS-ThePhotoSchoppe" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3A3D114519A222F5003FB729 /* Debug */,
@@ -291,13 +314,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3A3D114719A222F5003FB729 /* Build configuration list for PBXNativeTarget "Test_App" */ = {
+		3A3D114719A222F5003FB729 /* Build configuration list for PBXNativeTarget "iOS-ThePhotoSchoppe" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3A3D114819A222F5003FB729 /* Debug */,
 				3A3D114919A222F5003FB729 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
