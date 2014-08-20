@@ -19,6 +19,7 @@
 		3A3D114119A222F5003FB729 /* NewUserRegViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3D114019A222F5003FB729 /* NewUserRegViewController.m */; };
 		3A3D114419A222F5003FB729 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A3D114219A222F5003FB729 /* ViewController.xib */; };
 		3A3D114C19A2289A003FB729 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3D114B19A2289A003FB729 /* LoginViewController.m */; };
+		3A7FDDB719A4B0C300507B41 /* photos.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3A7FDDB619A4B0C300507B41 /* photos.xml */; };
 		3AB3CA6C19A3794C00EDA940 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB3CA6B19A3794C00EDA940 /* MainMenuViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		3A3D114319A222F5003FB729 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		3A3D114A19A22885003FB729 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		3A3D114B19A2289A003FB729 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		3A7FDDB619A4B0C300507B41 /* photos.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = photos.xml; sourceTree = "<group>"; };
 		3AB3CA6B19A3794C00EDA940 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
 		3AB3CA6D19A3795C00EDA940 /* MainMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -62,8 +64,8 @@
 		3A3D111B19A222F5003FB729 = {
 			isa = PBXGroup;
 			children = (
-				3A3D112D19A222F5003FB729 /* iOS-ThePhotoSchoppe */,
 				3A3D112619A222F5003FB729 /* Frameworks */,
+				3A3D112D19A222F5003FB729 /* iOS-ThePhotoSchoppe */,
 				3A3D112519A222F5003FB729 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -114,6 +116,7 @@
 				3A3D113919A222F5003FB729 /* Default.png */,
 				3A3D113B19A222F5003FB729 /* Default@2x.png */,
 				3A3D113D19A222F5003FB729 /* Default-568h@2x.png */,
+				3A7FDDB619A4B0C300507B41 /* photos.xml */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 				3A3D113A19A222F5003FB729 /* Default.png in Resources */,
 				3A3D113C19A222F5003FB729 /* Default@2x.png in Resources */,
 				3A3D113E19A222F5003FB729 /* Default-568h@2x.png in Resources */,
+				3A7FDDB719A4B0C300507B41 /* photos.xml in Resources */,
 				3A3D114419A222F5003FB729 /* ViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

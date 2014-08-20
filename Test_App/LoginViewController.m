@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "MainMenuViewController.h"
 #import "NewUserRegViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
@@ -38,7 +39,7 @@
     [mainView setBackgroundColor:[UIColor whiteColor]];
     self.view = mainView;
     
-//    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Quit"         style:UIBarButtonItemStyleBordered target:self action:@selector(cancelButtonPressed)];
+//    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Quit" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelButtonPressed)];
     UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:@"New User?" style:UIBarButtonItemStyleBordered target:self
                                                                 action:@selector(doneButtonPressed)];
      [self.navigationItem setTitle:@"User Login"];
@@ -93,7 +94,7 @@
     
     
     UIButton *btnClose = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btnClose addTarget:self action:@selector(userRegTapped)
+    [btnClose addTarget:self action:@selector(cancelButtonPressed)
        forControlEvents:UIControlEventTouchUpInside];
     [btnClose setTitle:@"Close" forState:UIControlStateNormal];
     btnClose.frame = CGRectMake(60+100+20, 80+160, 100, 40);
@@ -103,18 +104,43 @@
     
 }
 
-- (void)doneButtonPressed {
+- (void)userRegTapped {
     
-    NewUserRegViewController *controller2 = [[NewUserRegViewController alloc] init];
-//    [self presentViewController:controller2 animated:YES completion:nil];
-    [[self navigationController]pushViewController:controller2 animated:YES];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *app_username = [prefs stringForKey:@"app_username"];
+    NSString *app_password = [prefs stringForKey:@"app_password"];
     
+    if([textFieldUsername.text isEqualToString: app_username] && [textFieldPassword.text isEqualToString: app_password]){
+        NSLog(@"Correct login ..");
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Title" message:@"Welcome!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+        MainMenuViewController *controller2 = [[MainMenuViewController alloc] init];
+        [[self navigationController] pushViewController:controller2 animated:YES];
+    }
+    else{
+        NSLog(@"Incorrect login ..");
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Title" message:@"Incorrect login" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+
+    }
+
+}
+
+- (void)cancelButtonPressed {
+    exit(0);
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (void)doneButtonPressed {
+    
+    NewUserRegViewController *controller2 = [[NewUserRegViewController alloc] init];
+    [[self navigationController] pushViewController:controller2 animated:YES];
 }
 
 @end

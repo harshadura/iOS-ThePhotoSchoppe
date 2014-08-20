@@ -62,7 +62,7 @@
     //    [btnTest setFrame:CGRectMake(0, 10, 200, 44)];
     //    [btnTest addTarget:self action:@selector(testBtnTapped) forControlEvents:UIControlEventTouchUpInside];
     //    [self.view addSubview:btnTest];
-    //
+    
     //    UIButton *btnTest2 = [UIButton buttonWithType:UIButtonTypeCustom];
     //    [btnTest2 setBackgroundColor:[UIColor yellowColor]];
     //    [btnTest2 setFrame:CGRectMake(0 + 200 + 10, 10, 50, 44)];
@@ -88,8 +88,8 @@
 
 - (void)doneButtonPressed {
     
-    NewUserRegViewController *controller2 = [[NewUserRegViewController alloc] init];
-    [self presentViewController:controller2 animated:YES completion:nil];
+    NewUserRegViewController *controller3 = [[NewUserRegViewController alloc] init];
+    [self presentViewController:controller3 animated:YES completion:nil];
     
 }
 

@@ -161,8 +161,8 @@
 - (void) userRegTapped {
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:textFieldUsername.text forKey:@"username"];
-    [defaults setObject:textFieldPassword.text forKey:@"password"];
+    [defaults setObject:textFieldUsername.text forKey:@"app_username"];
+    [defaults setObject:textFieldPassword.text forKey:@"app_password"];
     [defaults setObject:textFieldEmail.text forKey:@"email"];
     [defaults synchronize];
     NSLog(@"User Data saved");
@@ -175,13 +175,7 @@
 }
 
 - (void)cancelButtonPressed {
-    
-    LoginViewController *controller2 = [[LoginViewController alloc] init];
-//    [self presentViewController:controller2 animated:YES completion:nil];
-    [self.navigationController popViewControllerAnimated:YES];
-    
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Title" message:@"Message" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-//    [alert show];
+    exit(0);
 }
 
 - (void)didReceiveMemoryWarning
