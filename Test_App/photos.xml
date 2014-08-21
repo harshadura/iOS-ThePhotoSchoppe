@@ -4,18 +4,21 @@
 		<name>bliss</name>
 		<image_url>http://blog.jimdo.com/wp-content/uploads/2014/01/tree-247122.jpg</image_url>
 		<location>1,2</location>
+        <last_update>2014-08-20</last_update>
 		<publisher>user1@gmail.com</publisher>
 	</photo>
 	<photo id="2">
 		<name>fish</name>
 		<image_url>http://www.abc.net.au/radionational/image/4220698-3x2-700x467.jpg</image_url>
 		<location>10,22</location>
+        <last_update>2014-08-21</last_update>
 		<publisher>user2@gmail.com</publisher>
 	</photo>
 	<photo id="3">
 		<name>valley</name>
 		<image_url>http://img.xcitefun.net/users/2012/08/301383,xcitefun-sardari-neelum-valley-1.jpg</image_url>
 		<location>40,32</location>
+        <last_update>2014-08-22</last_update>
 		<publisher>user3@gmail.com</publisher>
 	</photo>
 </photos>
