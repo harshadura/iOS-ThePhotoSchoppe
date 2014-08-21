@@ -7,6 +7,7 @@
 //
 
 #import "PortfolioViewController.h"
+#import "XMLWebImagesViewController.h"
 
 @interface PortfolioViewController ()
 
@@ -62,7 +63,22 @@
     lblTitle.text= @"Portfolio";
     [self.view addSubview:lblTitle];
     
+    UIButton *btnClose = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [btnClose addTarget:self action:@selector(testButtonPressed)
+       forControlEvents:UIControlEventTouchUpInside];
+    [btnClose setTitle:@"Close" forState:UIControlStateNormal];
+    btnClose.frame = CGRectMake(60, 50+100, 100, 40);
+    btnClose.layer.borderWidth=1.0f;
+    btnClose.layer.borderColor=[[UIColor blackColor] CGColor];
+    [self.view addSubview:btnClose];
     
+}
+
+- (void)testButtonPressed {
+    
+    
+    XMLWebImagesViewController *controller2 = [[XMLWebImagesViewController alloc] init];
+    [[self navigationController] pushViewController:controller2 animated:YES];
 }
 
 /*

@@ -23,6 +23,7 @@
 		3A3D114C19A2289A003FB729 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3D114B19A2289A003FB729 /* LoginViewController.m */; };
 		3A7FDDB719A4B0C300507B41 /* photos.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3A7FDDB619A4B0C300507B41 /* photos.xml */; };
 		3AB3CA6C19A3794C00EDA940 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB3CA6B19A3794C00EDA940 /* MainMenuViewController.m */; };
+		3AC9263C19A5FD07008F34A4 /* XMLWebImagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC9263B19A5FD07008F34A4 /* XMLWebImagesViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,8 @@
 		3A7FDDB619A4B0C300507B41 /* photos.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = photos.xml; sourceTree = "<group>"; };
 		3AB3CA6B19A3794C00EDA940 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
 		3AB3CA6D19A3795C00EDA940 /* MainMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
+		3AC9263A19A5FD07008F34A4 /* XMLWebImagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLWebImagesViewController.h; sourceTree = "<group>"; };
+		3AC9263B19A5FD07008F34A4 /* XMLWebImagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLWebImagesViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +101,8 @@
 		3A3D112D19A222F5003FB729 /* iOS-ThePhotoSchoppe */ = {
 			isa = PBXGroup;
 			children = (
+				3AC9263A19A5FD07008F34A4 /* XMLWebImagesViewController.h */,
+				3AC9263B19A5FD07008F34A4 /* XMLWebImagesViewController.m */,
 				3A0232BD19A5E50B006D499E /* PortfolioViewController.h */,
 				3A0232BE19A5E50B006D499E /* PortfolioViewController.m */,
 				3A0232C019A5E541006D499E /* DirectoryViewController.h */,
@@ -205,6 +210,7 @@
 				3A0232BF19A5E50B006D499E /* PortfolioViewController.m in Sources */,
 				3A3D113819A222F5003FB729 /* AppDelegate.m in Sources */,
 				3A3D114119A222F5003FB729 /* NewUserRegViewController.m in Sources */,
+				3AC9263C19A5FD07008F34A4 /* XMLWebImagesViewController.m in Sources */,
 				3A3D114C19A2289A003FB729 /* LoginViewController.m in Sources */,
 				3AB3CA6C19A3794C00EDA940 /* MainMenuViewController.m in Sources */,
 			);
