@@ -8,6 +8,7 @@
 
 #import "PortfolioViewController.h"
 #import "XMLWebImagesViewController.h"
+#import "APPViewController.h"
 
 @interface PortfolioViewController ()
 
@@ -64,22 +65,37 @@
     [self.view addSubview:lblTitle];
     
     UIButton *btnClose = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btnClose addTarget:self action:@selector(testButtonPressed)
+    [btnClose addTarget:self action:@selector(downloadButtonPressed)
        forControlEvents:UIControlEventTouchUpInside];
-    [btnClose setTitle:@"Close" forState:UIControlStateNormal];
+    [btnClose setTitle:@"Download" forState:UIControlStateNormal];
     btnClose.frame = CGRectMake(60, 50+100, 100, 40);
     btnClose.layer.borderWidth=1.0f;
     btnClose.layer.borderColor=[[UIColor blackColor] CGColor];
     [self.view addSubview:btnClose];
     
+    UIButton *btnPager = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [btnPager addTarget:self action:@selector(pagerButtonPressed)
+       forControlEvents:UIControlEventTouchUpInside];
+    [btnPager setTitle:@"Show pager" forState:UIControlStateNormal];
+    btnPager.frame = CGRectMake(60, 50+200, 100, 40);
+    btnPager.layer.borderWidth=1.0f;
+    btnPager.layer.borderColor=[[UIColor blackColor] CGColor];
+    [self.view addSubview:btnPager];
+    
 }
 
-- (void)testButtonPressed {
-    
+- (void)downloadButtonPressed {
     
     XMLWebImagesViewController *controller2 = [[XMLWebImagesViewController alloc] init];
     [[self navigationController] pushViewController:controller2 animated:YES];
 }
+
+- (void)pagerButtonPressed {
+    
+    APPViewController *controller2 = [[APPViewController alloc] init];
+    [[self navigationController] pushViewController:controller2 animated:YES];
+}
+
 
 /*
 #pragma mark - Navigation
