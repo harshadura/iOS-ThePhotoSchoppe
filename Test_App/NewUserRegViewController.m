@@ -21,7 +21,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
 }
 
 - (id)init {
@@ -29,7 +28,6 @@
     if (self) {
         
     }
-    
     return self;
 }
 
@@ -39,31 +37,31 @@
     [mainView setBackgroundColor:[UIColor whiteColor]];
     self.view = mainView;
     
-//    UINavigationBar *naviBarObj = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-//    [self.view addSubview:naviBarObj];
-//    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Back"         style:UIBarButtonItemStyleBordered target:self action:@selector(cancelButtonPressed)];
-////    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:@"New User?" style:UIBarButtonItemStyleBordered target:self
-////                                                                action:@selector(doneButtonPressed)];
-//    
-//    UINavigationItem *navigItem = [[UINavigationItem alloc] initWithTitle:@"Navigation Title"];
-////    navigItem.rightBarButtonItem = doneItem;
-//    navigItem.leftBarButtonItem = cancelItem;
-//    naviBarObj.items = [NSArray arrayWithObjects: navigItem,nil];
-//    [self.view addSubview:naviBarObj];
-//
+    //    UINavigationBar *naviBarObj = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    //    [self.view addSubview:naviBarObj];
+    //    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Back"         style:UIBarButtonItemStyleBordered target:self action:@selector(cancelButtonPressed)];
+    ////    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:@"New User?" style:UIBarButtonItemStyleBordered target:self
+    ////                                                                action:@selector(doneButtonPressed)];
+    //
+    //    UINavigationItem *navigItem = [[UINavigationItem alloc] initWithTitle:@"Navigation Title"];
+    ////    navigItem.rightBarButtonItem = doneItem;
+    //    navigItem.leftBarButtonItem = cancelItem;
+    //    naviBarObj.items = [NSArray arrayWithObjects: navigItem,nil];
+    //    [self.view addSubview:naviBarObj];
+    //
     
     [self.navigationItem setTitle:@"New user registration"];
-//    [self.navigationItem setLeftBarButtonItem: cancelItem];
-
+    //    [self.navigationItem setLeftBarButtonItem: cancelItem];
     
-//    UILabel *lblTitle = [[UILabel alloc] init];
-//    /*important--------- */lblTitle.textColor = [UIColor blackColor];
-//    [lblTitle setFrame:CGRectMake(80, 50+20, 200, 20)];
-//    lblTitle.backgroundColor=[UIColor clearColor];
-//    lblTitle.textColor=[UIColor blackColor];
-//    lblTitle.userInteractionEnabled=NO;
-//    lblTitle.text= @"New user registration";
-//    [self.view addSubview:lblTitle];
+    
+    //    UILabel *lblTitle = [[UILabel alloc] init];
+    //    /*important--------- */lblTitle.textColor = [UIColor blackColor];
+    //    [lblTitle setFrame:CGRectMake(80, 50+20, 200, 20)];
+    //    lblTitle.backgroundColor=[UIColor clearColor];
+    //    lblTitle.textColor=[UIColor blackColor];
+    //    lblTitle.userInteractionEnabled=NO;
+    //    lblTitle.text= @"New user registration";
+    //    [self.view addSubview:lblTitle];
     
     UILabel *lblUsername = [[UILabel alloc] init];
     lblUsername.textColor = [UIColor blackColor];
@@ -73,7 +71,7 @@
     lblUsername.userInteractionEnabled=NO;
     lblUsername.text= @"Username";
     [self.view addSubview:lblUsername];
-
+    
     textFieldUsername = [[UITextField  alloc] initWithFrame:CGRectMake(40+90+20, 40+60, 140, 25)];
     textFieldUsername.borderStyle = UITextBorderStyleRoundedRect;
     [textFieldUsername setFont:[UIFont boldSystemFontOfSize:14]];
@@ -107,55 +105,14 @@
     [textFieldEmail setFont:[UIFont boldSystemFontOfSize:14]];
     [self.view addSubview:textFieldEmail];
     
-//    UIButton *btnLogin = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [btnLogin setBackgroundColor:[UIColor blueColor]];
-//    [btnLogin setFrame:CGRectMake(60, 180, 200, 44)];
-//    [btnLogin addTarget:self action:@selector(testBtnTapped) forControlEvents:UIControlEventTouchUpInside];
-//    [self.view addSubview:btnLogin];
-
     UIButton *btnRegister = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [btnRegister addTarget:self action:@selector(userRegTapped)
-     forControlEvents:UIControlEventTouchUpInside];
+          forControlEvents:UIControlEventTouchUpInside];
     [btnRegister setTitle:@"Register" forState:UIControlStateNormal];
-    btnRegister.frame = CGRectMake(60, 40+200, 100, 40);
+    btnRegister.frame = CGRectMake(100, 40+200, 100, 40);
     btnRegister.layer.borderWidth=1.0f;
     btnRegister.layer.borderColor=[[UIColor blackColor] CGColor];
     [self.view addSubview:btnRegister];
-
-    
-    UIButton *btnClose = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btnClose addTarget:self action:@selector(userRegTapped)
-     forControlEvents:UIControlEventTouchUpInside];
-    [btnClose setTitle:@"Close" forState:UIControlStateNormal];
-    btnClose.frame = CGRectMake(60+100+20, 40+200, 100, 40);
-    btnClose.layer.borderWidth=1.0f;
-    btnClose.layer.borderColor=[[UIColor blackColor] CGColor];
-    [self.view addSubview:btnClose];
-    
-    // Store the data
-
-    
-    
-//    UIButton *btnTest2 = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [btnTest2 setBackgroundColor:[UIColor yellowColor]];
-//    [btnTest2 setFrame:CGRectMake(0 + 200 + 10, 10, 50, 44)];
-//    [self.view addSubview:btnTest2];
-//    
-//    UIButton *btnTest3 = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [btnTest3 setBackgroundColor:[UIColor greenColor]];
-//    [btnTest3 setFrame:CGRectMake(0 + 200 + 10, 70, 50, 44)];
-//    [self.view addSubview:btnTest3];
-    
-//    UILabel *lbl1 = [[UILabel alloc] init];
-//    /*important--------- */lbl1.textColor = [UIColor blackColor];
-//    [lbl1 setFrame:CGRectMake(0 + 200 + 10, 10, 100, 44)];
-//    lbl1.backgroundColor=[UIColor clearColor];
-//    lbl1.textColor=[UIColor blackColor];
-//    lbl1.userInteractionEnabled=NO;
-//    lbl1.text= @"TEST";
-//    [self.view addSubview:lbl1];
-    
-    
 }
 
 - (void) userRegTapped {

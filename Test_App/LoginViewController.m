@@ -18,6 +18,7 @@
 @implementation LoginViewController
 @synthesize textFieldUsername, textFieldPassword;
 
+#pragma mark - system methods
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -39,12 +40,12 @@
     [mainView setBackgroundColor:[UIColor whiteColor]];
     self.view = mainView;
     
-//    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Quit" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelButtonPressed)];
+    //    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Quit" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelButtonPressed)];
     UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:@"New User?" style:UIBarButtonItemStyleBordered target:self
                                                                 action:@selector(doneButtonPressed)];
-     [self.navigationItem setTitle:@"User Login"];
-     [self.navigationItem setRightBarButtonItem: doneItem];
-//     [self.navigationItem setLeftBarButtonItem: cancelItem];
+    [self.navigationItem setTitle:@"User Login"];
+    [self.navigationItem setRightBarButtonItem: doneItem];
+    //     [self.navigationItem setLeftBarButtonItem: cancelItem];
     
     UILabel *lblTitle = [[UILabel alloc] init];
     lblTitle.textColor = [UIColor blackColor];
@@ -104,6 +105,7 @@
     
 }
 
+#pragma mark - private methods
 - (void)userRegTapped {
     
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
@@ -121,13 +123,31 @@
         NSLog(@"Incorrect login ..");
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Title" message:@"Incorrect login" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alert show];
-
+        
     }
+    
+}
 
+#pragma mark - alert view delegate methods
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    
+    if([title isEqualToString:@"OK"])
+    {
+        exit(0);
+    }
+    else if([title isEqualToString:@"Cancel"])
+    {
+        NSLog(@"No problem!");
+    }
+    
 }
 
 - (void)cancelButtonPressed {
-    exit(0);
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Title" message:@"Are you sure you want to exit?" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: @"Cancel", nil] ;
+    [alert show];
 }
 
 - (void)didReceiveMemoryWarning
