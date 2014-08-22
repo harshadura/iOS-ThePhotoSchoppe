@@ -11,9 +11,10 @@
 
 @interface XMLWebImagesViewController: UIViewController
 
-@property(nonatomic,retain)NSMutableDictionary *dic;
-@property(nonatomic,retain)NSMutableString *value;
-@property(nonatomic,retain)NSMutableArray *book_array;
+@property(nonatomic,retain) NSMutableDictionary *dic;
+@property(nonatomic,retain) NSMutableString *value;
+@property(nonatomic,retain) NSMutableArray *book_array;
+@property(nonatomic,retain) NSMutableArray *array_of_image_filenames;
 
 -(void)print_array;
 

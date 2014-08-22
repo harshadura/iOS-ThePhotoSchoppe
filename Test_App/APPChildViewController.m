@@ -42,14 +42,26 @@
 - (void) loadView
 {
     UIView *mainView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [mainView setBackgroundColor:[UIColor yellowColor]];
+    [mainView setBackgroundColor:[UIColor whiteColor]];
     self.view = mainView;
     
+    NSMutableArray *images_list_array = [[[NSUserDefaults standardUserDefaults] arrayForKey:@"images_list"] mutableCopy];
+    
+    NSLog (@"Image >>  %i = %@", self.index, [images_list_array objectAtIndex: self.index]);
+    
     NSString *Dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *pngPath = [NSString stringWithFormat:@"%@/test1234.png",Dir];// this path if you want save reference path in sqlite
+    NSString *pngPath = [NSString stringWithFormat:@"%@",[images_list_array objectAtIndex: self.index]];
+    
+    //NSString *pngPath = [NSString stringWithFormat:@"%@/test1234.png",Dir];// this path if you want save reference path in sqlite
+    // this path if you want save reference path in sqlite
+    
+    NSLog (@"Image >>  %i = %@", self.index, pngPath);
+    
+    //NSString *pngPath = [NSString stringWithFormat:@"%@/%@",Dir, theFileName];
     
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)]; //initWithFrame:CGRectMake(40+100+10, 80+100, 140, 25)];
     imageView.image = [UIImage imageWithContentsOfFile: pngPath];
+    imageView.backgroundColor = [UIColor redColor];
     [self.view addSubview:imageView];
     
 }

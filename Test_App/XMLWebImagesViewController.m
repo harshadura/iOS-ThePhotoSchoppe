@@ -13,10 +13,12 @@
 @end
 
 @implementation XMLWebImagesViewController
-@synthesize value, dic, book_array;
-
+@synthesize value, dic, book_array, array_of_image_filenames;
+ 
 - (id)init {
     self = [super init];
+    array_of_image_filenames = [[NSMutableArray alloc]init];
+
     if (self) {
         
     }
@@ -27,6 +29,8 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];// Do any additional setup after loading the view from its nib.
+    NSLog(@"Downloading data ..");
+
     NSURL *url=[[NSURL alloc] initWithString:@"https://raw.githubusercontent.com/harshadura/iOS-ThePhotoSchoppe/master/Test_App/photos.xml"]; // Write your file path here
     NSXMLParser *XML=[[NSXMLParser alloc] initWithContentsOfURL:url];
     XML.delegate=self;
@@ -83,7 +87,7 @@
         [dic setValue:value forKey:elementName];
     }
     else if([elementName isEqualToString:@"location"]) { // add book publish date to book dictionary [dic setValue:value forKey:elementName];
-         [dic setValue:value forKey:elementName];
+        [dic setValue:value forKey:elementName];
     }
     else if([elementName isEqualToString:@"last_update"]) { // add book publish date to book dictionary [dic setValue:value forKey:elementName];
         [dic setValue:value forKey:elementName];
@@ -104,15 +108,20 @@
         NSLog(@" Image location %@",[temp valueForKey:@"location"]);
         NSLog(@" Image last update %@",[temp valueForKey:@"last_update"]);
         NSLog(@" Image publisher %@",[temp valueForKey:@"publisher"]);
-
+        
         [self save_image:[temp valueForKey:@"image_url"]];
-        
-        
+
+        NSLog(@"User Data saved");
     }
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:array_of_image_filenames forKey:@"images_list"];
+    [defaults synchronize];
 }
 
--(void)save_image:(NSString*)path
+-(void) save_image:(NSString*)path
 {
+    
     NSString *trimmed = [path stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     trimmed=[trimmed stringByReplacingOccurrencesOfString:@"\n" withString:@""];
     // Get an image from the URL below**
@@ -122,23 +131,34 @@
     
     // Let's save the file into Document folder.**
     
+    NSString* theFileName = [trimmed lastPathComponent];
     NSString *Dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *pngPath = [NSString stringWithFormat:@"%@/%@",Dir, theFileName];// this path if you want save reference path in sqlite
+//    NSString *pngPath = [NSString stringWithFormat:theFileName,Dir];// this path if you want save reference path in sqlite
+//    NSString *pngPath = [NSString stringWithFormat:@"%@/test1234.png",Dir];// this path if you want save reference path in sqlite
+  
     
-    NSString *pngPath = [NSString stringWithFormat:@"%@/test1234.png",Dir];// this path if you want save reference path in sqlite
     NSData *data1 = [NSData dataWithData:UIImagePNGRepresentation(image)];
     [data1 writeToFile:pngPath atomically:YES];
     NSLog(@">>> saving png");
+    
+    NSLog(@"%@",pngPath);
+    
+
+    
+    [array_of_image_filenames addObject:pngPath];
     
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)]; //initWithFrame:CGRectMake(40+100+10, 80+100, 140, 25)];
     imageView.image = [UIImage imageWithContentsOfFile: pngPath];
     [self.view addSubview:imageView];
     
-//    NSString *jpegPath = [NSString stringWithFormat:@"%@/test.jpeg",Dir];// this path if you want save reference path in sqlite
-//    NSData *data2 = [NSData dataWithData:UIImageJPEGRepresentation(image, 1.0f)];//1.0f = 100% quality
-//    [data2 writeToFile:jpegFilePath atomically:YES];
-//    NSLog(@"saving image done");
+    //    NSString *jpegPath = [NSString stringWithFormat:@"%@/test.jpeg",Dir];// this path if you want save reference path in sqlite
+    //    NSData *data2 = [NSData dataWithData:UIImageJPEGRepresentation(image, 1.0f)];//1.0f = 100% quality
+    //    [data2 writeToFile:jpegFilePath atomically:YES];
+    //    NSLog(@"saving image done");
     
- //   [image release];
+    //   [image release];
+    
 }
 
 @end
