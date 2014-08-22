@@ -15,6 +15,7 @@
 @end
 
 @implementation PortfolioViewController
+@synthesize progressView;
 
 - (id)init {
     self = [super init];
@@ -82,10 +83,14 @@
     btnPager.layer.borderColor=[[UIColor blackColor] CGColor];
     [self.view addSubview:btnPager];
     
+    progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
+    [progressView setFrame:CGRectMake(60, 50+160, 200.0, 80.0)];
+    [self.view addSubview:progressView];
 }
 
 - (void)downloadButtonPressed {
-    
+    [progressView setProgress:50.0];
+
     XMLWebImagesViewController *controller2 = [[XMLWebImagesViewController alloc] init];
     [[self navigationController] pushViewController:controller2 animated:YES];
 }

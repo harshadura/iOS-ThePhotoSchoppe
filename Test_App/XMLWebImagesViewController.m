@@ -26,16 +26,36 @@
     return self;
 }
 
+- (void) loadView
+{
+    UIView *mainView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [mainView setBackgroundColor:[UIColor whiteColor]];
+    self.view = mainView;
+    
+//    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+//    indicator.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
+//    indicator.center = self.view.center;
+//    [self.view addSubview:indicator];
+//    [indicator bringSubviewToFront:self.view];
+//    [UIApplication sharedApplication].networkActivityIndicatorVisible = TRUE;
+//    
+//    [indicator startAnimating];
+
+    
+}
+
 -(void)viewDidLoad
 {
     [super viewDidLoad];// Do any additional setup after loading the view from its nib.
     NSLog(@"Downloading data ..");
 
-    NSURL *url=[[NSURL alloc] initWithString:@"https://raw.githubusercontent.com/harshadura/iOS-ThePhotoSchoppe/master/Test_App/photos.xml"]; // Write your file path here
+    NSURL *url=[[NSURL alloc] initWithString:@"https://raw.githubusercontent.com/harshadura/iOS-ThePhotoSchoppe/master/Test_App/photos.xml"];
+    // Write your file path here
     NSXMLParser *XML=[[NSXMLParser alloc] initWithContentsOfURL:url];
     XML.delegate=self;
     [XML parse];
     value=nil;
+    
 }
 
 - (void)didReceiveMemoryWarning

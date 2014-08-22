@@ -11,12 +11,14 @@
 #import "PortfolioViewController.h"
 #import "DirectoryViewController.h"
 #import "MoreViewController.h"
+#import "APPViewController.h"
 
 @interface MainMenuViewController ()
 
 @end
 
 @implementation MainMenuViewController
+@synthesize activityIndicator;
 
 - (void)viewDidLoad
 {
@@ -86,6 +88,13 @@
     btnMore.layer.borderWidth=1.0f;
     btnMore.layer.borderColor=[[UIColor blackColor] CGColor];
     [self.view addSubview:btnMore];
+    
+    activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    activityIndicator.frame = CGRectMake(240, 110, 40.0, 40.0);
+//    activityIndicator.center = self.view.center;
+    [self.view addSubview: activityIndicator];
+//      [activityIndicator startAnimating];
+    
 }
 
 - (void)doneButtonPressed {
@@ -97,8 +106,9 @@
 
 - (void)portfolioButtonPressed {
     
-    PortfolioViewController *controller2 = [[PortfolioViewController alloc] init];
-    [[self navigationController] pushViewController:controller2 animated:YES];
+    [activityIndicator startAnimating];
+    [self pagerButtonPressed];
+    
 }
 
 - (void)directoryButtonPressed {
@@ -117,6 +127,12 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)pagerButtonPressed {
+    
+    APPViewController *controller2 = [[APPViewController alloc] init];
+    [[self navigationController] pushViewController:controller2 animated:YES];
 }
 
 @end

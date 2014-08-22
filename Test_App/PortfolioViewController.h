@@ -10,4 +10,6 @@
 
 @interface PortfolioViewController : UIViewController
 
+@property(nonatomic,retain)  UIProgressView *progressView;
+
 @end
