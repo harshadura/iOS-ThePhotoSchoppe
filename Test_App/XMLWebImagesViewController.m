@@ -119,7 +119,8 @@
 
 -(void)print_array
 {
-    for (int i=0 ; i<=2 ; i++){
+    NSUInteger elements = [book_array count];
+    for (int i=0 ; i<elements ; i++){
         NSMutableDictionary *temp=[book_array objectAtIndex:i];
         NSLog(@"**************");
         NSLog(@" Image id %@",[temp valueForKey:@"id"]);

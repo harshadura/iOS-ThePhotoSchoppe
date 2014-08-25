@@ -59,7 +59,7 @@
     
     //NSString *pngPath = [NSString stringWithFormat:@"%@/%@",Dir, theFileName];
     
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)]; //initWithFrame:CGRectMake(40+100+10, 80+100, 140, 25)];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 46, 320, 480)]; //initWithFrame:CGRectMake(40+100+10, 80+100, 140, 25)];
     imageView.image = [UIImage imageWithContentsOfFile: pngPath];
     imageView.backgroundColor = [UIColor redColor];
     [self.view addSubview:imageView];

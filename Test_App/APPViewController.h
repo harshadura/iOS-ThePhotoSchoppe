@@ -15,7 +15,7 @@
 @property(nonatomic,retain) NSMutableString *value;
 @property(nonatomic,retain) NSMutableArray *book_array;
 @property(nonatomic,retain) NSMutableArray *array_of_image_filenames;
-
+@property(nonatomic,retain) UIActivityIndicatorView *spinner;
 -(void)print_array;
 
 @end

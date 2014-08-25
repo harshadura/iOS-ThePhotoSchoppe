@@ -14,7 +14,7 @@
 @end
 
 @implementation APPViewController
-@synthesize value, dic, book_array, array_of_image_filenames;
+@synthesize value, dic, book_array, array_of_image_filenames, spinner;
 
 - (id)init {
     self = [super init];
@@ -27,9 +27,41 @@
     return self;
 }
 
+- (void)processLoading {
+    
+
+}
+
+
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+//    [self processLoading];
+    
+    
+//    // replace right bar button 'refresh' with spinner
+//    spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+//    spinner.center = CGPointMake(160, 240);
+//    spinner.hidesWhenStopped = YES;
+//    [self.view addSubview:spinner];
+//    [spinner startAnimating];
+//    
+//    // how we stop refresh from freezing the main UI thread
+//    dispatch_queue_t downloadQueue = dispatch_queue_create("downloader", NULL);
+//    dispatch_async(downloadQueue, ^{
+//        
+//        // do our long running process here
+//        [NSThread sleepForTimeInterval:1000];
+//        
+//        // do any UI stuff on the main UI thread
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            //            self.myLabel.text = @"After!";
+//            [spinner stopAnimating];
+//        });
+//        
+//    });
+    //    dispatch_release(downloadQueue);
+    ////
     
     NSLog(@"Downloading data ..");
     
@@ -40,7 +72,7 @@
     [XML parse];
     value=nil;
     
-    ////
+    //
     
     self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     
@@ -95,8 +127,9 @@
     NSUInteger index = [(APPChildViewController *)viewController index];
     
     index++;
-    
-    if (index == 3) {
+    NSUInteger elements = [book_array count];
+
+    if (index == elements) {
         return nil;
     }
     
@@ -106,7 +139,8 @@
 
 - (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController {
     // The number of items reflected in the page indicator.
-    return 3;
+     NSUInteger elements = [book_array count];
+    return elements;
 }
 
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController {
@@ -169,7 +203,10 @@
 
 -(void)print_array
 {
-    for (int i=0 ; i<=2 ; i++){
+    NSUInteger elements = [book_array count];
+    for (int i=0 ; i<elements ; i++){
+
+//    for (int i=0 ; i<=2 ; i++){
         NSMutableDictionary *temp=[book_array objectAtIndex:i];
         NSLog(@"**************");
         NSLog(@" Image id %@",[temp valueForKey:@"id"]);

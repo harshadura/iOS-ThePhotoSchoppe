@@ -10,6 +10,7 @@
 #import "NewUserRegViewController.h"
 #import "PortfolioViewController.h"
 #import "DirectoryViewController.h"
+#import "LocationsViewController.h"
 #import "MoreViewController.h"
 #import "APPViewController.h"
 
@@ -18,7 +19,7 @@
 @end
 
 @implementation MainMenuViewController
-@synthesize activityIndicator;
+//@synthesize activityIndicator;
 
 - (void)viewDidLoad
 {
@@ -70,12 +71,21 @@
     btnPortfolio.layer.borderWidth=1.0f;
     btnPortfolio.layer.borderColor=[[UIColor blackColor] CGColor];
     [self.view addSubview:btnPortfolio];
+
+    UIButton *btnLocations = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [btnLocations addTarget:self action:@selector(locationsButtonPressed)
+           forControlEvents:UIControlEventTouchUpInside];
+    [btnLocations setTitle:@"Locations" forState:UIControlStateNormal];
+    btnLocations.frame = CGRectMake(120, 50+120, 100, 40);
+    btnLocations.layer.borderWidth=1.0f;
+    btnLocations.layer.borderColor=[[UIColor blackColor] CGColor];
+    [self.view addSubview:btnLocations];
     
     UIButton *btnDirectory = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [btnDirectory addTarget:self action:@selector(directoryButtonPressed)
            forControlEvents:UIControlEventTouchUpInside];
     [btnDirectory setTitle:@"Directory" forState:UIControlStateNormal];
-    btnDirectory.frame = CGRectMake(120, 50+120, 100, 40);
+    btnDirectory.frame = CGRectMake(120, 50+180, 100, 40);
     btnDirectory.layer.borderWidth=1.0f;
     btnDirectory.layer.borderColor=[[UIColor blackColor] CGColor];
     [self.view addSubview:btnDirectory];
@@ -84,15 +94,16 @@
     [btnMore addTarget:self action:@selector(moreButtonPressed)
       forControlEvents:UIControlEventTouchUpInside];
     [btnMore setTitle:@"More" forState:UIControlStateNormal];
-    btnMore.frame = CGRectMake(120, 50+180, 100, 40);
+    btnMore.frame = CGRectMake(120, 50+240, 100, 40);
     btnMore.layer.borderWidth=1.0f;
     btnMore.layer.borderColor=[[UIColor blackColor] CGColor];
     [self.view addSubview:btnMore];
     
-    activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    activityIndicator.frame = CGRectMake(240, 110, 40.0, 40.0);
+    
+//    activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+//    activityIndicator.frame = CGRectMake(240, 110, 40.0, 40.0);
 //    activityIndicator.center = self.view.center;
-    [self.view addSubview: activityIndicator];
+//    [self.view addSubview: activityIndicator];
 //      [activityIndicator startAnimating];
     
 }
@@ -106,8 +117,17 @@
 
 - (void)portfolioButtonPressed {
     
-    [activityIndicator startAnimating];
+//    [activityIndicator startAnimating];
     [self pagerButtonPressed];
+    
+}
+
+
+- (void)locationsButtonPressed {
+    
+    LocationsViewController *controller2 = [[LocationsViewController alloc] init];
+    [[self navigationController] pushViewController:controller2 animated:YES];
+
     
 }
 
