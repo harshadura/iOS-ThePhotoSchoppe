@@ -21,4 +21,11 @@
         <last_update>2014-08-22</last_update>
 		<publisher>user3@gmail.com</publisher>
 	</photo>
+	<photo id="4">
+		<name>iOS</name>
+		<image_url>http://i.imgur.com/H1oez.jpg</image_url>
+		<location>50,62</location>
+        <last_update>2014-09-27</last_update>
+		<publisher>user4@gmail.com</publisher>
+	</photo>
 </photos>
