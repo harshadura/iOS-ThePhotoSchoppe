@@ -43,8 +43,15 @@
     //    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Quit" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelButtonPressed)];
     UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:@"New User?" style:UIBarButtonItemStyleBordered target:self
                                                                 action:@selector(doneButtonPressed)];
+    
+    UIBarButtonItem *bypassItem = [[UIBarButtonItem alloc] initWithTitle:@">>>" style:UIBarButtonItemStyleBordered target:self
+                                                                action:@selector(bypassButtonPressed)];
+  
+    
     [self.navigationItem setTitle:@"User Login"];
     [self.navigationItem setRightBarButtonItem: doneItem];
+    [self.navigationItem setLeftBarButtonItem:  bypassItem];
+    
     //     [self.navigationItem setLeftBarButtonItem: cancelItem];
     
     UILabel *lblTitle = [[UILabel alloc] init];
@@ -160,6 +167,12 @@
 - (void)doneButtonPressed {
     
     NewUserRegViewController *controller2 = [[NewUserRegViewController alloc] init];
+    [[self navigationController] pushViewController:controller2 animated:YES];
+}
+
+- (void)bypassButtonPressed {
+    
+    MainMenuViewController *controller2 = [[MainMenuViewController alloc] init];
     [[self navigationController] pushViewController:controller2 animated:YES];
 }
 

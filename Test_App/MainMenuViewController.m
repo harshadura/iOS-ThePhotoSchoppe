@@ -13,13 +13,15 @@
 #import "LocationsViewController.h"
 #import "MoreViewController.h"
 #import "APPViewController.h"
+#import "PhotoDownloader.h"
+
 
 @interface MainMenuViewController ()
 
 @end
 
 @implementation MainMenuViewController
-//@synthesize activityIndicator;
+@synthesize activityIndicator;
 
 - (void)viewDidLoad
 {
@@ -100,11 +102,12 @@
     [self.view addSubview:btnMore];
     
     
-//    activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-//    activityIndicator.frame = CGRectMake(240, 110, 40.0, 40.0);
-//    activityIndicator.center = self.view.center;
-//    [self.view addSubview: activityIndicator];
+    activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    activityIndicator.frame = CGRectMake(240, 110, 40.0, 40.0);
+    [self.view addSubview: activityIndicator];
 //      [activityIndicator startAnimating];
+  
+
     
 }
 
@@ -124,11 +127,20 @@
 
 
 - (void)locationsButtonPressed {
-    
-    LocationsViewController *controller2 = [[LocationsViewController alloc] init];
-    [[self navigationController] pushViewController:controller2 animated:YES];
+//    
+//    LocationsViewController *controller2 = [[LocationsViewController alloc] init];
+//    [[self navigationController] pushViewController:controller2 animated:YES];
 
     
+        [activityIndicator startAnimating];
+        PhotoDownloader *sampleProtocol = [[PhotoDownloader alloc]init];
+        sampleProtocol.delegate = self;
+        //        [myLabel setText:@"Processing..."];
+        [sampleProtocol startSampleProcess];
+    
+    
+//        APPViewController *controller2 = [[APPViewController alloc] init];
+//        [[self navigationController] pushViewController:controller2 animated:YES];
 }
 
 - (void)directoryButtonPressed {
@@ -153,6 +165,27 @@
     
     APPViewController *controller2 = [[APPViewController alloc] init];
     [[self navigationController] pushViewController:controller2 animated:YES];
+//    
+//    [activityIndicator startAnimating];
+//    PhotoDownloader *sampleProtocol = [[PhotoDownloader alloc]init];
+//    sampleProtocol.delegate = self;
+//    //        [myLabel setText:@"Processing..."];
+//    [sampleProtocol startSampleProcess];
+//    
+    
+//    APPViewController *controller2 = [[APPViewController alloc] init];
+//    [[self navigationController] pushViewController:controller2 animated:YES];
+}
+
+#pragma mark - Sample protocol delegate
+-(void)processCompleted{
+    //    [myLabel setText:@"Process Completed"];
+    
+    [activityIndicator stopAnimating];
+    
+    APPViewController *controller2 = [[APPViewController alloc] init];
+    [[self navigationController] pushViewController:controller2 animated:YES];
+    
 }
 
 @end

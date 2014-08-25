@@ -10,6 +10,6 @@
 
 @interface MainMenuViewController : UIViewController
 
-//@property(nonatomic,retain) UIActivityIndicatorView *activityIndicator;
+@property(nonatomic,retain) UIActivityIndicatorView *activityIndicator;
 
 @end
