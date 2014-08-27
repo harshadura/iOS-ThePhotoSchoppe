@@ -77,7 +77,7 @@
     UIButton *btnLocations = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [btnLocations addTarget:self action:@selector(locationsButtonPressed)
            forControlEvents:UIControlEventTouchUpInside];
-    [btnLocations setTitle:@"Locations" forState:UIControlStateNormal];
+    [btnLocations setTitle:@"Download" forState:UIControlStateNormal];
     btnLocations.frame = CGRectMake(120, 50+120, 100, 40);
     btnLocations.layer.borderWidth=1.0f;
     btnLocations.layer.borderColor=[[UIColor blackColor] CGColor];
@@ -104,6 +104,7 @@
     
     activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     activityIndicator.frame = CGRectMake(240, 110, 40.0, 40.0);
+    [activityIndicator setHidesWhenStopped:YES];
     [self.view addSubview: activityIndicator];
 //      [activityIndicator startAnimating];
   
@@ -132,12 +133,14 @@
 //    [[self navigationController] pushViewController:controller2 animated:YES];
 
     
+    
         [activityIndicator startAnimating];
+    
         PhotoDownloader *sampleProtocol = [[PhotoDownloader alloc]init];
         sampleProtocol.delegate = self;
         //        [myLabel setText:@"Processing..."];
         [sampleProtocol startSampleProcess];
-    
+
     
 //        APPViewController *controller2 = [[APPViewController alloc] init];
 //        [[self navigationController] pushViewController:controller2 animated:YES];
@@ -180,11 +183,31 @@
 #pragma mark - Sample protocol delegate
 -(void)processCompleted{
     //    [myLabel setText:@"Process Completed"];
+    NSLog(@"Delegate fired ..");
     
-    [activityIndicator stopAnimating];
+    if (![NSThread isMainThread]) {
+        NSLog(@"Not in main thread 1..");
+    }
     
-    APPViewController *controller2 = [[APPViewController alloc] init];
-    [[self navigationController] pushViewController:controller2 animated:YES];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        if (![NSThread isMainThread]) {
+            NSLog(@"Not in main thread 2..");
+        }
+         NSLog(@"In main thread 2..");
+        
+        // perform on main
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Title" message:@"Welcome!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+        
+        [activityIndicator stopAnimating];
+        [activityIndicator removeFromSuperview];
+        
+        APPViewController *controller2 = [[APPViewController alloc] init];
+        [[self navigationController] pushViewController:controller2 animated:YES];
+    });
+    
+
     
 }
 

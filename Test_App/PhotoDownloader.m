@@ -173,6 +173,9 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:array_of_image_filenames forKey:@"images_list"];
     [defaults synchronize];
+    
+    [_delegate processCompleted];
+    
 }
 
 -(void) save_image:(NSString*)path
@@ -199,8 +202,15 @@
     NSLog(@">>> saving png");
     
     NSLog(@"%@",pngPath);
+  
+    
     
     [array_of_image_filenames addObject:pngPath];
+    
+    
+//    if ([_delegate respondsToSelector:@selector(processCompleted)]) {
+ 
+//    }
     
     //    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)]; //initWithFrame:CGRectMake(40+100+10, 80+100, 140, 25)];
     //    imageView.image = [UIImage imageWithContentsOfFile: pngPath];
@@ -213,6 +223,12 @@
     
     //   [image release];
     
+}
+
+-(void)dealloc
+{
+    // set the delegate to nil
+    _delegate = nil;
 }
 
 @end

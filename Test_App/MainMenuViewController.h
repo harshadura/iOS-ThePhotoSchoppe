@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PhotoDownloader.h"
 
-@interface MainMenuViewController : UIViewController
+@interface MainMenuViewController : UIViewController <PhotoDownloaderDelegate>
 
 @property(nonatomic,retain) UIActivityIndicatorView *activityIndicator;
 
