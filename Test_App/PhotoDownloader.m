@@ -1,7 +1,8 @@
 #import "PhotoDownloader.h"
 
+
 @implementation PhotoDownloader
-@synthesize value, dic, book_array, array_of_image_filenames, spinner;
+@synthesize value, dic, book_array, array_of_image_filenames, spinner, internetReachableFoo;
 
 -(void)startSampleProcess{
     
@@ -9,6 +10,24 @@
 //                                   selector:@selector(processCompleted) userInfo:nil repeats:NO];
 //    
     NSLog(@"Downloading data ..");
+    [self testInternetConnection];
+    
+//    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+//    NetworkStatus internetStatus = [reachability currentReachabilityStatus];
+//    
+//    if(internetStatus == NotReachable) {
+//        UIAlertView *errorView;
+//        
+//        errorView = [[UIAlertView alloc]
+//                     initWithTitle: NSLocalizedString(@"Network error", @"Network error")
+//                     message: NSLocalizedString(@"No internet connection found, this application requires an internet connection to gather the data required.", @"Network error")
+//                     delegate: self
+//                     cancelButtonTitle: NSLocalizedString(@"Close", @"Network error") otherButtonTitles: nil];
+//        
+//        [errorView show];
+////        [errorView autorelease];
+//    }
+    
     array_of_image_filenames = [[NSMutableArray alloc]init];
 
     
@@ -37,6 +56,39 @@
     
 
     
+}
+
+- (void)testInternetConnection
+{
+    internetReachableFoo = [Reachability reachabilityWithHostname:@"www.google.com"];
+    
+    // Internet is reachable
+    internetReachableFoo.reachableBlock = ^(Reachability*reach)
+    {
+        // Update the UI on the main thread
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"Yayyy, we have the interwebs!");
+        });
+    };
+    
+    // Internet is not reachable
+    internetReachableFoo.unreachableBlock = ^(Reachability*reach)
+    {
+        // Update the UI on the main thread
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"Someone broke the internet :(");
+            UIAlertView *errorView;
+            errorView = [[UIAlertView alloc]
+                         initWithTitle: NSLocalizedString(@"Network error", @"Network error")
+                         message: NSLocalizedString(@"No internet connection found, this application requires an internet connection to gather the data required.", @"Network error")
+                         delegate: self
+                         cancelButtonTitle: NSLocalizedString(@"Close", @"Network error") otherButtonTitles: nil];
+            
+            [errorView show];
+        });
+    };
+    
+    [internetReachableFoo startNotifier];
 }
 
 //- (void)viewDidLoad {

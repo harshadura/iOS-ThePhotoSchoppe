@@ -13,6 +13,7 @@
 #import "DirectoryViewController.h"
 #import "LocationsViewController.h"
 #import "MoreViewController.h"
+#import "MainMenuViewController.h"
 
 @implementation AppDelegate
 @synthesize window = _window;
@@ -43,11 +44,12 @@
 
     LoginViewController *loginViewController = [[LoginViewController alloc]init];
     DirectoryViewController *directoryViewController2 = [[DirectoryViewController alloc] init];
+    MainMenuViewController *mainMenuViewController = [[MainMenuViewController alloc]init];
     DirectoryViewController *directoryViewController = [[DirectoryViewController alloc] init];
     LocationsViewController *locationsViewController = [[LocationsViewController alloc] init];
     MoreViewController *moreViewController = [[MoreViewController alloc] init];
     
-    UINavigationController * LoginNav = [[UINavigationController alloc] initWithRootViewController:directoryViewController2];
+    UINavigationController * LoginNav = [[UINavigationController alloc] initWithRootViewController:mainMenuViewController];
     UINavigationController * DirectoryNav = [[UINavigationController alloc] initWithRootViewController:directoryViewController];
     UINavigationController * LocationsNav = [[UINavigationController alloc] initWithRootViewController:locationsViewController];
     UINavigationController * MoreNav = [[UINavigationController alloc] initWithRootViewController:moreViewController];

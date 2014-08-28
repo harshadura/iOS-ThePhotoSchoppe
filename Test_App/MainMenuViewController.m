@@ -131,9 +131,6 @@
 //    
 //    LocationsViewController *controller2 = [[LocationsViewController alloc] init];
 //    [[self navigationController] pushViewController:controller2 animated:YES];
-
-    
-    
         [activityIndicator startAnimating];
     
         PhotoDownloader *sampleProtocol = [[PhotoDownloader alloc]init];
@@ -196,15 +193,16 @@
         }
          NSLog(@"In main thread 2..");
         
-        // perform on main
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Title" message:@"Welcome!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        [alert show];
+//        // perform on main
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Title" message:@"Welcome!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+//        [alert show];
         
         [activityIndicator stopAnimating];
-        [activityIndicator removeFromSuperview];
+//        [activityIndicator removeFromSuperview];
         
-        APPViewController *controller2 = [[APPViewController alloc] init];
-        [[self navigationController] pushViewController:controller2 animated:YES];
+//        APPViewController *controller2 = [[APPViewController alloc] init];
+//        [[self navigationController] pushViewController:controller2 animated:YES];
+        
     });
     
 

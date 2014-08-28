@@ -1,4 +1,5 @@
 #import <Foundation/Foundation.h>
+#import "Reachability.h"
 
 @class PhotoDownloader;
 
@@ -15,6 +16,7 @@
 @property(nonatomic,retain) NSMutableArray *book_array;
 @property(nonatomic,retain) NSMutableArray *array_of_image_filenames;
 @property(nonatomic,retain) UIActivityIndicatorView *spinner;
+@property(nonatomic,retain) Reachability *internetReachableFoo;
 
 -(void)startSampleProcess; // Instance method
 
