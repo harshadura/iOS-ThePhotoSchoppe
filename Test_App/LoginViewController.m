@@ -94,7 +94,7 @@
     UIButton *btnRegister = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [btnRegister addTarget:self action:@selector(userRegTapped)
           forControlEvents:UIControlEventTouchUpInside];
-    [btnRegister setTitle:@"Login" forState:UIControlStateNormal];
+    [btnRegister setTitle:@"SignIn" forState:UIControlStateNormal];
     btnRegister.frame = CGRectMake(60, 80+160, 100, 40);
     btnRegister.layer.borderWidth=1.0f;
     btnRegister.layer.borderColor=[[UIColor blackColor] CGColor];
@@ -102,9 +102,9 @@
     
     
     UIButton *btnClose = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btnClose addTarget:self action:@selector(cancelButtonPressed)
+    [btnClose addTarget:self action:@selector(doneButtonPressed)
        forControlEvents:UIControlEventTouchUpInside];
-    [btnClose setTitle:@"Close" forState:UIControlStateNormal];
+    [btnClose setTitle:@"SignUp" forState:UIControlStateNormal];
     btnClose.frame = CGRectMake(60+100+20, 80+160, 100, 40);
     btnClose.layer.borderWidth=1.0f;
     btnClose.layer.borderColor=[[UIColor blackColor] CGColor];
@@ -171,7 +171,8 @@
 - (void)doneButtonPressed {
     
     NewUserRegViewController *controller2 = [[NewUserRegViewController alloc] init];
-    [[self navigationController] pushViewController:controller2 animated:YES];
+     [self presentModalViewController:controller2 animated:NO];
+//    [[self navigationController] pushViewController:controller2 animated:YES];
 }
 
 - (void)bypassButtonPressed {

@@ -22,16 +22,26 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = self.switchTabBarController;
+
     
     [self initTabBar];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
  
+    
     LoginViewController *lvc = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
     lvc.delegate = self;
     [self.switchTabBarController presentModalViewController:lvc animated:NO];
 //    [lvc release];
 
+    
+//    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController2];
+//    
+//    self.tabBarController = [[UITabBarController alloc] init];
+//    self.tabBarController.viewControllers = [NSArray arrayWithObjects:viewController1, navController,viewController3, viewController4, nil];
+  
+    
     return YES;
 }
 

@@ -9,7 +9,7 @@
 #import "SwitchTabBar.h"
 @class UITabBarController;
 @protocol SwitchTabBarControllerDelegate;
-@interface SwitchTabBarController : UIViewController <SwitchTabBarDelegate>
+@interface SwitchTabBarController : UINavigationController <SwitchTabBarDelegate>
 {
     SwitchTabBar        *_tabBar;
 	UIView              *_containerView;

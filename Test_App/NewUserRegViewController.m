@@ -63,6 +63,15 @@
     //    lblTitle.text= @"New user registration";
     //    [self.view addSubview:lblTitle];
     
+    UILabel *lblTitle = [[UILabel alloc] init];
+    lblTitle.textColor = [UIColor blackColor];
+    [lblTitle setFrame:CGRectMake(30, 50, 290, 20)];
+    lblTitle.backgroundColor=[UIColor clearColor];
+    lblTitle.textColor=[UIColor blackColor];
+    lblTitle.userInteractionEnabled=NO;
+    lblTitle.text= @"New user registration";
+    [self.view addSubview:lblTitle];
+    
     UILabel *lblUsername = [[UILabel alloc] init];
     lblUsername.textColor = [UIColor blackColor];
     [lblUsername setFrame:CGRectMake(40, 40+60, 90, 20)];
@@ -109,10 +118,19 @@
     [btnRegister addTarget:self action:@selector(userRegTapped)
           forControlEvents:UIControlEventTouchUpInside];
     [btnRegister setTitle:@"Register" forState:UIControlStateNormal];
-    btnRegister.frame = CGRectMake(100, 40+200, 100, 40);
+    btnRegister.frame = CGRectMake(60, 40+200, 100, 40);
     btnRegister.layer.borderWidth=1.0f;
     btnRegister.layer.borderColor=[[UIColor blackColor] CGColor];
     [self.view addSubview:btnRegister];
+    
+    UIButton *btnClose = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [btnClose addTarget:self action:@selector(gobackTapped)
+          forControlEvents:UIControlEventTouchUpInside];
+    [btnClose setTitle:@"Back" forState:UIControlStateNormal];
+    btnClose.frame = CGRectMake(60+100+20, 40+200, 100, 40);
+    btnClose.layer.borderWidth=1.0f;
+    btnClose.layer.borderColor=[[UIColor blackColor] CGColor];
+    [self.view addSubview:btnClose];
 }
 
 - (void) userRegTapped {
@@ -134,6 +152,14 @@
 - (void)cancelButtonPressed {
     exit(0);
 }
+
+- (void)gobackTapped {
+//    LoginViewController *controller2 = [[LoginViewController alloc] init];
+//    [self presentModalViewController:controller2 animated:NO];
+
+    [self dismissModalViewControllerAnimated:NO];
+}
+
 
 - (void)didReceiveMemoryWarning
 {

@@ -11,7 +11,7 @@
 
 static SwitchTabBarController *switchTabBarController;
 
-@implementation UIViewController (LeveyTabBarControllerSupport)
+@implementation UINavigationController (LeveyTabBarControllerSupport)
 
 - (SwitchTabBarController *)switchTabBarController
 {

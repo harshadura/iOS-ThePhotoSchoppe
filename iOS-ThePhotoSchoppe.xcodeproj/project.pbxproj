@@ -22,8 +22,6 @@
 		3A3D114119A222F5003FB729 /* NewUserRegViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3D114019A222F5003FB729 /* NewUserRegViewController.m */; };
 		3A3D114C19A2289A003FB729 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3D114B19A2289A003FB729 /* LoginViewController.m */; };
 		3A6D6BB619AF3B1E00A789A9 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D6BB519AF3B1E00A789A9 /* Reachability.m */; };
-		3A6D6BB819AF3C1F00A789A9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6D6BB719AF3C1F00A789A9 /* Security.framework */; };
-		3A6D6BBA19AF3C2500A789A9 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6D6BB919AF3C2500A789A9 /* CFNetwork.framework */; };
 		3A6D6BBC19AF3C3300A789A9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6D6BBB19AF3C3300A789A9 /* SystemConfiguration.framework */; };
 		3A7FDDB719A4B0C300507B41 /* photos.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3A7FDDB619A4B0C300507B41 /* photos.xml */; };
 		3AB3CA6C19A3794C00EDA940 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB3CA6B19A3794C00EDA940 /* MainMenuViewController.m */; };
@@ -113,8 +111,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A6D6BBC19AF3C3300A789A9 /* SystemConfiguration.framework in Frameworks */,
-				3A6D6BBA19AF3C2500A789A9 /* CFNetwork.framework in Frameworks */,
-				3A6D6BB819AF3C1F00A789A9 /* Security.framework in Frameworks */,
 				3A3D112819A222F5003FB729 /* UIKit.framework in Frameworks */,
 				3A3D112A19A222F5003FB729 /* Foundation.framework in Frameworks */,
 				3A3D112C19A222F5003FB729 /* CoreGraphics.framework in Frameworks */,
