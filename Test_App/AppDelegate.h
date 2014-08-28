@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@class ViewController;
+@class SwitchTabBarController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
+{
+    UIWindow                    *_window;
+    SwitchTabBarController      *_switchTabBarController;
+}
 
 @property (strong, nonatomic) UIWindow *window;
-
-@property (strong, nonatomic) ViewController *viewController;
+@property (strong, nonatomic) SwitchTabBarController *switchTabBarController;
 
 @end
