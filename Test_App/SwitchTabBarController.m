@@ -42,10 +42,10 @@ static SwitchTabBarController *switchTabBarController;
 		
 		_containerView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
 		
-		_transitionView = [[UIView alloc] initWithFrame:CGRectMake(0, -20, 320.0f, _containerView.frame.size.height - kTabBarHeight+20)];
+		_transitionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320.0f, _containerView.frame.size.height - kTabBarHeight)];
 		_transitionView.backgroundColor =  [UIColor groupTableViewBackgroundColor];
 		
-		_tabBar = [[SwitchTabBar alloc] initWithFrame:CGRectMake(0, _containerView.frame.size.height - kTabBarHeight, 320.0f, kTabBarHeight) buttonImages:arr];
+		_tabBar = [[SwitchTabBar alloc] initWithFrame:CGRectMake(0, _containerView.frame.size.height - 30, 320.0f, kTabBarHeight) buttonImages:arr];
 		_tabBar.delegate = self;
 		
         switchTabBarController = self;

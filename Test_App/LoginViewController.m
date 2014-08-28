@@ -115,23 +115,27 @@
 #pragma mark - private methods
 - (void)userRegTapped {
     
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    NSString *app_username = [prefs stringForKey:@"app_username"];
-    NSString *app_password = [prefs stringForKey:@"app_password"];
+    [self buttonPressed];
     
-    if([textFieldUsername.text isEqualToString: app_username] && [textFieldPassword.text isEqualToString: app_password]){
-        NSLog(@"Correct login ..");
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Title" message:@"Welcome!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        [alert show];
-        MainMenuViewController *controller2 = [[MainMenuViewController alloc] init];
-        [[self navigationController] pushViewController:controller2 animated:YES];
-    }
-    else{
-        NSLog(@"Incorrect login ..");
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Title" message:@"Incorrect login" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        [alert show];
-        
-    }
+//     [self dismissModalViewControllerAnimated:YES];
+    
+//    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+//    NSString *app_username = [prefs stringForKey:@"app_username"];
+//    NSString *app_password = [prefs stringForKey:@"app_password"];
+//    
+//    if([textFieldUsername.text isEqualToString: app_username] && [textFieldPassword.text isEqualToString: app_password]){
+//        NSLog(@"Correct login ..");
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Title" message:@"Welcome!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+//        [alert show];
+//        MainMenuViewController *controller2 = [[MainMenuViewController alloc] init];
+//        [[self navigationController] pushViewController:controller2 animated:YES];
+//    }
+//    else{
+//        NSLog(@"Incorrect login ..");
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Title" message:@"Incorrect login" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+//        [alert show];
+//        
+//    }
     
 }
 
@@ -174,6 +178,12 @@
     
     MainMenuViewController *controller2 = [[MainMenuViewController alloc] init];
     [[self navigationController] pushViewController:controller2 animated:YES];
+}
+
+- (void)buttonPressed{
+    //do NOT removeFromSuperview, delegate will dismiss
+    //[self.view removeFromSuperview];
+  [self.delegate loginViewControllerDidFinish:self];
 }
 
 @end

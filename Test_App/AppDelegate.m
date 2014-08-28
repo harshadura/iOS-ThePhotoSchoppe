@@ -25,26 +25,37 @@
     [self initTabBar];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+ 
+    LoginViewController *lvc = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+    lvc.delegate = self;
+    [self.switchTabBarController presentModalViewController:lvc animated:NO];
+//    [lvc release];
+
     return YES;
+}
+
+-(void)loginViewControllerDidFinish:(LoginViewController *)loginViewController {
+    [self.switchTabBarController dismissModalViewControllerAnimated:NO];
 }
 
 -(void)initTabBar
 {
 
     LoginViewController *loginViewController = [[LoginViewController alloc]init];
+    DirectoryViewController *directoryViewController2 = [[DirectoryViewController alloc] init];
     DirectoryViewController *directoryViewController = [[DirectoryViewController alloc] init];
     LocationsViewController *locationsViewController = [[LocationsViewController alloc] init];
     MoreViewController *moreViewController = [[MoreViewController alloc] init];
     
-    UINavigationController * LoginNav = [[UINavigationController alloc] initWithRootViewController:loginViewController];
+    UINavigationController * LoginNav = [[UINavigationController alloc] initWithRootViewController:directoryViewController2];
     UINavigationController * DirectoryNav = [[UINavigationController alloc] initWithRootViewController:directoryViewController];
     UINavigationController * LocationsNav = [[UINavigationController alloc] initWithRootViewController:locationsViewController];
     UINavigationController * MoreNav = [[UINavigationController alloc] initWithRootViewController:moreViewController];
     
     NSArray *ctrlArr = [NSArray arrayWithObjects:LoginNav,DirectoryNav,LocationsNav,MoreNav,nil];
-    LoginNav.title = @"RimNav";
-    DirectoryNav.title = @"RecommendNav";
-    LocationsNav.title = @"SearchNav";
+    LoginNav.title = @"LoginNav";
+    DirectoryNav.title = @"DirectoryNav";
+    LocationsNav.title = @"LocationsNav";
     MoreNav.title = @"MoreNav";
     
     NSArray *imgArr = [NSArray arrayWithObjects:[UIImage imageNamed:@"tab_bar_1"],[UIImage imageNamed:@"tab_bar_7"],[UIImage imageNamed:@"tab_bar_3"],[UIImage imageNamed:@"tab_bar_4"],nil];
