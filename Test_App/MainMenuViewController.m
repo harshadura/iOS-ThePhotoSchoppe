@@ -101,6 +101,7 @@
 //    btnMore.layer.borderColor=[[UIColor blackColor] CGColor];
 //    [self.view addSubview:btnMore];
     
+
     
     activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     activityIndicator.frame = CGRectMake(240, 110, 40.0, 40.0);

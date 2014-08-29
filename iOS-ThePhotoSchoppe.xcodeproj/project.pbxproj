@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		3A0232BF19A5E50B006D499E /* PortfolioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0232BE19A5E50B006D499E /* PortfolioViewController.m */; };
 		3A0232C219A5E541006D499E /* DirectoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0232C119A5E541006D499E /* DirectoryViewController.m */; };
-		3A0232C519A5E55C006D499E /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0232C419A5E55C006D499E /* MoreViewController.m */; };
+		3A0232C519A5E55C006D499E /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0232C419A5E55C006D499E /* MoreViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3A3D112819A222F5003FB729 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A3D112719A222F5003FB729 /* UIKit.framework */; };
 		3A3D112A19A222F5003FB729 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A3D112919A222F5003FB729 /* Foundation.framework */; };
 		3A3D112C19A222F5003FB729 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A3D112B19A222F5003FB729 /* CoreGraphics.framework */; };
@@ -27,6 +27,7 @@
 		3A9513F919B076AA0062F588 /* directory.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3A9513F819B076AA0062F588 /* directory.xml */; };
 		3A9514C219B096720062F588 /* TablieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9514C119B096720062F588 /* TablieViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3A9514C519B09CD50062F588 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9514C419B09CD50062F588 /* CustomCell.m */; };
+		3A9514C719B0B1700062F588 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A9514C619B0B1700062F588 /* MessageUI.framework */; };
 		3AB3CA6C19A3794C00EDA940 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB3CA6B19A3794C00EDA940 /* MainMenuViewController.m */; };
 		3AB926CD19A62FA100D98FA4 /* APPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB926CA19A62FA100D98FA4 /* APPViewController.m */; };
 		3AB926CE19A62FA100D98FA4 /* APPChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB926CC19A62FA100D98FA4 /* APPChildViewController.m */; };
@@ -100,6 +101,7 @@
 		3A9514C119B096720062F588 /* TablieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TablieViewController.m; sourceTree = "<group>"; };
 		3A9514C319B09CD50062F588 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
 		3A9514C419B09CD50062F588 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
+		3A9514C619B0B1700062F588 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		3AB3CA6B19A3794C00EDA940 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
 		3AB3CA6D19A3795C00EDA940 /* MainMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
 		3AB926C919A62F8100D98FA4 /* APPViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APPViewController.h; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A9514C719B0B1700062F588 /* MessageUI.framework in Frameworks */,
 				3ACCF86F19AF52CF00E12C66 /* libz.dylib in Frameworks */,
 				3ACCF86D19AF52B600E12C66 /* libobjc.dylib in Frameworks */,
 				3ACCF86B19AF4FB500E12C66 /* libicucore.dylib in Frameworks */,
@@ -198,6 +201,7 @@
 		3A3D112619A222F5003FB729 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3A9514C619B0B1700062F588 /* MessageUI.framework */,
 				3ACCF86E19AF52CF00E12C66 /* libz.dylib */,
 				3ACCF86C19AF52B600E12C66 /* libobjc.dylib */,
 				3ACCF86A19AF4FB500E12C66 /* libicucore.dylib */,
