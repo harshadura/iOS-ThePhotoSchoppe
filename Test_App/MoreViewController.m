@@ -62,6 +62,8 @@
     [self.view addSubview:lblTitle];
     
     
+//    Display the contact information (address, phone number and email address)
+    
 }
 
 /*

@@ -16,6 +16,7 @@
 #import "MainMenuViewController.h"
 #import "CustomMarkersViewController.h"
 #import "LocViewController.h"
+#import "TablieViewController.h"
 
 @implementation AppDelegate
 @synthesize window = _window;
@@ -60,7 +61,7 @@
     
 //    CustomMarkersViewController *customMarkersViewController = [[CustomMarkersViewController alloc] init];
     MainMenuViewController *mainMenuViewController = [[MainMenuViewController alloc]init];
-    DirectoryViewController *directoryViewController = [[DirectoryViewController alloc] init];
+    TablieViewController *directoryViewController = [[TablieViewController alloc] init];
     LocationsViewController *locationsViewController = [[LocationsViewController alloc] init];
     MoreViewController *moreViewController = [[MoreViewController alloc] init];
     
@@ -69,13 +70,13 @@
     UINavigationController * LocationsNav = [[UINavigationController alloc] initWithRootViewController:locViewController];
     UINavigationController * MoreNav = [[UINavigationController alloc] initWithRootViewController:moreViewController];
     
-    NSArray *ctrlArr = [NSArray arrayWithObjects:LoginNav,DirectoryNav,LocationsNav,MoreNav,nil];
+    NSArray *ctrlArr = [NSArray arrayWithObjects:LoginNav,LocationsNav,DirectoryNav,MoreNav,nil];
     LoginNav.title = @"LoginNav";
-    DirectoryNav.title = @"DirectoryNav";
     LocationsNav.title = @"LocationsNav";
+    DirectoryNav.title = @"DirectoryNav";
     MoreNav.title = @"MoreNav";
     
-    NSArray *imgArr = [NSArray arrayWithObjects:[UIImage imageNamed:@"tab_bar_1"],[UIImage imageNamed:@"tab_bar_7"],[UIImage imageNamed:@"tab_bar_3"],[UIImage imageNamed:@"tab_bar_4"],nil];
+    NSArray *imgArr = [NSArray arrayWithObjects:[UIImage imageNamed:@"tab_bar_1"],[UIImage imageNamed:@"tab_bar_3"],[UIImage imageNamed:@"tab_bar_7"],[UIImage imageNamed:@"tab_bar_4"],nil];
 	
 	_switchTabBarController = [[SwitchTabBarController alloc] initWithViewControllers:ctrlArr imageArray:imgArr];
 	[_switchTabBarController.tabBar setBackgroundImage:[UIImage imageNamed:@"mainpage_bottombg"]];
