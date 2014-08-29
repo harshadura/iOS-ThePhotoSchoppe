@@ -65,8 +65,8 @@
     MoreViewController *moreViewController = [[MoreViewController alloc] init];
     
     UINavigationController * LoginNav = [[UINavigationController alloc] initWithRootViewController:mainMenuViewController];
-    UINavigationController * DirectoryNav = [[UINavigationController alloc] initWithRootViewController:locViewController];
-    UINavigationController * LocationsNav = [[UINavigationController alloc] initWithRootViewController:locationsViewController];
+    UINavigationController * DirectoryNav = [[UINavigationController alloc] initWithRootViewController:directoryViewController];
+    UINavigationController * LocationsNav = [[UINavigationController alloc] initWithRootViewController:locViewController];
     UINavigationController * MoreNav = [[UINavigationController alloc] initWithRootViewController:moreViewController];
     
     NSArray *ctrlArr = [NSArray arrayWithObjects:LoginNav,DirectoryNav,LocationsNav,MoreNav,nil];

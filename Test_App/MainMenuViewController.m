@@ -64,42 +64,42 @@
     lblTitle.userInteractionEnabled=NO;
     lblTitle.text= @"Welcome to The Photo Schoppe";
     [self.view addSubview:lblTitle];
-    
-    UIButton *btnPortfolio = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btnPortfolio addTarget:self action:@selector(portfolioButtonPressed)
-           forControlEvents:UIControlEventTouchUpInside];
-    [btnPortfolio setTitle:@"Portfolio" forState:UIControlStateNormal];
-    btnPortfolio.frame = CGRectMake(120, 50+60, 100, 40);
-    btnPortfolio.layer.borderWidth=1.0f;
-    btnPortfolio.layer.borderColor=[[UIColor blackColor] CGColor];
-    [self.view addSubview:btnPortfolio];
 
     UIButton *btnLocations = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btnLocations addTarget:self action:@selector(locationsButtonPressed)
+    [btnLocations addTarget:self action:@selector(syncButtonPressed)
            forControlEvents:UIControlEventTouchUpInside];
-    [btnLocations setTitle:@"Download" forState:UIControlStateNormal];
-    btnLocations.frame = CGRectMake(120, 50+120, 100, 40);
+    [btnLocations setTitle:@"Sync" forState:UIControlStateNormal];
+    btnLocations.frame = CGRectMake(120, 50+60, 100, 40);
     btnLocations.layer.borderWidth=1.0f;
     btnLocations.layer.borderColor=[[UIColor blackColor] CGColor];
     [self.view addSubview:btnLocations];
     
-    UIButton *btnDirectory = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btnDirectory addTarget:self action:@selector(directoryButtonPressed)
+    UIButton *btnPortfolio = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [btnPortfolio addTarget:self action:@selector(portfolioButtonPressed)
            forControlEvents:UIControlEventTouchUpInside];
-    [btnDirectory setTitle:@"Directory" forState:UIControlStateNormal];
-    btnDirectory.frame = CGRectMake(120, 50+180, 100, 40);
-    btnDirectory.layer.borderWidth=1.0f;
-    btnDirectory.layer.borderColor=[[UIColor blackColor] CGColor];
-    [self.view addSubview:btnDirectory];
+    [btnPortfolio setTitle:@"Show" forState:UIControlStateNormal];
+    btnPortfolio.frame = CGRectMake(120, 50+120, 100, 40);
+    btnPortfolio.layer.borderWidth=1.0f;
+    btnPortfolio.layer.borderColor=[[UIColor blackColor] CGColor];
+    [self.view addSubview:btnPortfolio];
     
-    UIButton *btnMore = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btnMore addTarget:self action:@selector(moreButtonPressed)
-      forControlEvents:UIControlEventTouchUpInside];
-    [btnMore setTitle:@"More" forState:UIControlStateNormal];
-    btnMore.frame = CGRectMake(120, 50+240, 100, 40);
-    btnMore.layer.borderWidth=1.0f;
-    btnMore.layer.borderColor=[[UIColor blackColor] CGColor];
-    [self.view addSubview:btnMore];
+//    UIButton *btnDirectory = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    [btnDirectory addTarget:self action:@selector(directoryButtonPressed)
+//           forControlEvents:UIControlEventTouchUpInside];
+//    [btnDirectory setTitle:@"Directory" forState:UIControlStateNormal];
+//    btnDirectory.frame = CGRectMake(120, 50+180, 100, 40);
+//    btnDirectory.layer.borderWidth=1.0f;
+//    btnDirectory.layer.borderColor=[[UIColor blackColor] CGColor];
+//    [self.view addSubview:btnDirectory];
+//    
+//    UIButton *btnMore = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    [btnMore addTarget:self action:@selector(moreButtonPressed)
+//      forControlEvents:UIControlEventTouchUpInside];
+//    [btnMore setTitle:@"More" forState:UIControlStateNormal];
+//    btnMore.frame = CGRectMake(120, 50+240, 100, 40);
+//    btnMore.layer.borderWidth=1.0f;
+//    btnMore.layer.borderColor=[[UIColor blackColor] CGColor];
+//    [self.view addSubview:btnMore];
     
     
     activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -127,7 +127,7 @@
 }
 
 
-- (void)locationsButtonPressed {
+- (void)syncButtonPressed {
 //    
 //    LocationsViewController *controller2 = [[LocationsViewController alloc] init];
 //    [[self navigationController] pushViewController:controller2 animated:YES];
@@ -193,12 +193,14 @@
         }
          NSLog(@"In main thread 2..");
         
-//        // perform on main
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Title" message:@"Welcome!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-//        [alert show];
+
         
         [activityIndicator stopAnimating];
 //        [activityIndicator removeFromSuperview];
+        
+        //        // perform on main
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Title" message:@"Sync completed!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                [alert show];
         
 //        APPViewController *controller2 = [[APPViewController alloc] init];
 //        [[self navigationController] pushViewController:controller2 animated:YES];

@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<directory>
+	<photographer id="1">
+		<email_pub_id>user1@gmail.com</email_pub_id>
+		<fname>Mahela</fname>
+		<lname>Fernando</lname>
+        <phone>94743211222</phone>
+	</photographer>
+	<photographer id="2">
+		<email_pub_id>user2@gmail.com</email_pub_id>
+		<fname>Dammika</fname>
+		<lname>Ramesh</lname>
+        <phone>94721211222</phone>
+	</photographer>
+	<photographer id="3">
+		<email_pub_id>user3@gmail.com</email_pub_id>
+		<fname>Gayantha</fname>
+		<lname>perera</lname>
+        <phone>94734211222</phone>
+	</photographer>
+	<photographer id="4">
+		<email_pub_id>user4@gmail.com</email_pub_id>
+		<fname>Rpmesh</fname>
+		<lname>Kalu</lname>
+        <phone>94734211222</phone>
+	</photographer>
+	<photographer id="5">
+		<email_pub_id>user5gmail.com</email_pub_id>
+		<fname>Kumar</fname>
+		<lname>Sanga</lname>
+        <phone>94767511222</phone>
+	</photographer>
+	<photographer id="6">
+		<email_pub_id>user6@gmail.com</email_pub_id>
+		<fname>Ramesh</fname>
+		<lname>Sandeepa</lname>
+        <phone>94786211222</phone>
+	</photographer>
+ 	<photographer id="7">
+		<email_pub_id>user7@gmail.com</email_pub_id>
+		<fname>Malshan</fname>
+		<lname>Sandeepa</lname>
+        <phone>94775511222</phone>
+	</photographer>
+	<photographer id="8">
+		<email_pub_id>user8@gmail.com</email_pub_id>
+		<fname>Indika</fname>
+		<lname>Gunasena</lname>
+        <phone>94732211222</phone>
+	</photographer>
+   	<photographer id="9">
+		<email_pub_id>user9@gmail.com</email_pub_id>
+		<fname>Joseph</fname>
+		<lname>Perera</lname>
+        <phone>94722211222</phone>
+	</photographer>
+	<photographer id="10">
+		<email_pub_id>user10@gmail.com</email_pub_id>
+		<fname>Saman</fname>
+		<lname>Silva</lname>
+        <phone>94712211232</phone>
+	</photographer>
+    <photographer id="11">
+		<email_pub_id>user11@gmail.com</email_pub_id>
+		<fname>Nuwan</fname>
+		<lname>Kulasekara</lname>
+        <phone>94712266222</phone>
+	</photographer>
+	<photographer id="12">
+		<email_pub_id>user12@gmail.com</email_pub_id>
+		<fname>Gayan</fname>
+		<lname>Sandeepa</lname>
+        <phone>94712244222</phone>
+	</photographer>
+    
+    
+</directory>

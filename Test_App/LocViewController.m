@@ -17,9 +17,9 @@ static CGFloat randf() {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-37.81969
-                                                            longitude:144.966085
-                                                                 zoom:4];
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:7.0
+                                                            longitude:81.0
+                                                                 zoom:9];
     mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     [self addDefaultMarkers];
     
@@ -44,14 +44,14 @@ static CGFloat randf() {
     GMSMarker *sydneyMarker = [[GMSMarker alloc] init];
     sydneyMarker.title = @"Sydney!";
     sydneyMarker.icon = [UIImage imageNamed:@"glow-marker"];
-    sydneyMarker.position = CLLocationCoordinate2DMake(-33.8683, 151.2086);
+    sydneyMarker.position = CLLocationCoordinate2DMake(8.1, 79.2);
     sydneyMarker.map = mapView_;
     
     // Add a custom 'arrow' marker pointing to Melbourne.
     GMSMarker *melbourneMarker = [[GMSMarker alloc] init];
     melbourneMarker.title = @"Melbourne!";
     melbourneMarker.icon = [UIImage imageNamed:@"arrow"];
-    melbourneMarker.position = CLLocationCoordinate2DMake(-37.81969, 144.966085);
+    melbourneMarker.position = CLLocationCoordinate2DMake(9.2, 80);
     melbourneMarker.map = mapView_;
 }
 
