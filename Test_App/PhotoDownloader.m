@@ -224,6 +224,7 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:array_of_image_filenames forKey:@"images_list"];
+    [defaults setObject:book_array forKey:@"photos_list"];
     [defaults synchronize];
     
     [_delegate processCompleted];

@@ -10,5 +10,6 @@
 #import <GoogleMaps/GoogleMaps.h>
 
 @interface LocViewController : UIViewController
+@property(nonatomic,retain) NSMutableArray *photos_list_array;
 
 @end
