@@ -5,7 +5,7 @@
 //  Created by Harsha Siriwardena on 8/18/14.
 //  Copyright (c) 2014 Harsha. All rights reserved.
 //
-
+#import <GoogleMaps/GoogleMaps.h>
 #import "AppDelegate.h"
 #import "SwitchTabBarController.h"
 #import "LocationsViewController.h"
@@ -14,6 +14,8 @@
 #import "LocationsViewController.h"
 #import "MoreViewController.h"
 #import "MainMenuViewController.h"
+#import "CustomMarkersViewController.h"
+#import "LocViewController.h"
 
 @implementation AppDelegate
 @synthesize window = _window;
@@ -34,7 +36,8 @@
     lvc.delegate = self;
     [self.switchTabBarController presentModalViewController:lvc animated:NO];
 //    [lvc release];
-
+    
+ [GMSServices provideAPIKey:@"AIzaSyDLkTZIlmtvEqH36PlaSfvT4d4Jw8oQSKk"];
     
 //    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController2];
 //    
@@ -53,14 +56,16 @@
 {
 
     LoginViewController *loginViewController = [[LoginViewController alloc]init];
-    DirectoryViewController *directoryViewController2 = [[DirectoryViewController alloc] init];
+    LocViewController *locViewController = [[LocViewController alloc]init];
+    
+//    CustomMarkersViewController *customMarkersViewController = [[CustomMarkersViewController alloc] init];
     MainMenuViewController *mainMenuViewController = [[MainMenuViewController alloc]init];
     DirectoryViewController *directoryViewController = [[DirectoryViewController alloc] init];
     LocationsViewController *locationsViewController = [[LocationsViewController alloc] init];
     MoreViewController *moreViewController = [[MoreViewController alloc] init];
     
     UINavigationController * LoginNav = [[UINavigationController alloc] initWithRootViewController:mainMenuViewController];
-    UINavigationController * DirectoryNav = [[UINavigationController alloc] initWithRootViewController:directoryViewController];
+    UINavigationController * DirectoryNav = [[UINavigationController alloc] initWithRootViewController:locViewController];
     UINavigationController * LocationsNav = [[UINavigationController alloc] initWithRootViewController:locationsViewController];
     UINavigationController * MoreNav = [[UINavigationController alloc] initWithRootViewController:moreViewController];
     
