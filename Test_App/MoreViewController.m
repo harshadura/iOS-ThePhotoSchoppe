@@ -85,7 +85,7 @@
     [lblEmail addTarget:self action:@selector(EmailButtonActionWithSubject)
        forControlEvents:UIControlEventTouchUpInside];
     [lblEmail setTitle:@"Email: info@ironone.com" forState:UIControlStateNormal];
-    lblEmail.frame = CGRectMake(40, 50+40+40+100, 300, 20);
+    lblEmail.frame = CGRectMake(40, 50+40+60+100, 300, 20);
 //    lblEmail.layer.borderWidth=1.0f;
 //    lblEmail.layer.borderColor=[[UIColor blackColor] CGColor];
     [self.view addSubview:lblEmail];
