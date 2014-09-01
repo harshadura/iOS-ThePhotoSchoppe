@@ -153,8 +153,8 @@
 		3A6D6BB719AF3C1F00A789A9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		3A6D6BB919AF3C2500A789A9 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		3A6D6BBB19AF3C3300A789A9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		3A7FDDB619A4B0C300507B41 /* photos.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = photos.xml; sourceTree = "<group>"; };
-		3A9513F819B076AA0062F588 /* directory.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = directory.xml; sourceTree = "<group>"; };
+		3A7FDDB619A4B0C300507B41 /* photos.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = photos.xml; path = Test_App/photos.xml; sourceTree = "<group>"; };
+		3A9513F819B076AA0062F588 /* directory.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = directory.xml; path = Test_App/directory.xml; sourceTree = "<group>"; };
 		3A9514C019B096720062F588 /* TablieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TablieViewController.h; sourceTree = "<group>"; };
 		3A9514C119B096720062F588 /* TablieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TablieViewController.m; sourceTree = "<group>"; };
 		3A9514C319B09CD50062F588 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
@@ -285,6 +285,16 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
+		3A17850019B495A300A90FDB /* Mock-Web-Backends */ = {
+			isa = PBXGroup;
+			children = (
+				3A7FDDB619A4B0C300507B41 /* photos.xml */,
+				3A9513F819B076AA0062F588 /* directory.xml */,
+			);
+			name = "Mock-Web-Backends";
+			path = ..;
+			sourceTree = "<group>";
+		};
 		3A3D111B19A222F5003FB729 = {
 			isa = PBXGroup;
 			children = (
@@ -373,6 +383,7 @@
 				3ACCF87119AF5CEC00E12C66 /* LocViewController.m */,
 				3A3D113F19A222F5003FB729 /* NewUserRegViewController.h */,
 				3A3D114019A222F5003FB729 /* NewUserRegViewController.m */,
+				3A17850019B495A300A90FDB /* Mock-Web-Backends */,
 				3A1784FF19B4944E00A90FDB /* Images */,
 				3A3D112E19A222F5003FB729 /* Supporting Files */,
 			);
@@ -390,8 +401,6 @@
 				3A3D113919A222F5003FB729 /* Default.png */,
 				3A3D113B19A222F5003FB729 /* Default@2x.png */,
 				3A3D113D19A222F5003FB729 /* Default-568h@2x.png */,
-				3A7FDDB619A4B0C300507B41 /* photos.xml */,
-				3A9513F819B076AA0062F588 /* directory.xml */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
