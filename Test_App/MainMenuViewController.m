@@ -11,6 +11,7 @@
 #import "PortfolioViewController.h"
 #import "DirectoryViewController.h"
 #import "LocationsViewController.h"
+#import "LoginViewController.h"
 #import "MoreViewController.h"
 #import "APPViewController.h"
 #import "PhotoDownloader.h"
@@ -44,17 +45,10 @@
     [mainView setBackgroundColor:[UIColor whiteColor]];
     self.view = mainView;
     
-    UINavigationBar *naviBarObj = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-    [self.view addSubview:naviBarObj];
-    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Quit"         style:UIBarButtonItemStyleBordered target:self action:@selector(cancelButtonPressed)];
-    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:@"New User?" style:UIBarButtonItemStyleBordered target:self
-                                                                action:@selector(doneButtonPressed)];
+    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout"         style:UIBarButtonItemStyleBordered target:self action:@selector(logoutButtonPressed)];
     
-    UINavigationItem *navigItem = [[UINavigationItem alloc] initWithTitle:@"Navigation Title"];
-    navigItem.rightBarButtonItem = doneItem;
-    navigItem.leftBarButtonItem = cancelItem;
-    naviBarObj.items = [NSArray arrayWithObjects: navigItem,nil];
-    [self.view addSubview:naviBarObj];
+    self.navigationItem.rightBarButtonItem = cancelItem;
+    self.navigationItem.title = @"Portfolio";
     
     UILabel *lblTitle = [[UILabel alloc] init];
     lblTitle.textColor = [UIColor blackColor];
@@ -127,6 +121,12 @@
     
 }
 
+- (void)logoutButtonPressed {
+    [self dismissModalViewControllerAnimated:YES];
+    LoginViewController *controller3 = [[LoginViewController alloc] init];
+    [self presentViewController:controller3 animated:YES completion:nil];
+
+}
 
 - (void)syncButtonPressed {
 //    

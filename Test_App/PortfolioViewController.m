@@ -44,18 +44,25 @@
     [mainView setBackgroundColor:[UIColor whiteColor]];
     self.view = mainView;
     
-    UINavigationBar *naviBarObj = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-    [self.view addSubview:naviBarObj];
-    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Quit"         style:UIBarButtonItemStyleBordered target:self action:@selector(cancelButtonPressed)];
-    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:@"New User?" style:UIBarButtonItemStyleBordered target:self
-                                                                action:@selector(doneButtonPressed)];
+//    UINavigationBar *naviBarObj = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+//    [self.view addSubview:naviBarObj];
+//    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Quit"         style:UIBarButtonItemStyleBordered target:self action:@selector(cancelButtonPressed)];
+//    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:@"New User?" style:UIBarButtonItemStyleBordered target:self
+//                                                                action:@selector(doneButtonPressed)];
+//    
+//    UINavigationItem *navigItem = [[UINavigationItem alloc] initWithTitle:@"Navigation Title"];
+//    navigItem.rightBarButtonItem = doneItem;
+//    navigItem.leftBarButtonItem = cancelItem;
+//    naviBarObj.items = [NSArray arrayWithObjects: navigItem,nil];
+//    [self.view addSubview:naviBarObj];
     
-    UINavigationItem *navigItem = [[UINavigationItem alloc] initWithTitle:@"Navigation Title"];
-    navigItem.rightBarButtonItem = doneItem;
-    navigItem.leftBarButtonItem = cancelItem;
-    naviBarObj.items = [NSArray arrayWithObjects: navigItem,nil];
-    [self.view addSubview:naviBarObj];
-    
+    UIBarButtonItem *clearButton =
+    [[UIBarButtonItem alloc] initWithTitle:@"Clear Markers"
+                                     style:UIBarButtonItemStylePlain
+                                    target:self
+                                    action:@selector(doneButtonPressed)];
+    self.navigationItem.rightBarButtonItem = clearButton; //@[ addButton, clearButton ];
+//
     UILabel *lblTitle = [[UILabel alloc] init];
     lblTitle.textColor = [UIColor blackColor];
     [lblTitle setFrame:CGRectMake(40, 50+20, 300, 20)];

@@ -47,10 +47,14 @@
     UIBarButtonItem *bypassItem = [[UIBarButtonItem alloc] initWithTitle:@">>>" style:UIBarButtonItemStyleBordered target:self
                                                                 action:@selector(bypassButtonPressed)];
   
+//    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout"         style:UIBarButtonItemStyleBordered target:self action:@selector(logoutButtonPressed)];
+//    
+//    self.navigationItem.rightBarButtonItem = cancelItem;
+//
     
-    [self.navigationItem setTitle:@"User Login"];
-    [self.navigationItem setRightBarButtonItem: doneItem];
-    [self.navigationItem setLeftBarButtonItem:  bypassItem];
+//    self.navigationItem.title = @"User Login";
+//    self.navigationItem.rightBarButtonItem = doneItem;
+//    self.navigationItem.leftBarButtonItem  = bypassItem;
     
     //     [self.navigationItem setLeftBarButtonItem: cancelItem];
     
@@ -72,6 +76,8 @@
     lblUsername.text= @"Username";
     [self.view addSubview:lblUsername];
     
+//    self.view.backgroundColor=[UIColor grayColor];
+    
     textFieldUsername = [[UITextField  alloc] initWithFrame:CGRectMake(40+90+20, 80+60, 140, 25)];
     textFieldUsername.borderStyle = UITextBorderStyleRoundedRect;
     [textFieldUsername setFont:[UIFont boldSystemFontOfSize:14]];
@@ -91,23 +97,69 @@
     [textFieldPassword setFont:[UIFont boldSystemFontOfSize:14]];
     [self.view addSubview:textFieldPassword];
     
-    UIButton *btnRegister = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btnRegister addTarget:self action:@selector(userRegTapped)
-          forControlEvents:UIControlEventTouchUpInside];
+    // A rounded Rect button created by using class method
+//    UIButton *roundRectButton = [UIButton buttonWithType:
+//                                 UIButtonTypeRoundedRect];
+//    [roundRectButton setFrame:CGRectMake(60, 50, 200, 40)];
+//    // sets title for the button
+//    [roundRectButton setTitle:@"Rounded Rect Button" forState:
+//     UIControlStateNormal];
+//    [self.view addSubview:roundRectButton];
+
+    
+    UIImage *bluebuttonImage = [[UIImage imageNamed:@"blueButton.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+    UIImage *bluebuttonImageHighlight = [[UIImage imageNamed:@"blueButtonHighlight.png"]
+                                         resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+    UIImage *greenbuttonImage = [[UIImage imageNamed:@"greenButton.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+    UIImage *greenbuttonImageHighlight = [[UIImage imageNamed:@"greenButtonHighlight.png"]
+                                         resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+
+    UIImage *orangebuttonImage = [[UIImage imageNamed:@"orangeButton.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+    UIImage *orangebuttonImageHighlight = [[UIImage imageNamed:@"orangeButtonHighlight.png"]
+                                          resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+    
+    UIImage *tanbuttonImage = [[UIImage imageNamed:@"tanButton.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+    UIImage *tanbuttonImageHighlight = [[UIImage imageNamed:@"tanButtonHighlight.png"]
+                                           resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+    
+    UIImage *greybuttonImage = [[UIImage imageNamed:@"greyButton.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+    UIImage *greybuttonImageHighlight = [[UIImage imageNamed:@"greyButtonHighlight.png"]
+                                           resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+    
+    
+    UIButton *btnRegister = [UIButton buttonWithType: UIButtonTypeCustom];
+    [btnRegister setBackgroundColor: [UIColor whiteColor]];
+    [btnRegister setTitleColor:[UIColor blackColor] forState: UIControlStateHighlighted];
+   
+    [btnRegister addTarget:self action:@selector(userRegTapped) forControlEvents:UIControlEventTouchUpInside];
     [btnRegister setTitle:@"SignIn" forState:UIControlStateNormal];
-    btnRegister.frame = CGRectMake(60, 80+160, 100, 40);
-    btnRegister.layer.borderWidth=1.0f;
-    btnRegister.layer.borderColor=[[UIColor blackColor] CGColor];
+    
+    // Set the background for any states you plan to use
+     btnRegister.frame = CGRectMake(60, 80+160, 100, 40);
+    [btnRegister setBackgroundImage:bluebuttonImage forState:UIControlStateNormal];
+    [btnRegister setBackgroundImage:bluebuttonImageHighlight forState:UIControlStateHighlighted];
     [self.view addSubview:btnRegister];
     
+//    UIButton *btnRegister = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    [btnRegister addTarget:self action:@selector(userRegTapped)
+//          forControlEvents:UIControlEventTouchUpInside];
+//    [btnRegister setTitle:@"SignIn" forState:UIControlStateNormal];
+//    btnRegister.frame = CGRectMake(60, 80+160, 100, 40);
+//    btnRegister.layer.borderWidth=1.0f;
+//    btnRegister.layer.borderColor=[[UIColor blackColor] CGColor];
+//    [self.view addSubview:btnRegister];
     
-    UIButton *btnClose = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btnClose addTarget:self action:@selector(doneButtonPressed)
-       forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *btnClose = [UIButton buttonWithType: UIButtonTypeCustom];
+    [btnClose setBackgroundColor: [UIColor whiteColor]];
+    [btnClose setTitleColor:[UIColor blackColor] forState: UIControlStateHighlighted];
+    
+    [btnClose setBackgroundImage:orangebuttonImage forState:UIControlStateNormal];
+    [btnClose setBackgroundImage:orangebuttonImageHighlight forState:UIControlStateHighlighted];
+    
+    [btnClose addTarget:self action:@selector(doneButtonPressed)  forControlEvents:UIControlEventTouchUpInside];
     [btnClose setTitle:@"SignUp" forState:UIControlStateNormal];
     btnClose.frame = CGRectMake(60+100+20, 80+160, 100, 40);
-    btnClose.layer.borderWidth=1.0f;
-    btnClose.layer.borderColor=[[UIColor blackColor] CGColor];
     [self.view addSubview:btnClose];
     
 }
