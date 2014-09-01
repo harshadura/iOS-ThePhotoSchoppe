@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <GoogleMaps/GoogleMaps.h>
 
-@interface LocViewController : UIViewController
+@interface LocViewController : UIViewController <GMSMapViewDelegate>
 @property(nonatomic,retain) NSMutableArray *photos_list_array;
 
 @end

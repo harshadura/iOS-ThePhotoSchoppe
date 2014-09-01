@@ -19,7 +19,7 @@ static CGFloat randf() {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
     
@@ -30,6 +30,7 @@ static CGFloat randf() {
                                                                  zoom:2];
     mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     [self addDefaultMarkers];
+      mapView_.delegate = self;
     
     // Add a button which adds random markers to the map.
     UIBarButtonItem *addButton =
@@ -47,6 +48,11 @@ static CGFloat randf() {
     self.view = mapView_;
 }
 
+- (void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker *)marker {
+    // your code
+    NSLog(@"PIN -->");
+}
+
 - (void)addDefaultMarkers {
     
     
@@ -55,6 +61,10 @@ static CGFloat randf() {
         NSMutableDictionary *data_dic = object;
         
         NSString *location = [data_dic objectForKey:@"location"];
+        NSString *nameOfimage = [data_dic objectForKey:@"name"];
+        nameOfimage = [nameOfimage stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        nameOfimage = [nameOfimage stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+        
         location = [location stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
         location=[location stringByReplacingOccurrencesOfString:@"\n" withString:@""];
         
@@ -75,7 +85,7 @@ static CGFloat randf() {
         marker.position = CLLocationCoordinate2DMake(lt,ln);
         //        marker.title = name;
         //        marker.snippet = @"Kathmandu";
-        marker.title = @"Hello World";
+        marker.title = nameOfimage;
         marker.icon = [UIImage imageNamed:@"glow-marker"];
         marker.map = mapView_;
         
