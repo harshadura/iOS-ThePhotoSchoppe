@@ -52,7 +52,7 @@ static CGFloat randf() {
     
     for (id object in photos_list_array) {
         
-        NSMutableDictionary *data_dic = [photos_list_array objectAtIndex:0];
+        NSMutableDictionary *data_dic = object;
         
         NSString *location = [data_dic objectForKey:@"location"];
         location = [location stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
@@ -63,26 +63,56 @@ static CGFloat randf() {
         NSString *y = [xy objectAtIndex:1];
         NSLog(@"Location -- %@ %@", x, y);
         
-        // Add a custom 'glow' marker around Sydney.
-        GMSMarker *sydneyMarker = [[GMSMarker alloc] init];
-        //    sydneyMarker.title = @"Sydney!";
-        sydneyMarker.icon = [UIImage imageNamed:@"glow-marker"];
-        sydneyMarker.position = CLLocationCoordinate2DMake([x doubleValue], [y doubleValue]);
-        sydneyMarker.map = mapView_;
         
+        double lt=[x doubleValue];
+        double ln=[y doubleValue];
+        
+//        NSString *name = [[myArray objectAtIndex:i] objectForKey:@"name"];
+//        NSLog(@"%@ and %@ and %f and %f of %@",lat,lon, lt,ln,name);
+        
+        GMSMarker *marker = [[GMSMarker alloc] init];
+        //        marker.animated=YES;
+        marker.position = CLLocationCoordinate2DMake(lt,ln);
+        //        marker.title = name;
+        //        marker.snippet = @"Kathmandu";
+        marker.title = @"Hello World";
+        marker.icon = [UIImage imageNamed:@"glow-marker"];
+        marker.map = mapView_;
+        
+        
+        // Add a custom 'glow' marker around Sydney.
+//        GMSMarker *sydneyMarker = [[GMSMarker alloc] init];
+//        //    sydneyMarker.title = @"Sydney!";
+//        sydneyMarker.icon = [UIImage imageNamed:@"glow-marker"];
+//        sydneyMarker.position = CLLocationCoordinate2DMake([x doubleValue], [y doubleValue]);
+//        sydneyMarker.map = mapView_;
+        // do something with object
+        
+        
+        
+//        self.view = mapView_;
+        
+//        NSString *lat = [[myArray objectAtIndex:i] objectForKey:@"latitude"];
+//        NSString *lon = [[myArray objectAtIndex:i] objectForKey:@"longitude"];
+//        
+
 
         
-        // do something with object
     }
-    
-    
+}
+
+
+
+
+
+
 //    // Add a custom 'arrow' marker pointing to Melbourne.
 //    GMSMarker *melbourneMarker = [[GMSMarker alloc] init];
 //    melbourneMarker.title = @"Melbourne!";
 //    melbourneMarker.icon = [UIImage imageNamed:@"arrow"];
 //    melbourneMarker.position = CLLocationCoordinate2DMake(9.2, 80);
 //    melbourneMarker.map = mapView_;
-}
+
 
 - (void)didTapAdd {
     for (int i = 0; i < 10; ++i) {
