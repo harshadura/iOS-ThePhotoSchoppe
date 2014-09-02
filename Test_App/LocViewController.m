@@ -3,6 +3,7 @@
 #endif
 
 #import "LocViewController.h"
+#import "APPViewController.h"
 
 static int kMarkerCount = 0;
 
@@ -55,14 +56,26 @@ static CGFloat randf() {
     // your code
     NSLog(@"PIN --> %f,%f", marker.position.latitude,  marker.position.longitude);
 //NSString* myNewString = [NSString stringWithFormat:@"%d", myInt];
+   
+    APPViewController *controller2 = [[APPViewController alloc] init];
+
+   
+    NSString *image_id = marker.userData[@"image_id"];
+    NSUInteger indexOfImage = image_id.intValue - 1;
+    controller2.showIndexImage = indexOfImage;
+    NSLog(@"index *** --> %lu", (unsigned long)indexOfImage);
+    
+    [[self navigationController] pushViewController:controller2 animated:YES];
+    
     
 }
 
 - (void)addDefaultMarkers {
     
-    
+    NSUInteger i=0;
     for (id object in photos_list_array) {
         
+        i++;
         NSMutableDictionary *data_dic = object;
         
         NSString *location = [data_dic objectForKey:@"location"];
@@ -91,6 +104,7 @@ static CGFloat randf() {
         //        marker.title = name;
         //        marker.snippet = @"Kathmandu";
         marker.title = nameOfimage;
+        marker.userData = @{@"image_id": [NSString stringWithFormat:@"%lu", (unsigned long)i]};
         marker.icon = [UIImage imageNamed:@"glow-marker"];
         marker.map = mapView_;
         

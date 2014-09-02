@@ -14,7 +14,7 @@
 @end
 
 @implementation APPViewController
-@synthesize images_list_array;
+@synthesize images_list_array, showIndexImage;
 
 - (id)init {
     self = [super init];
@@ -94,8 +94,12 @@
     
     self.pageController.dataSource = self;
     [[self.pageController view] setFrame:[[self view] bounds]];
+//    
+//    if (showIndexImage){
+//        showIndexImage = 0;
+//    }
     
-    APPChildViewController *initialViewController = [self viewControllerAtIndex:0];
+    APPChildViewController *initialViewController = [self viewControllerAtIndex: showIndexImage];
     
     NSArray *viewControllers = [NSArray arrayWithObject:initialViewController];
     
