@@ -25,32 +25,37 @@ static CGFloat randf() {
     
     photos_list_array = [[[NSUserDefaults standardUserDefaults] arrayForKey:@"photos_list"] mutableCopy];
     
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:7.0
-                                                            longitude:81.0
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:0
+                                                            longitude:0
                                                                  zoom:2];
     mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
+    mapView_.delegate = self;
+    
     [self addDefaultMarkers];
-      mapView_.delegate = self;
-    
-    // Add a button which adds random markers to the map.
-    UIBarButtonItem *addButton =
-    [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-                                                  target:self
-                                                  action:@selector(didTapAdd)];
-    addButton.accessibilityLabel = @"Add Markers";
-    UIBarButtonItem *clearButton =
-    [[UIBarButtonItem alloc] initWithTitle:@"Clear Markers"
-                                     style:UIBarButtonItemStylePlain
-                                    target:self
-                                    action:@selector(didTapClear)];
-    self.navigationItem.rightBarButtonItems = @[ addButton, clearButton ];
-    
     self.view = mapView_;
+    self.navigationItem.title = @"Photos taken at various Locations";
+    
+// Add a button which adds random markers to the map.
+//    UIBarButtonItem *addButton =
+//    [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+//                                                  target:self
+//                                                  action:@selector(didTapAdd)];
+//    addButton.accessibilityLabel = @"Add Markers";
+//    UIBarButtonItem *clearButton =
+//    [[UIBarButtonItem alloc] initWithTitle:@"Clear Markers"
+//                                     style:UIBarButtonItemStylePlain
+//                                    target:self
+//                                    action:@selector(didTapClear)];
+//    self.navigationItem.rightBarButtonItems = @[ addButton, clearButton ];
+    
+
 }
 
 - (void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker *)marker {
     // your code
-    NSLog(@"PIN -->");
+    NSLog(@"PIN --> %f,%f", marker.position.latitude,  marker.position.longitude);
+//NSString* myNewString = [NSString stringWithFormat:@"%d", myInt];
+    
 }
 
 - (void)addDefaultMarkers {
