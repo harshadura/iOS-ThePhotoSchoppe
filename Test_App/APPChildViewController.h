@@ -12,5 +12,8 @@
 
 @property (assign, nonatomic) NSInteger index;
 @property (strong, nonatomic) IBOutlet UILabel *screenNumber;
+@property (nonatomic)  BOOL *isTappFirstTime;
+@property (strong, nonatomic) UIButton *btnRate;
+@property (strong, nonatomic) UIButton *btnShare;
 
 @end
