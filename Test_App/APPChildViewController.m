@@ -13,7 +13,7 @@
 @end
 
 @implementation APPChildViewController
-@synthesize btnShare, btnRate, isTappFirstTime, lblOveralRating, textOveralRating;
+@synthesize btnShare, btnRate, isTappFirstTime, lblOveralRating, textOveralRating, rateView, statusLabel, textUserRating;
 
 - (id)init {
     self = [super init];
@@ -27,14 +27,32 @@
 - (void)viewDidLoad {
     
     [self getOverallRatingByImageID: [NSString stringWithFormat:@"%d", self.index+1]];
+    [self getIndividualRatingByUserId: @"1" AndImageID: @"1"];
+    
+    self.rateView.notSelectedImage = [UIImage imageNamed:@"kermit_empty.png"];
+    self.rateView.halfSelectedImage = [UIImage imageNamed:@"kermit_half.png"];
+    self.rateView.fullSelectedImage = [UIImage imageNamed:@"kermit_full.png"];
+    self.rateView.rating = 0;
+    self.rateView.editable = YES;
+    self.rateView.maxRating = 5;
+    self.rateView.delegate = self;
     
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
     isTappFirstTime = NO;
     self.screenNumber.text = [NSString stringWithFormat:@"Screen #%d", self.index];
 
 }
 
+- (void)viewDidUnload
+{
+    [self setRateView:nil];
+    [self setStatusLabel:nil];
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+}
 
 - (void)getOverallRatingByImageID: (NSString*) imgId
 {
@@ -69,7 +87,95 @@
              textOveralRating= [formatter stringFromNumber:[NSNumber numberWithFloat:[textOveralRating doubleValue]]];
              
              NSLog(@" -- %@", textOveralRating);
-             lblOveralRating.text= textOveralRating;
+             lblOveralRating.text= [NSString stringWithFormat:@"Overall Rating: %@", textOveralRating];
+             // [@"Overall Rating: %@", textOveralRating];
+         }
+     }];
+}
+
+
+- (void) getIndividualRatingByUserId: (NSString*) userId AndImageID: (NSString*) imageId
+{
+    //    http://thephotoschoppe-harshasiot.rhcloud.com/rate_webservice.php?image_id=1&user_id=67&rating=245&flag=UPDATE_RATING
+    
+    NSString *strURL=[NSString stringWithFormat:@"http://thephotoschoppe-harshasiot.rhcloud.com/rate_webservice.php?image_id=%@&user_id=%@&flag=GET_RATING", imageId, userId];
+    NSURL *url = [NSURL URLWithString:strURL];
+    
+    //    NSURL *url = [NSURL URLWithString:[@"http://thephotoschoppe-harshasiot.rhcloud.com/rate_webservice.php?image_id=&flag=GET_AVG_RATING"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response,
+                                               NSData *data, NSError *connectionError)
+     {
+         if (data.length > 0 && connectionError == nil)
+         {
+             NSDictionary *responseJson = [NSJSONSerialization JSONObjectWithData:data
+                                                                          options:0
+                                                                            error:NULL];
+             textUserRating = [[NSString alloc] init];
+             textUserRating = [responseJson valueForKey:@"existing_rating"];
+             
+             NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+             
+             [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+             
+             [formatter setMaximumFractionDigits:2];
+             
+             [formatter setRoundingMode: NSNumberFormatterRoundUp];
+             
+             textUserRating = [formatter stringFromNumber:[NSNumber numberWithFloat:[textUserRating doubleValue]]];
+             
+             NSLog(@" -- %@", textUserRating);
+//             lblOveralRating.text= [NSString stringWithFormat:@"existing_rating: %@", textUserRating];
+             float value = [formatter numberFromString:textUserRating].floatValue;
+             [rateView setRating:value];
+             
+             // [@"Overall Rating: %@", textOveralRating];
+         }
+     }];
+}
+
+
+
+- (void) updateIndividualRatingByUserId: (NSString*) userId AndImageID: (NSString*) imageId AndRating: (NSString*) rating
+{
+    //    http://thephotoschoppe-harshasiot.rhcloud.com/rate_webservice.php?image_id=1&user_id=67&rating=245&flag=UPDATE_RATING
+    
+    NSString *strURL=[NSString stringWithFormat:@"http://thephotoschoppe-harshasiot.rhcloud.com/rate_webservice.php?image_id=%@&user_id=%@&rating=%@&flag=UPDATE_RATING", imageId, userId, rating];
+    NSURL *url = [NSURL URLWithString:strURL];
+    
+    //    NSURL *url = [NSURL URLWithString:[@"http://thephotoschoppe-harshasiot.rhcloud.com/rate_webservice.php?image_id=&flag=GET_AVG_RATING"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response,
+                                               NSData *data, NSError *connectionError)
+     {
+         if (data.length > 0 && connectionError == nil)
+         {
+             NSDictionary *responseJson = [NSJSONSerialization JSONObjectWithData:data
+                                                                          options:0
+                                                                            error:NULL];
+             textUserRating = [[NSString alloc] init];
+             textUserRating = [responseJson valueForKey:@"existing_rating"];
+             
+             NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+             
+             [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+             
+             [formatter setMaximumFractionDigits:2];
+             
+             [formatter setRoundingMode: NSNumberFormatterRoundUp];
+             
+             textUserRating = [formatter stringFromNumber:[NSNumber numberWithFloat:[textUserRating doubleValue]]];
+             
+             NSLog(@" -- %@", textUserRating);
+             //             lblOveralRating.text= [NSString stringWithFormat:@"existing_rating: %@", textUserRating];
+//             float value = [formatter numberFromString:textUserRating].floatValue;
+//             [rateView setRating:value];
+             
+             // [@"Overall Rating: %@", textOveralRating];
          }
      }];
 }
@@ -165,44 +271,44 @@
     UIImage *greybuttonImageHighlight = [[UIImage imageNamed:@"greyButtonHighlight.png"]
                                          resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
     
-    UITapGestureRecognizer *scrlTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrlTapREcotTap:)];
-    [scrlTap setNumberOfTapsRequired:1];
-    [self.view addGestureRecognizer:scrlTap];
+//    UITapGestureRecognizer *scrlTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrlTapREcotTap:)];
+//    [scrlTap setNumberOfTapsRequired:1];
+//    [self.view addGestureRecognizer:scrlTap];
     
-    btnShare = [UIButton buttonWithType: UIButtonTypeCustom];
-    [btnShare setBackgroundColor: [UIColor clearColor]];
-    [btnShare setTitleColor:[UIColor blackColor] forState: UIControlStateHighlighted];
-    
-    [btnShare setBackgroundImage:greenbuttonImage forState:UIControlStateNormal];
-    [btnShare setBackgroundImage:greenbuttonImageHighlight forState:UIControlStateHighlighted];
-    
-    [btnShare addTarget:self action:@selector(doneButtonPressed)  forControlEvents:UIControlEventTouchUpInside];
-    [btnShare setTitle:@"Share" forState:UIControlStateNormal];
-    btnShare.frame = CGRectMake(10, 400, 100, 40);
-    [self.view addSubview:btnShare];
-    
-    [imageView addSubview:btnShare];
-    [imageView bringSubviewToFront:btnShare];
-    [imageView setUserInteractionEnabled:YES];
-    
-    //
-    
-    btnRate = [UIButton buttonWithType: UIButtonTypeCustom];
-    [btnRate setBackgroundColor: [UIColor clearColor]];
-    [btnRate setTitleColor:[UIColor blackColor] forState: UIControlStateHighlighted];
-    
-    [btnRate setBackgroundImage:orangebuttonImage forState:UIControlStateNormal];
-    [btnRate setBackgroundImage:orangebuttonImageHighlight forState:UIControlStateHighlighted];
-    
-    [btnRate addTarget:self action:@selector(doneButtonPressed)  forControlEvents:UIControlEventTouchUpInside];
-    [btnRate setTitle:@"Rate" forState:UIControlStateNormal];
-    btnRate.frame = CGRectMake(210, 400, 100, 40);
-    [self.view addSubview:btnRate];
+//    btnShare = [UIButton buttonWithType: UIButtonTypeCustom];
+//    [btnShare setBackgroundColor: [UIColor clearColor]];
+//    [btnShare setTitleColor:[UIColor blackColor] forState: UIControlStateHighlighted];
+//    
+//    [btnShare setBackgroundImage:greenbuttonImage forState:UIControlStateNormal];
+//    [btnShare setBackgroundImage:greenbuttonImageHighlight forState:UIControlStateHighlighted];
+//    
+//    [btnShare addTarget:self action:@selector(doneButtonPressed)  forControlEvents:UIControlEventTouchUpInside];
+//    [btnShare setTitle:@"Share" forState:UIControlStateNormal];
+//    btnShare.frame = CGRectMake(10, 400, 100, 40);
+//    [self.view addSubview:btnShare];
+//    
+//    [imageView addSubview:btnShare];
+//    [imageView bringSubviewToFront:btnShare];
+//    [imageView setUserInteractionEnabled:YES];
+//    
+//    //
+//    
+//    btnRate = [UIButton buttonWithType: UIButtonTypeCustom];
+//    [btnRate setBackgroundColor: [UIColor clearColor]];
+//    [btnRate setTitleColor:[UIColor blackColor] forState: UIControlStateHighlighted];
+//    
+//    [btnRate setBackgroundImage:orangebuttonImage forState:UIControlStateNormal];
+//    [btnRate setBackgroundImage:orangebuttonImageHighlight forState:UIControlStateHighlighted];
+//    
+//    [btnRate addTarget:self action:@selector(doneButtonPressed)  forControlEvents:UIControlEventTouchUpInside];
+//    [btnRate setTitle:@"Rate" forState:UIControlStateNormal];
+//    btnRate.frame = CGRectMake(210, 400, 100, 40);
+//    [self.view addSubview:btnRate];
     
     
     lblOveralRating = [[UILabel alloc] init];
     lblOveralRating.textColor = [UIColor redColor];
-    [lblOveralRating setFrame:CGRectMake(10+100+20, 470, 80, 40)];
+    [lblOveralRating setFrame:CGRectMake(10+100+20, 470, 250, 40)];
     lblOveralRating.backgroundColor=[UIColor clearColor];
     lblOveralRating.userInteractionEnabled=NO;
     lblOveralRating.text= textOveralRating;
@@ -215,6 +321,48 @@
     btnRate.hidden = YES;
     btnShare.hidden = YES;
 //    lblOveralRating.hidden = YES;
+    
+    rateView = [[RateView alloc] init];
+    [rateView setFrame:CGRectMake(10+100+20, 360, 100, 60)];
+//    [self.view addSubview:rateView];
+     [imageView addSubview:rateView];
+    [imageView bringSubviewToFront:rateView];
+    [imageView setUserInteractionEnabled:YES];
+    
+    statusLabel = [[UILabel alloc] init];
+    statusLabel.textColor = [UIColor redColor];
+    [statusLabel setFrame:CGRectMake(10+100+20, 340, 250, 40)];
+    statusLabel.backgroundColor=[UIColor clearColor];
+    statusLabel.userInteractionEnabled=NO;
+//    [self.view addSubview:statusLabel];
+     [imageView addSubview:statusLabel];
+    [imageView bringSubviewToFront:statusLabel];
+    [imageView setUserInteractionEnabled:YES];
+
+    
+
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    // Return YES for supported orientations
+    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+
+- (void)rateView:(RateView *)rateView ratingDidChange:(float)rating {
+//    (void) updateIndividualRatingByUserId: (NSString*) userId AndImageID: (NSString*) imageId AndRating: 
+    [self updateIndividualRatingByUserId: @"1" AndImageID: [NSString stringWithFormat:@"%d", self.index+1]  AndRating:[NSString stringWithFormat:@"%f", rating]];
+    
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+    [formatter setMaximumFractionDigits:2];
+    
+    [formatter setRoundingMode: NSNumberFormatterRoundUp];
+    
+    NSString *user_rate= [formatter stringFromNumber:[NSNumber numberWithFloat:rating]];
+    self.statusLabel.text = [NSString stringWithFormat:@"User Rating: %@", user_rate];
 }
 
 @end

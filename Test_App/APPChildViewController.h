@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RateView.h"
 
-@interface APPChildViewController : UIViewController
+@interface APPChildViewController : UIViewController <RateViewDelegate>
+
+@property (strong, nonatomic) IBOutlet RateView *rateView;
+@property (strong, nonatomic) IBOutlet UILabel *statusLabel;
 
 @property (assign, nonatomic) NSInteger index;
 @property (strong, nonatomic) IBOutlet UILabel *screenNumber;
@@ -17,4 +21,6 @@
 @property (strong, nonatomic) UIButton *btnShare;
 @property (strong, nonatomic) UILabel *lblOveralRating;
 @property (strong, nonatomic) NSString *textOveralRating;
+@property (strong, nonatomic) NSString *textUserRating;
+
 @end
