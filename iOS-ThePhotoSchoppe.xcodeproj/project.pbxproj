@@ -59,6 +59,7 @@
 		3A9514C519B09CD50062F588 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9514C419B09CD50062F588 /* CustomCell.m */; };
 		3A9514C719B0B1700062F588 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A9514C619B0B1700062F588 /* MessageUI.framework */; };
 		3AB3CA6C19A3794C00EDA940 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB3CA6B19A3794C00EDA940 /* MainMenuViewController.m */; };
+		3AB65FE019B9D42100444CD0 /* thephotoschoppe.sql in Resources */ = {isa = PBXBuildFile; fileRef = 3AB65FDF19B9D42100444CD0 /* thephotoschoppe.sql */; };
 		3AB926CD19A62FA100D98FA4 /* APPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB926CA19A62FA100D98FA4 /* APPViewController.m */; };
 		3AB926CE19A62FA100D98FA4 /* APPChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB926CC19A62FA100D98FA4 /* APPChildViewController.m */; };
 		3AC687FD19AB2F6D00B99388 /* LocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC687FC19AB2F6D00B99388 /* LocationsViewController.m */; };
@@ -164,6 +165,7 @@
 		3A9514C619B0B1700062F588 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		3AB3CA6B19A3794C00EDA940 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
 		3AB3CA6D19A3795C00EDA940 /* MainMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
+		3AB65FDF19B9D42100444CD0 /* thephotoschoppe.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = thephotoschoppe.sql; path = Test_App/thephotoschoppe.sql; sourceTree = "<group>"; };
 		3AB926C919A62F8100D98FA4 /* APPViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APPViewController.h; sourceTree = "<group>"; };
 		3AB926CA19A62FA100D98FA4 /* APPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APPViewController.m; sourceTree = "<group>"; };
 		3AB926CB19A62FA100D98FA4 /* APPChildViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APPChildViewController.h; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				3A01AB9219B9C99B00C5DCD4 /* rate_webservice.php */,
+				3AB65FDF19B9D42100444CD0 /* thephotoschoppe.sql */,
 				3A7FDDB619A4B0C300507B41 /* photos.xml */,
 				3A9513F819B076AA0062F588 /* directory.xml */,
 			);
@@ -489,6 +492,7 @@
 				3A088C7719B483F4006C3325 /* whiteButtonHighlight@2x.png in Resources */,
 				3A3D113E19A222F5003FB729 /* Default-568h@2x.png in Resources */,
 				3ACF333519AE09DD00FDE5B2 /* tab_bar_5@2x.png in Resources */,
+				3AB65FE019B9D42100444CD0 /* thephotoschoppe.sql in Resources */,
 				3A088C6919B483F4006C3325 /* greyButton@2xpng in Resources */,
 				3ACF333119AE09DD00FDE5B2 /* tab_bar_1@2x.png in Resources */,
 				3A9513F919B076AA0062F588 /* directory.xml in Resources */,
