@@ -128,6 +128,30 @@
 
 }
 
+- (void)fetchGreeting;
+{
+    //    http://thephotoschoppe-harshasiot.rhcloud.com/rate_webservice.php?image_id=1&user_id=67&rating=245&flag=UPDATE_RATING
+    
+    NSURL *url = [NSURL URLWithString:@"http://thephotoschoppe-harshasiot.rhcloud.com/rate_webservice.php?image_id=1&user_id=67&rating=245&flag=UPDATE_RATING"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response,
+                                               NSData *data, NSError *connectionError)
+     {
+         if (data.length > 0 && connectionError == nil)
+         {
+             NSDictionary *responseJson = [NSJSONSerialization JSONObjectWithData:data
+                                                                          options:0
+                                                                            error:NULL];
+             NSString *status = [responseJson valueForKey:@"STATUS"];
+             NSLog(@" -- %@", status);
+         }
+     }];
+}
+
+
+
 - (void)syncButtonPressed {
 //    
 //    LocationsViewController *controller2 = [[LocationsViewController alloc] init];
@@ -163,6 +187,8 @@
 }
 
 - (void)pagerButtonPressed {
+    
+//    [self fetchGreeting];
     
     APPViewController *controller2 = [[APPViewController alloc] init];
     [[self navigationController] pushViewController:controller2 animated:YES];

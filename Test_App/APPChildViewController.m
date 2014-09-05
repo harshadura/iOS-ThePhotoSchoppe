@@ -13,7 +13,7 @@
 @end
 
 @implementation APPChildViewController
-@synthesize btnShare, btnRate, isTappFirstTime;
+@synthesize btnShare, btnRate, isTappFirstTime, lblOveralRating, textOveralRating;
 
 - (id)init {
     self = [super init];
@@ -26,12 +26,54 @@
 
 - (void)viewDidLoad {
     
+    [self getOverallRatingByImageID: [NSString stringWithFormat:@"%d", self.index+1]];
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     isTappFirstTime = NO;
     self.screenNumber.text = [NSString stringWithFormat:@"Screen #%d", self.index];
-    
+
 }
+
+
+- (void)getOverallRatingByImageID: (NSString*) imgId
+{
+    //    http://thephotoschoppe-harshasiot.rhcloud.com/rate_webservice.php?image_id=1&user_id=67&rating=245&flag=UPDATE_RATING
+    
+    NSString *strURL=[NSString stringWithFormat:@"http://thephotoschoppe-harshasiot.rhcloud.com/rate_webservice.php?image_id=%@&flag=GET_AVG_RATING", imgId];
+    NSURL *url = [NSURL URLWithString:strURL];
+    
+//    NSURL *url = [NSURL URLWithString:[@"http://thephotoschoppe-harshasiot.rhcloud.com/rate_webservice.php?image_id=&flag=GET_AVG_RATING"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response,
+                                               NSData *data, NSError *connectionError)
+     {
+         if (data.length > 0 && connectionError == nil)
+         {
+             NSDictionary *responseJson = [NSJSONSerialization JSONObjectWithData:data
+                                                                          options:0
+                                                                            error:NULL];
+             textOveralRating = [[NSString alloc] init];
+             textOveralRating = [responseJson valueForKey:@"avg_rating"];
+             
+             NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+             
+             [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+             
+             [formatter setMaximumFractionDigits:2];
+             
+             [formatter setRoundingMode: NSNumberFormatterRoundUp];
+             
+             textOveralRating= [formatter stringFromNumber:[NSNumber numberWithFloat:[textOveralRating doubleValue]]];
+             
+             NSLog(@" -- %@", textOveralRating);
+             lblOveralRating.text= textOveralRating;
+         }
+     }];
+}
+
 
 - (void)didReceiveMemoryWarning {
     
@@ -157,12 +199,22 @@
     btnRate.frame = CGRectMake(210, 400, 100, 40);
     [self.view addSubview:btnRate];
     
+    
+    lblOveralRating = [[UILabel alloc] init];
+    lblOveralRating.textColor = [UIColor redColor];
+    [lblOveralRating setFrame:CGRectMake(10+100+20, 470, 80, 40)];
+    lblOveralRating.backgroundColor=[UIColor clearColor];
+    lblOveralRating.userInteractionEnabled=NO;
+    lblOveralRating.text= textOveralRating;
+    [self.view addSubview:lblOveralRating];
+    
     [imageView addSubview:btnRate];
     [imageView bringSubviewToFront:btnRate];
     [imageView setUserInteractionEnabled:YES];
     
     btnRate.hidden = YES;
     btnShare.hidden = YES;
+//    lblOveralRating.hidden = YES;
 }
 
 @end

@@ -15,5 +15,6 @@
 @property (nonatomic)  BOOL *isTappFirstTime;
 @property (strong, nonatomic) UIButton *btnRate;
 @property (strong, nonatomic) UIButton *btnShare;
-
+@property (strong, nonatomic) UILabel *lblOveralRating;
+@property (strong, nonatomic) NSString *textOveralRating;
 @end
