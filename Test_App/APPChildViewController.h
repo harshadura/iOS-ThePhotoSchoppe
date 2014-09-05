@@ -22,5 +22,5 @@
 @property (strong, nonatomic) UILabel *lblOveralRating;
 @property (strong, nonatomic) NSString *textOveralRating;
 @property (strong, nonatomic) NSString *textUserRating;
-
+@property (strong, nonatomic) UIImageView *imageView;
 @end

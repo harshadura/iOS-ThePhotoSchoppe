@@ -13,7 +13,7 @@
 @end
 
 @implementation APPChildViewController
-@synthesize btnShare, btnRate, isTappFirstTime, lblOveralRating, textOveralRating, rateView, statusLabel, textUserRating;
+@synthesize btnShare, btnRate, isTappFirstTime, lblOveralRating, textOveralRating, rateView, statusLabel, textUserRating, imageView;
 
 - (id)init {
     self = [super init];
@@ -24,7 +24,109 @@
     return self;
 }
 
+
+- (void)tapOnce:(UIGestureRecognizer *)gesture
+{
+    //on a single  tap, call zoomToRect in UIScrollView
+//    [self.imageView zoomToRect:rectToZoomInTo animated:NO];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+
+    
+//    [self.navigationController.tabBarController.tabBar setHidden:true];
+    
+//    [[self navigationController] setHidesBottomBarWhenPushed:YES];
+    
+    [self hideTabBar: self.tabBarController];
+    imageView.frame=CGRectMake(0,0,320,480);
+    
+}
+- (void)tapTwice:(UIGestureRecognizer *)gesture
+{
+    //on a double tap, call zoomToRect in UIScrollView
+//    [self.imageView zoomToRect:rectToZoomOutTo animated:NO];
+//      imageView.frame=CGRectMake(0,0,320,480);
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [self showTabBar: self.tabBarController];
+    imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 65, 320, 460)];
+}
+
+- (void) hideTabBar:(UITabBarController *) tabbarcontroller
+{
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.5];
+    float fHeight = screenRect.size.height;
+    if(  UIDeviceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation) )
+    {
+        fHeight = screenRect.size.width;
+    }
+    
+    for(UIView *view in tabbarcontroller.view.subviews)
+    {
+        if([view isKindOfClass:[UITabBar class]])
+        {
+            [view setFrame:CGRectMake(view.frame.origin.x, fHeight, view.frame.size.width, view.frame.size.height)];
+        }
+        else
+        {
+            [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y, view.frame.size.width, fHeight)];
+            view.backgroundColor = [UIColor blackColor];
+        }
+    }
+    [UIView commitAnimations];
+}
+
+
+
+- (void) showTabBar:(UITabBarController *) tabbarcontroller
+{
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    float fHeight = screenRect.size.height - tabbarcontroller.tabBar.frame.size.height;
+    
+    if(  UIDeviceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation) )
+    {
+        fHeight = screenRect.size.width - tabbarcontroller.tabBar.frame.size.height;
+    }
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.5];
+    for(UIView *view in tabbarcontroller.view.subviews)
+    {
+        if([view isKindOfClass:[UITabBar class]])
+        {
+            [view setFrame:CGRectMake(view.frame.origin.x, fHeight, view.frame.size.width, view.frame.size.height)];
+        }
+        else
+        {
+            [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y, view.frame.size.width, fHeight)];
+        }
+    }
+    [UIView commitAnimations];
+}
+
 - (void)viewDidLoad {
+    
+    
+    UITapGestureRecognizer *tapOnce =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(tapOnce:)];
+    UITapGestureRecognizer *tapTwice =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(tapTwice:)];
+
+    tapOnce.numberOfTapsRequired = 1;
+    tapTwice.numberOfTapsRequired = 2;
+    
+    //stops tapOnce from overriding tapTwice
+    [tapOnce requireGestureRecognizerToFail:tapTwice];
+    
+    // then need to add the gesture recogniser to a view
+    // - this will be the view that recognises the gesture
+    [self.view addGestureRecognizer:tapOnce];
+    [self.view addGestureRecognizer:tapTwice];
+    
+    ///
     
     [self getOverallRatingByImageID: [NSString stringWithFormat:@"%d", self.index+1]];
     [self getIndividualRatingByUserId: @"1" AndImageID: @"1"];
@@ -241,7 +343,7 @@
     
     //NSString *pngPath = [NSString stringWithFormat:@"%@/%@",Dir, theFileName];
     
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 65, 320, 460)]; //initWithFrame:CGRectMake(40+100+10, 80+100, 140, 25)];
+    imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 65, 320, 460)]; //initWithFrame:CGRectMake(40+100+10, 80+100, 140, 25)];
     imageView.image = [UIImage imageWithContentsOfFile: pngPath];
     imageView.backgroundColor = [UIColor redColor];
     [self.view addSubview:imageView];
