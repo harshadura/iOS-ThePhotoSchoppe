@@ -1,11 +1,3 @@
-//
-//  CustomCell.m
-//  sdsd
-//
-//  Created by Harsha Siriwardena on 8/29/14.
-//  Copyright (c) 2014 Harsha. All rights reserved.
-//
-
 #import "CustomCell.h"
 
 @implementation CustomCell

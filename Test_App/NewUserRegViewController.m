@@ -1,11 +1,3 @@
-//
-//  ViewController.m
-//  Test_App
-//
-//  Created by Harsha Siriwardena on 8/18/14.
-//  Copyright (c) 2014 Harsha. All rights reserved.
-//
-
 #import "NewUserRegViewController.h"
 #import "LoginViewController.h"
 #import <QuartzCore/QuartzCore.h>
@@ -37,31 +29,7 @@
     [mainView setBackgroundColor:[UIColor whiteColor]];
     self.view = mainView;
     
-    //    UINavigationBar *naviBarObj = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-    //    [self.view addSubview:naviBarObj];
-    //    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Back"         style:UIBarButtonItemStyleBordered target:self action:@selector(cancelButtonPressed)];
-    ////    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:@"New User?" style:UIBarButtonItemStyleBordered target:self
-    ////                                                                action:@selector(doneButtonPressed)];
-    //
-    //    UINavigationItem *navigItem = [[UINavigationItem alloc] initWithTitle:@"Navigation Title"];
-    ////    navigItem.rightBarButtonItem = doneItem;
-    //    navigItem.leftBarButtonItem = cancelItem;
-    //    naviBarObj.items = [NSArray arrayWithObjects: navigItem,nil];
-    //    [self.view addSubview:naviBarObj];
-    //
-    
     [self.navigationItem setTitle:@"New user registration"];
-    //    [self.navigationItem setLeftBarButtonItem: cancelItem];
-    
-    
-    //    UILabel *lblTitle = [[UILabel alloc] init];
-    //    /*important--------- */lblTitle.textColor = [UIColor blackColor];
-    //    [lblTitle setFrame:CGRectMake(80, 50+20, 200, 20)];
-    //    lblTitle.backgroundColor=[UIColor clearColor];
-    //    lblTitle.textColor=[UIColor blackColor];
-    //    lblTitle.userInteractionEnabled=NO;
-    //    lblTitle.text= @"New user registration";
-    //    [self.view addSubview:lblTitle];
     
     UILabel *lblTitle = [[UILabel alloc] init];
     lblTitle.textColor = [UIColor blackColor];
@@ -134,19 +102,6 @@
     UIImage *greybuttonImageHighlight = [[UIImage imageNamed:@"greyButtonHighlight.png"]
                                          resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
     
-//    UIButton *btnRegister = [UIButton buttonWithType: UIButtonTypeCustom];
-//    [btnRegister setBackgroundColor: [UIColor whiteColor]];
-//    [btnRegister setTitleColor:[UIColor blackColor] forState: UIControlStateHighlighted];
-//    
-//    [btnRegister addTarget:self action:@selector(userRegTapped) forControlEvents:UIControlEventTouchUpInside];
-//    [btnRegister setTitle:@"SignIn" forState:UIControlStateNormal];
-//    
-//    // Set the background for any states you plan to use
-//    btnRegister.frame = CGRectMake(60, 80+160, 100, 40);
-//    [btnRegister setBackgroundImage:bluebuttonImage forState:UIControlStateNormal];
-//    [btnRegister setBackgroundImage:bluebuttonImageHighlight forState:UIControlStateHighlighted];
-//    [self.view addSubview:btnRegister];
-
     UIButton *btnRegister = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [btnRegister addTarget:self action:@selector(userRegTapped) forControlEvents:UIControlEventTouchUpInside];
     [btnRegister setBackgroundColor: [UIColor whiteColor]];
@@ -195,9 +150,9 @@
 }
 
 - (void)gobackTapped {
-//    LoginViewController *controller2 = [[LoginViewController alloc] init];
-//    [self presentModalViewController:controller2 animated:NO];
-
+    //    LoginViewController *controller2 = [[LoginViewController alloc] init];
+    //    [self presentModalViewController:controller2 animated:NO];
+    
     [self dismissModalViewControllerAnimated:NO];
 }
 

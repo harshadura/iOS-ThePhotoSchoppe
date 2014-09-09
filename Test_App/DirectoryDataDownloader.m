@@ -5,26 +5,12 @@
 @synthesize value, dic, photographer_array;
 
 -(void)startDirectoryDownloadProcess{
-
+    
     NSLog(@"Downloading data ..");
     [self testInternetConnection];
     
-    
-//    array_of_image_filenames = [[NSMutableArray alloc]init];
-    
-    
-    //     how we stop refresh from freezing the main UI thread
     dispatch_queue_t downloadQueue = dispatch_queue_create("downloader", NULL);
     dispatch_async(downloadQueue, ^{
-        
-        
-//        NSURL *url=[[NSURL alloc] initWithString:@"https://raw.githubusercontent.com/harshadura/iOS-ThePhotoSchoppe/master/Test_App/photos.xml"];
-//        // Write your file path here
-//        NSXMLParser *XML=[[NSXMLParser alloc] initWithContentsOfURL:url];
-//        XML.delegate=self;
-//        [XML parse];
-//        value=nil;
-//        
         
         NSURL *url=[[NSURL alloc] initWithString:@"https://raw.githubusercontent.com/harshadura/iOS-ThePhotoSchoppe/master/Test_App/directory.xml"];
         // Write your file path here
@@ -32,21 +18,7 @@
         XML.delegate=self;
         [XML parse];
         value=nil;
-        
-        
-        // do our long running process here
-        //            [NSThread sleepForTimeInterval:10];
-        
-        // do any UI stuff on the main UI thread
-        dispatch_async(dispatch_get_main_queue(), ^{
-            //            self.myLabel.text = @"After!";
-        });
-        
     });
-    //        dispatch_release(downloadQueue);
-    
-    
-    
 }
 
 - (void)testInternetConnection

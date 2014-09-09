@@ -1,61 +1,25 @@
 #import "PhotoDownloader.h"
 
-
 @implementation PhotoDownloader
 @synthesize value, dic, book_array, array_of_image_filenames, spinner, internetReachableFoo;
 
 -(void)startPhotoDownloadProcess{
     
-//    [NSTimer scheduledTimerWithTimeInterval:3.0 target:self.delegate
-//                                   selector:@selector(processCompleted) userInfo:nil repeats:NO];
-//    
     NSLog(@"Downloading data ..");
     [self testInternetConnection];
     
-//    Reachability *reachability = [Reachability reachabilityForInternetConnection];
-//    NetworkStatus internetStatus = [reachability currentReachabilityStatus];
-//    
-//    if(internetStatus == NotReachable) {
-//        UIAlertView *errorView;
-//        
-//        errorView = [[UIAlertView alloc]
-//                     initWithTitle: NSLocalizedString(@"Network error", @"Network error")
-//                     message: NSLocalizedString(@"No internet connection found, this application requires an internet connection to gather the data required.", @"Network error")
-//                     delegate: self
-//                     cancelButtonTitle: NSLocalizedString(@"Close", @"Network error") otherButtonTitles: nil];
-//        
-//        [errorView show];
-////        [errorView autorelease];
-//    }
-    
     array_of_image_filenames = [[NSMutableArray alloc]init];
-
-    
-//     how we stop refresh from freezing the main UI thread
-        dispatch_queue_t downloadQueue = dispatch_queue_create("downloader", NULL);
-        dispatch_async(downloadQueue, ^{
-    
-            
-            NSURL *url=[[NSURL alloc] initWithString:@"https://raw.githubusercontent.com/harshadura/iOS-ThePhotoSchoppe/master/Test_App/photos.xml"];
-            // Write your file path here
-            NSXMLParser *XML=[[NSXMLParser alloc] initWithContentsOfURL:url];
-            XML.delegate=self;
-            [XML parse];
-            value=nil;
-            
-            // do our long running process here
-//            [NSThread sleepForTimeInterval:10];
-    
-            // do any UI stuff on the main UI thread
-            dispatch_async(dispatch_get_main_queue(), ^{
-                //            self.myLabel.text = @"After!";
-                      });
-    
-        });
-//        dispatch_release(downloadQueue);
-    
-
-    
+    dispatch_queue_t downloadQueue = dispatch_queue_create("downloader", NULL);
+    dispatch_async(downloadQueue, ^{
+        
+        NSURL *url=[[NSURL alloc] initWithString:@"https://raw.githubusercontent.com/harshadura/iOS-ThePhotoSchoppe/master/Test_App/photos.xml"];
+        // Write your file path here
+        NSXMLParser *XML=[[NSXMLParser alloc] initWithContentsOfURL:url];
+        XML.delegate=self;
+        [XML parse];
+        value=nil;
+        
+    });
 }
 
 - (void)testInternetConnection
@@ -90,64 +54,6 @@
     
     [internetReachableFoo startNotifier];
 }
-
-//- (void)viewDidLoad {
-//    
-//    [super viewDidLoad];
-//    //    [self processLoading];
-//    
-//    
-//    // replace right bar button 'refresh' with spinner
-//    spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-//    spinner.center = CGPointMake(160, 240);
-//    spinner.hidesWhenStopped = YES;
-//    [self.view addSubview:spinner];
-//    [spinner startAnimating];
-//    
-//    // how we stop refresh from freezing the main UI thread
-//    dispatch_queue_t downloadQueue = dispatch_queue_create("downloader", NULL);
-//    dispatch_async(downloadQueue, ^{
-//        
-//        // do our long running process here
-//        [NSThread sleepForTimeInterval:10];
-//        
-//        // do any UI stuff on the main UI thread
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            //            self.myLabel.text = @"After!";
-//            [spinner stopAnimating];
-//        });
-//        
-//    });
-//    //    dispatch_release(downloadQueue);
-//    ////
-//    
-//    NSLog(@"Downloading data ..");
-//    
-//    NSURL *url=[[NSURL alloc] initWithString:@"https://raw.githubusercontent.com/harshadura/iOS-ThePhotoSchoppe/master/Test_App/photos.xml"];
-//    // Write your file path here
-//    NSXMLParser *XML=[[NSXMLParser alloc] initWithContentsOfURL:url];
-//    XML.delegate=self;
-//    [XML parse];
-//    value=nil;
-//    
-//    //
-//    
-//    self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
-//    
-//    self.pageController.dataSource = self;
-//    [[self.pageController view] setFrame:[[self view] bounds]];
-//    
-//    APPChildViewController *initialViewController = [self viewControllerAtIndex:0];
-//    
-//    NSArray *viewControllers = [NSArray arrayWithObject:initialViewController];
-//    
-//    [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-//    
-//    [self addChildViewController:self.pageController];
-//    [[self view] addSubview:[self.pageController view]];
-//    [self.pageController didMoveToParentViewController:self];
-//    
-//}
 
 -(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict{
     if ([elementName isEqualToString:@"photos" ]) {
@@ -246,35 +152,12 @@
     NSString* theFileName = [trimmed lastPathComponent];
     NSString *Dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *pngPath = [NSString stringWithFormat:@"%@/%@",Dir, theFileName];// this path if you want save reference path in sqlite
-    //    NSString *pngPath = [NSString stringWithFormat:theFileName,Dir];// this path if you want save reference path in sqlite
-    //    NSString *pngPath = [NSString stringWithFormat:@"%@/test1234.png",Dir];// this path if you want save reference path in sqlite
-    
     
     NSData *data1 = [NSData dataWithData:UIImagePNGRepresentation(image)];
     [data1 writeToFile:pngPath atomically:YES];
     NSLog(@">>> saving png");
-    
     NSLog(@"%@",pngPath);
-  
-    
-    
     [array_of_image_filenames addObject:pngPath];
-    
-    
-//    if ([_delegate respondsToSelector:@selector(processCompleted)]) {
- 
-//    }
-    
-    //    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)]; //initWithFrame:CGRectMake(40+100+10, 80+100, 140, 25)];
-    //    imageView.image = [UIImage imageWithContentsOfFile: pngPath];
-    //    [self.view addSubview:imageView];
-    
-    //    NSString *jpegPath = [NSString stringWithFormat:@"%@/test.jpeg",Dir];// this path if you want save reference path in sqlite
-    //    NSData *data2 = [NSData dataWithData:UIImageJPEGRepresentation(image, 1.0f)];//1.0f = 100% quality
-    //    [data2 writeToFile:jpegFilePath atomically:YES];
-    //    NSLog(@"saving image done");
-    
-    //   [image release];
     
 }
 

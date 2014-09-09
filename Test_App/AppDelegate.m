@@ -1,6 +1,6 @@
 //
 //  AppDelegate.m
-//  Test_App
+//  iOS-ThePhotoSchoppe
 //
 //  Created by Harsha Siriwardena on 8/18/14.
 //  Copyright (c) 2014 Harsha. All rights reserved.
@@ -31,43 +31,13 @@
     
     [GMSServices provideAPIKey:@"AIzaSyDLkTZIlmtvEqH36PlaSfvT4d4Jw8oQSKk"];
     
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        
-//        if (![NSThread isMainThread]) {
-//            NSLog(@"Not in main thread 2..");
-//        }
-//        
-//        NSLog(@"In main thread 2..");
-    
-        
-        if([[NSUserDefaults standardUserDefaults] boolForKey:@"flag_synced_once"]){
-            //        [splashView removeFromSuperview];
-            LoginViewController *lvc = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-            lvc.delegate = self;
-            [self.switchTabBarController presentModalViewController:lvc animated:NO];
-            return YES;
-        }
-        
-//    });
-    
-    //    [lvc release];
-    
-   
-    
-    //    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController2];
-    //
-    //    self.tabBarController = [[UITabBarController alloc] init];
-    //    self.tabBarController.viewControllers = [NSArray arrayWithObjects:viewController1, navController,viewController3, viewController4, nil];
-    
-    
-    
-
-    
-//    LoginViewController *lvc = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-//    lvc.delegate = self;
-//    [self.switchTabBarController presentModalViewController:lvc animated:NO];
-//    
-    ////////
+    if([[NSUserDefaults standardUserDefaults] boolForKey:@"flag_synced_once"]){
+        //        [splashView removeFromSuperview];
+        LoginViewController *lvc = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+        lvc.delegate = self;
+        [self.switchTabBarController presentModalViewController:lvc animated:NO];
+        return YES;
+    }
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
     {
@@ -102,7 +72,7 @@
         
     }
     return YES;
-
+    
 }
 
 #pragma mark - Sample protocol delegate
@@ -120,7 +90,7 @@
             NSLog(@"Not in main thread 2..");
         }
         NSLog(@"In main thread 2..");
-
+        
         
         NSLog(@"*** Accessing Directory Downloader data ....");
         DirectoryDataDownloader *sampleProtocol = [[DirectoryDataDownloader alloc]init];
@@ -181,24 +151,20 @@
 
 -(void)initTabBar
 {
-
+    
     LoginViewController *loginViewController = [[LoginViewController alloc]init];
     LocationsViewController *locViewController = [[LocationsViewController alloc]init];
     PortfolioMainViewController *appViewController = [[PortfolioMainViewController alloc] init];
-    
-//    CustomMarkersViewController *customMarkersViewController = [[CustomMarkersViewController alloc] init];
-//    MainMenuViewController *mainMenuViewController = [[MainMenuViewController alloc]init];
     DirectoryViewController *directoryViewController = [[DirectoryViewController alloc] init];
-//    LocationsViewController *locationsViewController = [[LocationsViewController alloc] init];
     MoreViewController *moreViewController = [[MoreViewController alloc] init];
     
-    UINavigationController * LoginNav = [[UINavigationController alloc] initWithRootViewController:appViewController];
+    UINavigationController * PortfolioNav = [[UINavigationController alloc] initWithRootViewController:appViewController];
     UINavigationController * DirectoryNav = [[UINavigationController alloc] initWithRootViewController:directoryViewController];
     UINavigationController * LocationsNav = [[UINavigationController alloc] initWithRootViewController:locViewController];
     UINavigationController * MoreNav = [[UINavigationController alloc] initWithRootViewController:moreViewController];
     
-    NSArray *ctrlArr = [NSArray arrayWithObjects:LoginNav,LocationsNav,DirectoryNav,MoreNav,nil];
-    LoginNav.title = @"LoginNav";
+    NSArray *ctrlArr = [NSArray arrayWithObjects:PortfolioNav,LocationsNav,DirectoryNav,MoreNav,nil];
+    PortfolioNav.title = @"PortfolioNav";
     LocationsNav.title = @"LocationsNav";
     DirectoryNav.title = @"DirectoryNav";
     MoreNav.title = @"MoreNav";

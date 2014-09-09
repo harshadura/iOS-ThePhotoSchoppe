@@ -1,6 +1,5 @@
 #import <UIKit/UIKit.h>
 
-// Tell the compiler to conform to these protocols
 @interface DirectoryViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic,assign) id delegate;

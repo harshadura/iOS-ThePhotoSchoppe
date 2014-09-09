@@ -1,11 +1,3 @@
-//
-//  TablieViewController.m
-//  TableViewProg
-//
-//  Created by Dan on 15/02/2012.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
-//
-
 #import "DirectoryViewController.h"
 #import "CustomCell.h"
 
@@ -27,7 +19,7 @@
     [defaults synchronize];
     
     photographer_array = [[[NSUserDefaults standardUserDefaults] arrayForKey:@"directory_list"] mutableCopy];
-
+    
     // init table view
     tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     
@@ -39,7 +31,7 @@
     
     // add to canvas
     [self.view addSubview:tableView];
-
+    
     
 }
 
@@ -60,7 +52,7 @@
         cell = [[[CustomCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
     }
     ////////
-//    photographer_array
+    //    photographer_array
     NSMutableDictionary *data_dic = [photographer_array objectAtIndex:indexPath.row];
     
     NSString *fname = [data_dic objectForKey:@"fname"];
@@ -87,36 +79,36 @@
     cell.secondaryLabel.text = contact_info;
     cell.myImageView.image = nil;
     
-//    // Set up the cell…
-//    switch (indexPath.row) {
-//        case 0:
-//            cell.primaryLabel.text = @"Meeting on iPhone Development";
-//            cell.secondaryLabel.text = @"Sat 10:30";
-//            cell.myImageView.image = [UIImage imageNamed:@"meeting_color.png"];
-//            break;
-//        case 1:
-//            cell.primaryLabel.text = @"Call With Client";
-//            cell.secondaryLabel.text = @"Planned";
-//            cell.myImageView.image = [UIImage imageNamed:@"call_color.png"];
-//            break;
-//        case 2:
-//            cell.primaryLabel.text = @"Appointment with Joey";
-//            cell.secondaryLabel.text = @"2 Hours";
-//            cell.myImageView.image = [UIImage imageNamed:@"calendar_color.png"];
-//            break;
-//        case 3:
-//            cell.primaryLabel.text = @"Call With Client";
-//            cell.secondaryLabel.text = @"Planned";
-//            cell.myImageView.image = [UIImage imageNamed:@"call_color.png"];
-//            break;
-//        case 4:
-//            cell.primaryLabel.text = @"Appointment with Joey";
-//            cell.secondaryLabel.text = @"2 Hours";
-//            cell.myImageView.image = [UIImage imageNamed:@"calendar_color.png"];
-//            break;
-//        default:
-//            break;
-//    }
+    //    // Set up the cell…
+    //    switch (indexPath.row) {
+    //        case 0:
+    //            cell.primaryLabel.text = @"Meeting on iPhone Development";
+    //            cell.secondaryLabel.text = @"Sat 10:30";
+    //            cell.myImageView.image = [UIImage imageNamed:@"meeting_color.png"];
+    //            break;
+    //        case 1:
+    //            cell.primaryLabel.text = @"Call With Client";
+    //            cell.secondaryLabel.text = @"Planned";
+    //            cell.myImageView.image = [UIImage imageNamed:@"call_color.png"];
+    //            break;
+    //        case 2:
+    //            cell.primaryLabel.text = @"Appointment with Joey";
+    //            cell.secondaryLabel.text = @"2 Hours";
+    //            cell.myImageView.image = [UIImage imageNamed:@"calendar_color.png"];
+    //            break;
+    //        case 3:
+    //            cell.primaryLabel.text = @"Call With Client";
+    //            cell.secondaryLabel.text = @"Planned";
+    //            cell.myImageView.image = [UIImage imageNamed:@"call_color.png"];
+    //            break;
+    //        case 4:
+    //            cell.primaryLabel.text = @"Appointment with Joey";
+    //            cell.secondaryLabel.text = @"2 Hours";
+    //            cell.myImageView.image = [UIImage imageNamed:@"calendar_color.png"];
+    //            break;
+    //        default:
+    //            break;
+    //    }
     
     return cell;
 }

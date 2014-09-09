@@ -20,7 +20,7 @@ static CGFloat randf() {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
     
@@ -36,30 +36,16 @@ static CGFloat randf() {
     self.view = mapView_;
     self.navigationItem.title = @"Photos taken at various Locations";
     
-// Add a button which adds random markers to the map.
-//    UIBarButtonItem *addButton =
-//    [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-//                                                  target:self
-//                                                  action:@selector(didTapAdd)];
-//    addButton.accessibilityLabel = @"Add Markers";
-//    UIBarButtonItem *clearButton =
-//    [[UIBarButtonItem alloc] initWithTitle:@"Clear Markers"
-//                                     style:UIBarButtonItemStylePlain
-//                                    target:self
-//                                    action:@selector(didTapClear)];
-//    self.navigationItem.rightBarButtonItems = @[ addButton, clearButton ];
-    
-
 }
 
 - (void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker *)marker {
     // your code
     NSLog(@"PIN --> %f,%f", marker.position.latitude,  marker.position.longitude);
-//NSString* myNewString = [NSString stringWithFormat:@"%d", myInt];
-   
+    //NSString* myNewString = [NSString stringWithFormat:@"%d", myInt];
+    
     PortfolioMainViewController *controller2 = [[PortfolioMainViewController alloc] init];
-
-   
+    
+    
     NSString *image_id = marker.userData[@"image_id"];
     NSUInteger indexOfImage = image_id.intValue - 1;
     controller2.showIndexImage = indexOfImage;
@@ -95,8 +81,8 @@ static CGFloat randf() {
         double lt=[x doubleValue];
         double ln=[y doubleValue];
         
-//        NSString *name = [[myArray objectAtIndex:i] objectForKey:@"name"];
-//        NSLog(@"%@ and %@ and %f and %f of %@",lat,lon, lt,ln,name);
+        //        NSString *name = [[myArray objectAtIndex:i] objectForKey:@"name"];
+        //        NSLog(@"%@ and %@ and %f and %f of %@",lat,lon, lt,ln,name);
         
         GMSMarker *marker = [[GMSMarker alloc] init];
         //        marker.animated=YES;
@@ -108,40 +94,8 @@ static CGFloat randf() {
         marker.icon = [UIImage imageNamed:@"glow-marker"];
         marker.map = mapView_;
         
-        
-        // Add a custom 'glow' marker around Sydney.
-//        GMSMarker *sydneyMarker = [[GMSMarker alloc] init];
-//        //    sydneyMarker.title = @"Sydney!";
-//        sydneyMarker.icon = [UIImage imageNamed:@"glow-marker"];
-//        sydneyMarker.position = CLLocationCoordinate2DMake([x doubleValue], [y doubleValue]);
-//        sydneyMarker.map = mapView_;
-        // do something with object
-        
-        
-        
-//        self.view = mapView_;
-        
-//        NSString *lat = [[myArray objectAtIndex:i] objectForKey:@"latitude"];
-//        NSString *lon = [[myArray objectAtIndex:i] objectForKey:@"longitude"];
-//        
-
-
-        
     }
 }
-
-
-
-
-
-
-//    // Add a custom 'arrow' marker pointing to Melbourne.
-//    GMSMarker *melbourneMarker = [[GMSMarker alloc] init];
-//    melbourneMarker.title = @"Melbourne!";
-//    melbourneMarker.icon = [UIImage imageNamed:@"arrow"];
-//    melbourneMarker.position = CLLocationCoordinate2DMake(9.2, 80);
-//    melbourneMarker.map = mapView_;
-
 
 - (void)didTapAdd {
     for (int i = 0; i < 10; ++i) {
@@ -183,9 +137,7 @@ static CGFloat randf() {
     marker.title = [NSString stringWithFormat:@"Marker #%d", ++kMarkerCount];
     marker.appearAnimation = kGMSMarkerAnimationPop;
     marker.icon = [GMSMarker markerImageWithColor:color];
-    
     marker.rotation = (randf()-0.5f)*20;  // rotate between -20 and +20 degrees
-    
     marker.map = mapView_;
 }
 

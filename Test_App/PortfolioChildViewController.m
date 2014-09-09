@@ -1,11 +1,3 @@
-//
-//  APPChildViewController.m
-//  PageApp
-//
-//  Created by Rafael Garcia Leiva on 10/06/13.
-//  Copyright (c) 2013 Appcoda. All rights reserved.
-//
-
 #import "PortfolioChildViewController.h"
 
 @interface PortfolioChildViewController ()
@@ -23,32 +15,6 @@
     
     return self;
 }
-
-
-//- (void)tapOnce:(UIGestureRecognizer *)gesture
-//{
-//    //on a single  tap, call zoomToRect in UIScrollView
-////    [self.imageView zoomToRect:rectToZoomInTo animated:NO];
-//    [self.navigationController setNavigationBarHidden:YES animated:YES];
-//
-//    
-////    [self.navigationController.tabBarController.tabBar setHidden:true];
-//    
-////    [[self navigationController] setHidesBottomBarWhenPushed:YES];
-//    
-//    [self hideTabBar: self.tabBarController];
-//    imageView.frame=CGRectMake(0,0,320,480);
-//    
-//}
-//- (void)tapTwice:(UIGestureRecognizer *)gesture
-//{
-//    //on a double tap, call zoomToRect in UIScrollView
-////    [self.imageView zoomToRect:rectToZoomOutTo animated:NO];
-////      imageView.frame=CGRectMake(0,0,320,480);
-//    [self.navigationController setNavigationBarHidden:NO animated:YES];
-//    [self showTabBar: self.tabBarController];
-//    imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 65, 320, 460)];
-//}
 
 - (void) hideTabBar:(UITabBarController *) tabbarcontroller
 {
@@ -107,27 +73,6 @@
 
 - (void)viewDidLoad {
     
-    
-//    UITapGestureRecognizer *tapOnce =
-//    [[UITapGestureRecognizer alloc] initWithTarget:self
-//                                            action:@selector(tapOnce:)];
-//    UITapGestureRecognizer *tapTwice =
-//    [[UITapGestureRecognizer alloc] initWithTarget:self
-//                                            action:@selector(tapTwice:)];
-//
-//    tapOnce.numberOfTapsRequired = 1;
-//    tapTwice.numberOfTapsRequired = 2;
-//    
-//    //stops tapOnce from overriding tapTwice
-//    [tapOnce requireGestureRecognizerToFail:tapTwice];
-//    
-//    // then need to add the gesture recogniser to a view
-//    // - this will be the view that recognises the gesture
-//    [self.view addGestureRecognizer:tapOnce];
-//    [self.view addGestureRecognizer:tapTwice];
-    
-    ///
-    
     [self getOverallRatingByImageID: [NSString stringWithFormat:@"%d", self.index+1]];
     [self getIndividualRatingByUserId: @"1" AndImageID: @"1"];
     
@@ -144,7 +89,7 @@
     
     isTappFirstTime = NO;
     self.screenNumber.text = [NSString stringWithFormat:@"Screen #%d", self.index];
-
+    
 }
 
 - (void)viewDidUnload
@@ -163,7 +108,7 @@
     NSString *strURL=[NSString stringWithFormat:@"http://thephotoschoppe-harshasiot.rhcloud.com/rate_webservice.php?image_id=%@&flag=GET_AVG_RATING", imgId];
     NSURL *url = [NSURL URLWithString:strURL];
     
-//    NSURL *url = [NSURL URLWithString:[@"http://thephotoschoppe-harshasiot.rhcloud.com/rate_webservice.php?image_id=&flag=GET_AVG_RATING"];
+    //    NSURL *url = [NSURL URLWithString:[@"http://thephotoschoppe-harshasiot.rhcloud.com/rate_webservice.php?image_id=&flag=GET_AVG_RATING"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:[NSOperationQueue mainQueue]
@@ -229,7 +174,7 @@
              textUserRating = [formatter stringFromNumber:[NSNumber numberWithFloat:[textUserRating doubleValue]]];
              
              NSLog(@" -- %@", textUserRating);
-//             lblOveralRating.text= [NSString stringWithFormat:@"existing_rating: %@", textUserRating];
+             //             lblOveralRating.text= [NSString stringWithFormat:@"existing_rating: %@", textUserRating];
              float value = [formatter numberFromString:textUserRating].floatValue;
              [rateView setRating:value];
              
@@ -274,8 +219,8 @@
              
              NSLog(@" -- %@", textUserRating);
              //             lblOveralRating.text= [NSString stringWithFormat:@"existing_rating: %@", textUserRating];
-//             float value = [formatter numberFromString:textUserRating].floatValue;
-//             [rateView setRating:value];
+             //             float value = [formatter numberFromString:textUserRating].floatValue;
+             //             [rateView setRating:value];
              
              // [@"Overall Rating: %@", textOveralRating];
          }
@@ -299,11 +244,11 @@
         [UIView animateWithDuration:1.0 animations:^{
             btnShare.alpha = 0;
             btnRate.alpha = 0;
-//            imgView.alpha = 0;
+            //            imgView.alpha = 0;
         } completion: ^(BOOL finished) {
             btnRate.hidden = YES;
             btnShare.hidden = YES;
-//            imgView.hidden = YES;
+            //            imgView.hidden = YES;
         }];
         isTappFirstTime = NO;
     }
@@ -313,11 +258,11 @@
         [UIView animateWithDuration:1.0 animations:^{
             btnShare.alpha = 1;
             btnRate.alpha = 1;
-//            imgView.alpha = 1;
+            //            imgView.alpha = 1;
         } completion: ^(BOOL finished) {
             btnRate.hidden = NO;
             btnShare.hidden = NO;
-//            imgView.hidden = NO;
+            //            imgView.hidden = NO;
         }];
         isTappFirstTime = YES;
     }
@@ -348,12 +293,6 @@
     imageView.backgroundColor = [UIColor redColor];
     [self.view addSubview:imageView];
     
-
-//    UIButton *btnDetail = [UIButton buttonWithType: UIButtonTypeDetailDisclosure];
-//    btnDetail.frame = CGRectMake(0,0,100,100);
-//    [btnDetail addTarget:self action:@selector(buttonClicked) forControlEvents:UIControlEventAllTouchEvents];
-    
-    
     UIImage *bluebuttonImage = [[UIImage imageNamed:@"blueButton.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
     UIImage *bluebuttonImageHighlight = [[UIImage imageNamed:@"blueButtonHighlight.png"]
                                          resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
@@ -373,64 +312,19 @@
     UIImage *greybuttonImageHighlight = [[UIImage imageNamed:@"greyButtonHighlight.png"]
                                          resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
     
-//    UITapGestureRecognizer *scrlTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrlTapREcotTap:)];
-//    [scrlTap setNumberOfTapsRequired:1];
-//    [self.view addGestureRecognizer:scrlTap];
-    
-//    btnShare = [UIButton buttonWithType: UIButtonTypeCustom];
-//    [btnShare setBackgroundColor: [UIColor clearColor]];
-//    [btnShare setTitleColor:[UIColor blackColor] forState: UIControlStateHighlighted];
-//    
-//    [btnShare setBackgroundImage:greenbuttonImage forState:UIControlStateNormal];
-//    [btnShare setBackgroundImage:greenbuttonImageHighlight forState:UIControlStateHighlighted];
-//    
-//    [btnShare addTarget:self action:@selector(doneButtonPressed)  forControlEvents:UIControlEventTouchUpInside];
-//    [btnShare setTitle:@"Share" forState:UIControlStateNormal];
-//    btnShare.frame = CGRectMake(10, 400, 100, 40);
-//    [self.view addSubview:btnShare];
-//    
-//    [imageView addSubview:btnShare];
-//    [imageView bringSubviewToFront:btnShare];
-//    [imageView setUserInteractionEnabled:YES];
-//    
-//    //
-//    
-//    btnRate = [UIButton buttonWithType: UIButtonTypeCustom];
-//    [btnRate setBackgroundColor: [UIColor clearColor]];
-//    [btnRate setTitleColor:[UIColor blackColor] forState: UIControlStateHighlighted];
-//    
-//    [btnRate setBackgroundImage:orangebuttonImage forState:UIControlStateNormal];
-//    [btnRate setBackgroundImage:orangebuttonImageHighlight forState:UIControlStateHighlighted];
-//    
-//    [btnRate addTarget:self action:@selector(doneButtonPressed)  forControlEvents:UIControlEventTouchUpInside];
-//    [btnRate setTitle:@"Rate" forState:UIControlStateNormal];
-//    btnRate.frame = CGRectMake(210, 400, 100, 40);
-//    [self.view addSubview:btnRate];
-    
-    
-
-    
-//    lblOveralRating = [[UILabel alloc] init];
-//    lblOveralRating.textColor = [UIColor redColor];
-//    [lblOveralRating setFrame:CGRectMake(10+100+20, 470, 250, 40)];
-//    lblOveralRating.backgroundColor=[UIColor clearColor];
-//    lblOveralRating.userInteractionEnabled=NO;
-//    lblOveralRating.text= textOveralRating;
-//    [self.view addSubview:lblOveralRating];
-    
     [imageView addSubview:btnRate];
     [imageView bringSubviewToFront:btnRate];
     [imageView setUserInteractionEnabled:YES];
     
     btnRate.hidden = YES;
     btnShare.hidden = YES;
-//    lblOveralRating.hidden = YES;
+    //    lblOveralRating.hidden = YES;
     
     rateView = [[RateView alloc] init];
     [rateView setFrame:CGRectMake(10+100+20, 360, 100, 60)];
-//    rateView.backgroundColor = [UIColor whiteColor];
-//    [self.view addSubview:rateView];
-     [imageView addSubview:rateView];
+    //    rateView.backgroundColor = [UIColor whiteColor];
+    //    [self.view addSubview:rateView];
+    [imageView addSubview:rateView];
     [imageView bringSubviewToFront:rateView];
     [imageView setUserInteractionEnabled:YES];
     
@@ -439,11 +333,11 @@
     [statusLabel setFrame:CGRectMake(10+100+20, 340, 250, 40)];
     statusLabel.backgroundColor=[UIColor clearColor];
     statusLabel.userInteractionEnabled=NO;
-//    [self.view addSubview:statusLabel];
-     [imageView addSubview:statusLabel];
+    //    [self.view addSubview:statusLabel];
+    [imageView addSubview:statusLabel];
     [imageView bringSubviewToFront:statusLabel];
     [imageView setUserInteractionEnabled:YES];
-
+    
     
     CGFloat labelX = rateView.bounds.size.width + 2;
     
@@ -465,7 +359,7 @@
 }
 
 - (void)rateView:(RateView *)rateView ratingDidChange:(float)rating {
-//    (void) updateIndividualRatingByUserId: (NSString*) userId AndImageID: (NSString*) imageId AndRating: 
+    //    (void) updateIndividualRatingByUserId: (NSString*) userId AndImageID: (NSString*) imageId AndRating:
     [self updateIndividualRatingByUserId: @"1" AndImageID: [NSString stringWithFormat:@"%d", self.index+1]  AndRating:[NSString stringWithFormat:@"%f", rating]];
     
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
@@ -477,7 +371,7 @@
     [formatter setRoundingMode: NSNumberFormatterRoundUp];
     
     NSString *user_rate= [formatter stringFromNumber:[NSNumber numberWithFloat:rating]];
-//    self.statusLabel.text = [NSString stringWithFormat:@"User Rating: %@", user_rate];
+    //    self.statusLabel.text = [NSString stringWithFormat:@"User Rating: %@", user_rate];
 }
 
 @end

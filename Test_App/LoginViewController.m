@@ -1,11 +1,3 @@
-//
-//  ViewController.m
-//  Test_App
-//
-//  Created by Harsha Siriwardena on 8/18/14.
-//  Copyright (c) 2014 Harsha. All rights reserved.
-//
-
 #import "LoginViewController.h"
 #import "NewUserRegViewController.h"
 #import <QuartzCore/QuartzCore.h>
@@ -44,16 +36,16 @@
                                                                 action:@selector(doneButtonPressed)];
     
     UIBarButtonItem *bypassItem = [[UIBarButtonItem alloc] initWithTitle:@">>>" style:UIBarButtonItemStyleBordered target:self
-                                                                action:@selector(bypassButtonPressed)];
-  
-//    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout"         style:UIBarButtonItemStyleBordered target:self action:@selector(logoutButtonPressed)];
-//    
-//    self.navigationItem.rightBarButtonItem = cancelItem;
-//
+                                                                  action:@selector(bypassButtonPressed)];
     
-//    self.navigationItem.title = @"User Login";
-//    self.navigationItem.rightBarButtonItem = doneItem;
-//    self.navigationItem.leftBarButtonItem  = bypassItem;
+    //    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout"         style:UIBarButtonItemStyleBordered target:self action:@selector(logoutButtonPressed)];
+    //
+    //    self.navigationItem.rightBarButtonItem = cancelItem;
+    //
+    
+    //    self.navigationItem.title = @"User Login";
+    //    self.navigationItem.rightBarButtonItem = doneItem;
+    //    self.navigationItem.leftBarButtonItem  = bypassItem;
     
     //     [self.navigationItem setLeftBarButtonItem: cancelItem];
     
@@ -75,7 +67,7 @@
     lblUsername.text= @"Username";
     [self.view addSubview:lblUsername];
     
-//    self.view.backgroundColor=[UIColor grayColor];
+    //    self.view.backgroundColor=[UIColor grayColor];
     
     textFieldUsername = [[UITextField  alloc] initWithFrame:CGRectMake(40+90+20, 80+60, 140, 25)];
     textFieldUsername.borderStyle = UITextBorderStyleRoundedRect;
@@ -97,56 +89,56 @@
     [self.view addSubview:textFieldPassword];
     
     // A rounded Rect button created by using class method
-//    UIButton *roundRectButton = [UIButton buttonWithType:
-//                                 UIButtonTypeRoundedRect];
-//    [roundRectButton setFrame:CGRectMake(60, 50, 200, 40)];
-//    // sets title for the button
-//    [roundRectButton setTitle:@"Rounded Rect Button" forState:
-//     UIControlStateNormal];
-//    [self.view addSubview:roundRectButton];
-
+    //    UIButton *roundRectButton = [UIButton buttonWithType:
+    //                                 UIButtonTypeRoundedRect];
+    //    [roundRectButton setFrame:CGRectMake(60, 50, 200, 40)];
+    //    // sets title for the button
+    //    [roundRectButton setTitle:@"Rounded Rect Button" forState:
+    //     UIControlStateNormal];
+    //    [self.view addSubview:roundRectButton];
+    
     
     UIImage *bluebuttonImage = [[UIImage imageNamed:@"blueButton.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
     UIImage *bluebuttonImageHighlight = [[UIImage imageNamed:@"blueButtonHighlight.png"]
                                          resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
     UIImage *greenbuttonImage = [[UIImage imageNamed:@"greenButton.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
     UIImage *greenbuttonImageHighlight = [[UIImage imageNamed:@"greenButtonHighlight.png"]
-                                         resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
-
+                                          resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+    
     UIImage *orangebuttonImage = [[UIImage imageNamed:@"orangeButton.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
     UIImage *orangebuttonImageHighlight = [[UIImage imageNamed:@"orangeButtonHighlight.png"]
-                                          resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+                                           resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
     
     UIImage *tanbuttonImage = [[UIImage imageNamed:@"tanButton.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
     UIImage *tanbuttonImageHighlight = [[UIImage imageNamed:@"tanButtonHighlight.png"]
-                                           resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+                                        resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
     
     UIImage *greybuttonImage = [[UIImage imageNamed:@"greyButton.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
     UIImage *greybuttonImageHighlight = [[UIImage imageNamed:@"greyButtonHighlight.png"]
-                                           resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+                                         resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
     
     
     UIButton *btnRegister = [UIButton buttonWithType: UIButtonTypeCustom];
     [btnRegister setBackgroundColor: [UIColor whiteColor]];
     [btnRegister setTitleColor:[UIColor blackColor] forState: UIControlStateHighlighted];
-   
+    
     [btnRegister addTarget:self action:@selector(userRegTapped) forControlEvents:UIControlEventTouchUpInside];
     [btnRegister setTitle:@"SignIn" forState:UIControlStateNormal];
     
     // Set the background for any states you plan to use
-     btnRegister.frame = CGRectMake(60, 80+160, 100, 40);
+    btnRegister.frame = CGRectMake(60, 80+160, 100, 40);
     [btnRegister setBackgroundImage:bluebuttonImage forState:UIControlStateNormal];
     [btnRegister setBackgroundImage:bluebuttonImageHighlight forState:UIControlStateHighlighted];
     [self.view addSubview:btnRegister];
     
-//    UIButton *btnRegister = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-//    [btnRegister addTarget:self action:@selector(userRegTapped)
-//          forControlEvents:UIControlEventTouchUpInside];
-//    [btnRegister setTitle:@"SignIn" forState:UIControlStateNormal];
-//    btnRegister.frame = CGRectMake(60, 80+160, 100, 40);
-//    btnRegister.layer.borderWidth=1.0f;
-//    btnRegister.layer.borderColor=[[UIColor blackColor] CGColor];
-//    [self.view addSubview:btnRegister];
+    //    UIButton *btnRegister = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    //    [btnRegister addTarget:self action:@selector(userRegTapped)
+    //          forControlEvents:UIControlEventTouchUpInside];
+    //    [btnRegister setTitle:@"SignIn" forState:UIControlStateNormal];
+    //    btnRegister.frame = CGRectMake(60, 80+160, 100, 40);
+    //    btnRegister.layer.borderWidth=1.0f;
+    //    btnRegister.layer.borderColor=[[UIColor blackColor] CGColor];
+    //    [self.view addSubview:btnRegister];
     
     
     UIButton *btnClose = [UIButton buttonWithType: UIButtonTypeCustom];
@@ -168,25 +160,25 @@
     
     [self buttonPressed];
     
-//     [self dismissModalViewControllerAnimated:YES];
+    //     [self dismissModalViewControllerAnimated:YES];
     
-//    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-//    NSString *app_username = [prefs stringForKey:@"app_username"];
-//    NSString *app_password = [prefs stringForKey:@"app_password"];
-//    
-//    if([textFieldUsername.text isEqualToString: app_username] && [textFieldPassword.text isEqualToString: app_password]){
-//        NSLog(@"Correct login ..");
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Title" message:@"Welcome!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-//        [alert show];
-//        MainMenuViewController *controller2 = [[MainMenuViewController alloc] init];
-//        [[self navigationController] pushViewController:controller2 animated:YES];
-//    }
-//    else{
-//        NSLog(@"Incorrect login ..");
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Title" message:@"Incorrect login" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-//        [alert show];
-//        
-//    }
+    //    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    //    NSString *app_username = [prefs stringForKey:@"app_username"];
+    //    NSString *app_password = [prefs stringForKey:@"app_password"];
+    //
+    //    if([textFieldUsername.text isEqualToString: app_username] && [textFieldPassword.text isEqualToString: app_password]){
+    //        NSLog(@"Correct login ..");
+    //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Title" message:@"Welcome!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    //        [alert show];
+    //        MainMenuViewController *controller2 = [[MainMenuViewController alloc] init];
+    //        [[self navigationController] pushViewController:controller2 animated:YES];
+    //    }
+    //    else{
+    //        NSLog(@"Incorrect login ..");
+    //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Title" message:@"Incorrect login" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    //        [alert show];
+    //
+    //    }
     
 }
 
@@ -222,20 +214,20 @@
 - (void)doneButtonPressed {
     
     NewUserRegViewController *controller2 = [[NewUserRegViewController alloc] init];
-     [self presentModalViewController:controller2 animated:NO];
-//    [[self navigationController] pushViewController:controller2 animated:YES];
+    [self presentModalViewController:controller2 animated:NO];
+    //    [[self navigationController] pushViewController:controller2 animated:YES];
 }
 
 - (void)bypassButtonPressed {
     
-//    MainMenuViewController *controller2 = [[MainMenuViewController alloc] init];
-//    [[self navigationController] pushViewController:controller2 animated:YES];
+    //    MainMenuViewController *controller2 = [[MainMenuViewController alloc] init];
+    //    [[self navigationController] pushViewController:controller2 animated:YES];
 }
 
 - (void)buttonPressed{
     //do NOT removeFromSuperview, delegate will dismiss
     //[self.view removeFromSuperview];
-  [self.delegate loginViewControllerDidFinish:self];
+    [self.delegate loginViewControllerDidFinish:self];
 }
 
 @end
