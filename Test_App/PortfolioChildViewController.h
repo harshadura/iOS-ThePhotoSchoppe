@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "RateView.h"
 
-@interface APPChildViewController : UIViewController <RateViewDelegate>
+@interface PortfolioChildViewController : UIViewController <RateViewDelegate>
 
 @property (strong, nonatomic) IBOutlet RateView *rateView;
 @property (strong, nonatomic) IBOutlet UILabel *statusLabel;

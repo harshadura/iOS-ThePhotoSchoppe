@@ -7,7 +7,6 @@
 //
 
 #import "LoginViewController.h"
-#import "MainMenuViewController.h"
 #import "NewUserRegViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
@@ -229,8 +228,8 @@
 
 - (void)bypassButtonPressed {
     
-    MainMenuViewController *controller2 = [[MainMenuViewController alloc] init];
-    [[self navigationController] pushViewController:controller2 animated:YES];
+//    MainMenuViewController *controller2 = [[MainMenuViewController alloc] init];
+//    [[self navigationController] pushViewController:controller2 animated:YES];
 }
 
 - (void)buttonPressed{

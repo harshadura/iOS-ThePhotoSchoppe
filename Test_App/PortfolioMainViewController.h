@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 //#import "PhotoDownloader.h"
 
-@interface APPViewController : UIViewController <UIPageViewControllerDataSource, NSURLConnectionDelegate>
+@interface PortfolioMainViewController : UIViewController <UIPageViewControllerDataSource, NSURLConnectionDelegate>
 
 @property (strong, nonatomic) UIPageViewController *pageController;
 @property(nonatomic,retain) NSMutableArray *images_list_array;

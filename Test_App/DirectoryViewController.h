@@ -1,13 +1,12 @@
-//
-//  DirectoryViewController.h
-//  iOS-ThePhotoSchoppe
-//
-//  Created by Harsha Siriwardena on 8/21/14.
-//  Copyright (c) 2014 Harsha. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 
-@interface DirectoryViewController : UIViewController
+// Tell the compiler to conform to these protocols
+@interface DirectoryViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic,assign) id delegate;
+@property (strong, nonatomic) UIPageViewController *pageController;
+@property(nonatomic,retain) NSMutableDictionary *dic;
+@property(nonatomic,retain) NSMutableString *value;
+@property(nonatomic,retain) NSMutableArray *photographer_array;
 
 @end

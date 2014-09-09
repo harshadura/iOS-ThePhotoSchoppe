@@ -6,14 +6,14 @@
 //  Copyright (c) 2013 Appcoda. All rights reserved.
 //
 
-#import "APPViewController.h"
-#import "APPChildViewController.h"
+#import "PortfolioMainViewController.h"
+#import "PortfolioChildViewController.h"
 
-@interface APPViewController ()
+@interface PortfolioMainViewController ()
 
 @end
 
-@implementation APPViewController
+@implementation PortfolioMainViewController
 @synthesize images_list_array, showIndexImage;
 
 - (id)init {
@@ -99,7 +99,7 @@
 //        showIndexImage = 0;
 //    }
     
-    APPChildViewController *initialViewController = [self viewControllerAtIndex: showIndexImage];
+    PortfolioChildViewController *initialViewController = [self viewControllerAtIndex: showIndexImage];
     
     NSArray *viewControllers = [NSArray arrayWithObject:initialViewController];
     
@@ -118,9 +118,9 @@
     
 }
 
-- (APPChildViewController *)viewControllerAtIndex:(NSUInteger)index {
+- (PortfolioChildViewController *)viewControllerAtIndex:(NSUInteger)index {
         
-    APPChildViewController *childViewController = [[APPChildViewController alloc] initWithNibName:@"APPChildViewController" bundle:nil];
+    PortfolioChildViewController *childViewController = [[PortfolioChildViewController alloc] initWithNibName:@"APPChildViewController" bundle:nil];
     childViewController.index = index;
     
     return childViewController;
@@ -129,7 +129,7 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
     
-    NSUInteger index = [(APPChildViewController *)viewController index];
+    NSUInteger index = [(PortfolioChildViewController *)viewController index];
     
     if (index == 0) {
         return nil;
@@ -144,7 +144,7 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
     
-    NSUInteger index = [(APPChildViewController *)viewController index];
+    NSUInteger index = [(PortfolioChildViewController *)viewController index];
     
     index++;
     NSUInteger elements = [images_list_array count];

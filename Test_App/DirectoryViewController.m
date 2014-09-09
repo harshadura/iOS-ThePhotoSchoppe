@@ -1,80 +1,136 @@
 //
-//  DirectoryViewController.m
-//  iOS-ThePhotoSchoppe
+//  TablieViewController.m
+//  TableViewProg
 //
-//  Created by Harsha Siriwardena on 8/21/14.
-//  Copyright (c) 2014 Harsha. All rights reserved.
+//  Created by Dan on 15/02/2012.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import "DirectoryViewController.h"
+#import "CustomCell.h"
 
 @interface DirectoryViewController ()
 
 @end
 
-@implementation DirectoryViewController
-
-- (id)init {
-    self = [super init];
-    if (self) {
-        
-    }
-    
-    return self;
+@implementation DirectoryViewController {
+    UITableView *tableView;
 }
+
+@synthesize value, dic, photographer_array;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults synchronize];
+    
+    photographer_array = [[[NSUserDefaults standardUserDefaults] arrayForKey:@"directory_list"] mutableCopy];
+
+    // init table view
+    tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    
+    // must set delegate & dataSource, otherwise the the table will be empty and not responsive
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    
+    //    tableView.backgroundColor = [UIColor cyanColor];
+    
+    // add to canvas
+    [self.view addSubview:tableView];
+
+    
 }
 
-- (void)didReceiveMemoryWarning
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 10;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"Cell";
+    CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        
+        //        cell = [[[CustomCell alloc] initWithStyle:UITableViewCellStyleDefault
+        //                                       reuseIdentifier:CellIdentifier] autorelease];
+        
+        
+        cell = [[[CustomCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+    }
+    ////////
+//    photographer_array
+    NSMutableDictionary *data_dic = [photographer_array objectAtIndex:indexPath.row];
+    
+    NSString *fname = [data_dic objectForKey:@"fname"];
+    NSString *lname = [data_dic objectForKey:@"lname"];
+    NSString *phone = [data_dic objectForKey:@"phone"];
+    NSString *email_pub_id = [data_dic objectForKey:@"email_pub_id"];
+    
+    fname = [fname stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    fname=[fname stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    
+    lname = [lname stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    lname=[lname stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    
+    phone = [phone stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    phone=[phone stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    
+    email_pub_id = [email_pub_id stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    email_pub_id=[email_pub_id stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    
+    NSString *full_name = [NSString stringWithFormat:@"%@ %@", fname, lname];
+    NSString *contact_info = [NSString stringWithFormat:@"%@ | %@", phone, email_pub_id];
+    
+    cell.primaryLabel.text = full_name;
+    cell.secondaryLabel.text = contact_info;
+    cell.myImageView.image = nil;
+    
+//    // Set up the cell…
+//    switch (indexPath.row) {
+//        case 0:
+//            cell.primaryLabel.text = @"Meeting on iPhone Development";
+//            cell.secondaryLabel.text = @"Sat 10:30";
+//            cell.myImageView.image = [UIImage imageNamed:@"meeting_color.png"];
+//            break;
+//        case 1:
+//            cell.primaryLabel.text = @"Call With Client";
+//            cell.secondaryLabel.text = @"Planned";
+//            cell.myImageView.image = [UIImage imageNamed:@"call_color.png"];
+//            break;
+//        case 2:
+//            cell.primaryLabel.text = @"Appointment with Joey";
+//            cell.secondaryLabel.text = @"2 Hours";
+//            cell.myImageView.image = [UIImage imageNamed:@"calendar_color.png"];
+//            break;
+//        case 3:
+//            cell.primaryLabel.text = @"Call With Client";
+//            cell.secondaryLabel.text = @"Planned";
+//            cell.myImageView.image = [UIImage imageNamed:@"call_color.png"];
+//            break;
+//        case 4:
+//            cell.primaryLabel.text = @"Appointment with Joey";
+//            cell.secondaryLabel.text = @"2 Hours";
+//            cell.myImageView.image = [UIImage imageNamed:@"calendar_color.png"];
+//            break;
+//        default:
+//            break;
+//    }
+    
+    return cell;
+}
+
+#pragma mark - UITableViewDataSource
+// number of section(s), now I assume there is only 1 section
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)theTableView
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    return 1;
 }
 
-- (void) loadView
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIView *mainView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [mainView setBackgroundColor:[UIColor whiteColor]];
-    self.view = mainView;
-    
-    UINavigationBar *naviBarObj = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-    [self.view addSubview:naviBarObj];
-    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Quit"         style:UIBarButtonItemStyleBordered target:self action:@selector(cancelButtonPressed)];
-    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:@"New User?" style:UIBarButtonItemStyleBordered target:self
-                                                                action:@selector(doneButtonPressed)];
-    
-    UINavigationItem *navigItem = [[UINavigationItem alloc] initWithTitle:@"Navigation Title"];
-    navigItem.rightBarButtonItem = doneItem;
-    navigItem.leftBarButtonItem = cancelItem;
-    naviBarObj.items = [NSArray arrayWithObjects: navigItem,nil];
-    [self.view addSubview:naviBarObj];
-    
-    UILabel *lblTitle = [[UILabel alloc] init];
-    lblTitle.textColor = [UIColor blackColor];
-    [lblTitle setFrame:CGRectMake(40, 50+20, 300, 20)];
-    lblTitle.backgroundColor=[UIColor clearColor];
-    lblTitle.textColor=[UIColor blackColor];
-    lblTitle.userInteractionEnabled=NO;
-    lblTitle.text= @"Directory";
-    [self.view addSubview:lblTitle];
-    
-    
+    return 50;
 }
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

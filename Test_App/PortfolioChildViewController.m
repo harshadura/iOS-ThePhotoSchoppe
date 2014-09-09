@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 Appcoda. All rights reserved.
 //
 
-#import "APPChildViewController.h"
+#import "PortfolioChildViewController.h"
 
-@interface APPChildViewController ()
+@interface PortfolioChildViewController ()
 
 @end
 
-@implementation APPChildViewController
+@implementation PortfolioChildViewController
 @synthesize btnShare, btnRate, isTappFirstTime, lblOveralRating, textOveralRating, rateView, statusLabel, textUserRating, imageView;
 
 - (id)init {

@@ -8,16 +8,12 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import "AppDelegate.h"
 #import "SwitchTabBarController.h"
-#import "LocationsViewController.h"
 #import "LoginViewController.h"
-#import "DirectoryViewController.h"
-#import "LocationsViewController.h"
 #import "MoreViewController.h"
-#import "MainMenuViewController.h"
 #import "CustomMarkersViewController.h"
-#import "LocViewController.h"
-#import "TablieViewController.h"
-#import "APPViewController.h"
+#import "LocationsViewController.h"
+#import "DirectoryViewController.h"
+#import "PortfolioMainViewController.h"
 
 @implementation AppDelegate
 @synthesize window = _window;
@@ -187,13 +183,13 @@
 {
 
     LoginViewController *loginViewController = [[LoginViewController alloc]init];
-    LocViewController *locViewController = [[LocViewController alloc]init];
-    APPViewController *appViewController = [[APPViewController alloc] init];
+    LocationsViewController *locViewController = [[LocationsViewController alloc]init];
+    PortfolioMainViewController *appViewController = [[PortfolioMainViewController alloc] init];
     
 //    CustomMarkersViewController *customMarkersViewController = [[CustomMarkersViewController alloc] init];
-    MainMenuViewController *mainMenuViewController = [[MainMenuViewController alloc]init];
-    TablieViewController *directoryViewController = [[TablieViewController alloc] init];
-    LocationsViewController *locationsViewController = [[LocationsViewController alloc] init];
+//    MainMenuViewController *mainMenuViewController = [[MainMenuViewController alloc]init];
+    DirectoryViewController *directoryViewController = [[DirectoryViewController alloc] init];
+//    LocationsViewController *locationsViewController = [[LocationsViewController alloc] init];
     MoreViewController *moreViewController = [[MoreViewController alloc] init];
     
     UINavigationController * LoginNav = [[UINavigationController alloc] initWithRootViewController:appViewController];
