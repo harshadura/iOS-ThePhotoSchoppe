@@ -32,6 +32,7 @@
     [self initTabBar];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
     [GMSServices provideAPIKey:@"AIzaSyDLkTZIlmtvEqH36PlaSfvT4d4Jw8oQSKk"];
     
 //    dispatch_async(dispatch_get_main_queue(), ^{

@@ -25,30 +25,30 @@
 }
 
 
-- (void)tapOnce:(UIGestureRecognizer *)gesture
-{
-    //on a single  tap, call zoomToRect in UIScrollView
-//    [self.imageView zoomToRect:rectToZoomInTo animated:NO];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
-
-    
-//    [self.navigationController.tabBarController.tabBar setHidden:true];
-    
-//    [[self navigationController] setHidesBottomBarWhenPushed:YES];
-    
-    [self hideTabBar: self.tabBarController];
-    imageView.frame=CGRectMake(0,0,320,480);
-    
-}
-- (void)tapTwice:(UIGestureRecognizer *)gesture
-{
-    //on a double tap, call zoomToRect in UIScrollView
-//    [self.imageView zoomToRect:rectToZoomOutTo animated:NO];
-//      imageView.frame=CGRectMake(0,0,320,480);
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
-    [self showTabBar: self.tabBarController];
-    imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 65, 320, 460)];
-}
+//- (void)tapOnce:(UIGestureRecognizer *)gesture
+//{
+//    //on a single  tap, call zoomToRect in UIScrollView
+////    [self.imageView zoomToRect:rectToZoomInTo animated:NO];
+//    [self.navigationController setNavigationBarHidden:YES animated:YES];
+//
+//    
+////    [self.navigationController.tabBarController.tabBar setHidden:true];
+//    
+////    [[self navigationController] setHidesBottomBarWhenPushed:YES];
+//    
+//    [self hideTabBar: self.tabBarController];
+//    imageView.frame=CGRectMake(0,0,320,480);
+//    
+//}
+//- (void)tapTwice:(UIGestureRecognizer *)gesture
+//{
+//    //on a double tap, call zoomToRect in UIScrollView
+////    [self.imageView zoomToRect:rectToZoomOutTo animated:NO];
+////      imageView.frame=CGRectMake(0,0,320,480);
+//    [self.navigationController setNavigationBarHidden:NO animated:YES];
+//    [self showTabBar: self.tabBarController];
+//    imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 65, 320, 460)];
+//}
 
 - (void) hideTabBar:(UITabBarController *) tabbarcontroller
 {
@@ -108,23 +108,23 @@
 - (void)viewDidLoad {
     
     
-    UITapGestureRecognizer *tapOnce =
-    [[UITapGestureRecognizer alloc] initWithTarget:self
-                                            action:@selector(tapOnce:)];
-    UITapGestureRecognizer *tapTwice =
-    [[UITapGestureRecognizer alloc] initWithTarget:self
-                                            action:@selector(tapTwice:)];
-
-    tapOnce.numberOfTapsRequired = 1;
-    tapTwice.numberOfTapsRequired = 2;
-    
-    //stops tapOnce from overriding tapTwice
-    [tapOnce requireGestureRecognizerToFail:tapTwice];
-    
-    // then need to add the gesture recogniser to a view
-    // - this will be the view that recognises the gesture
-    [self.view addGestureRecognizer:tapOnce];
-    [self.view addGestureRecognizer:tapTwice];
+//    UITapGestureRecognizer *tapOnce =
+//    [[UITapGestureRecognizer alloc] initWithTarget:self
+//                                            action:@selector(tapOnce:)];
+//    UITapGestureRecognizer *tapTwice =
+//    [[UITapGestureRecognizer alloc] initWithTarget:self
+//                                            action:@selector(tapTwice:)];
+//
+//    tapOnce.numberOfTapsRequired = 1;
+//    tapTwice.numberOfTapsRequired = 2;
+//    
+//    //stops tapOnce from overriding tapTwice
+//    [tapOnce requireGestureRecognizerToFail:tapTwice];
+//    
+//    // then need to add the gesture recogniser to a view
+//    // - this will be the view that recognises the gesture
+//    [self.view addGestureRecognizer:tapOnce];
+//    [self.view addGestureRecognizer:tapTwice];
     
     ///
     
@@ -408,13 +408,15 @@
 //    [self.view addSubview:btnRate];
     
     
-    lblOveralRating = [[UILabel alloc] init];
-    lblOveralRating.textColor = [UIColor redColor];
-    [lblOveralRating setFrame:CGRectMake(10+100+20, 470, 250, 40)];
-    lblOveralRating.backgroundColor=[UIColor clearColor];
-    lblOveralRating.userInteractionEnabled=NO;
-    lblOveralRating.text= textOveralRating;
-    [self.view addSubview:lblOveralRating];
+
+    
+//    lblOveralRating = [[UILabel alloc] init];
+//    lblOveralRating.textColor = [UIColor redColor];
+//    [lblOveralRating setFrame:CGRectMake(10+100+20, 470, 250, 40)];
+//    lblOveralRating.backgroundColor=[UIColor clearColor];
+//    lblOveralRating.userInteractionEnabled=NO;
+//    lblOveralRating.text= textOveralRating;
+//    [self.view addSubview:lblOveralRating];
     
     [imageView addSubview:btnRate];
     [imageView bringSubviewToFront:btnRate];
@@ -426,6 +428,7 @@
     
     rateView = [[RateView alloc] init];
     [rateView setFrame:CGRectMake(10+100+20, 360, 100, 60)];
+//    rateView.backgroundColor = [UIColor whiteColor];
 //    [self.view addSubview:rateView];
      [imageView addSubview:rateView];
     [imageView bringSubviewToFront:rateView];
@@ -442,7 +445,17 @@
     [imageView setUserInteractionEnabled:YES];
 
     
-
+    CGFloat labelX = rateView.bounds.size.width + 2;
+    
+    lblOveralRating = [[UILabel alloc] initWithFrame:CGRectMake(labelX, 180, self.imageView.bounds.size.width - (labelX + 2), self.imageView.frame.size.height)];
+    lblOveralRating.textColor = [UIColor redColor];
+    lblOveralRating.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    lblOveralRating.font = [UIFont boldSystemFontOfSize:12.0f];
+    lblOveralRating.numberOfLines = 1;
+    lblOveralRating.backgroundColor = [UIColor clearColor];
+    lblOveralRating.userInteractionEnabled=NO;
+    lblOveralRating.text= textOveralRating;
+    [imageView addSubview:lblOveralRating];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -464,7 +477,7 @@
     [formatter setRoundingMode: NSNumberFormatterRoundUp];
     
     NSString *user_rate= [formatter stringFromNumber:[NSNumber numberWithFloat:rating]];
-    self.statusLabel.text = [NSString stringWithFormat:@"User Rating: %@", user_rate];
+//    self.statusLabel.text = [NSString stringWithFormat:@"User Rating: %@", user_rate];
 }
 
 @end
