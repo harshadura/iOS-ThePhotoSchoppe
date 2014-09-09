@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PhotoDownloader.h"
 
 @class SwitchTabBarController;
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, PhotoDownloaderDelegate>
 {
     UIWindow                    *_window;
     SwitchTabBarController      *_switchTabBarController;
@@ -18,5 +19,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) SwitchTabBarController *switchTabBarController;
+@property (strong, nonatomic) UIImageView *splashView;
+@property(nonatomic,retain) UIActivityIndicatorView *activityIndicator;
 
 @end

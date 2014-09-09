@@ -17,10 +17,13 @@
 #import "CustomMarkersViewController.h"
 #import "LocViewController.h"
 #import "TablieViewController.h"
+#import "APPViewController.h"
 
 @implementation AppDelegate
 @synthesize window = _window;
+@synthesize splashView;
 @synthesize switchTabBarController = _switchTabBarController;
+@synthesize activityIndicator;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -33,9 +36,46 @@
     [self.window makeKeyAndVisible];
  
     
-    LoginViewController *lvc = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-    lvc.delegate = self;
-    [self.switchTabBarController presentModalViewController:lvc animated:NO];
+    
+//    LoginViewController *lvc = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+//    lvc.delegate = self;
+//    [self.switchTabBarController presentModalViewController:lvc animated:NO];
+//    
+    ////////
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
+        splashView = [[UIImageView alloc] initWithFrame: [[UIScreen mainScreen] bounds]];
+        splashView.image = [UIImage imageNamed:@"MyLaunchImage"];
+        [self.window addSubview:splashView];
+        
+        activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        activityIndicator.frame = CGRectMake(120, 240, 100, 100);
+        activityIndicator.color = [UIColor whiteColor];
+        [activityIndicator setHidesWhenStopped:YES];
+        [self.splashView addSubview: activityIndicator];
+        
+        CGFloat labelX = activityIndicator.bounds.size.width + 2;
+        
+        UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(labelX, 30, self.splashView.bounds.size.width - (labelX + 2), self.splashView.frame.size.height)];
+        label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+        label.font = [UIFont boldSystemFontOfSize:12.0f];
+        label.numberOfLines = 1;
+        
+        label.backgroundColor = [UIColor clearColor];
+        label.textColor = [UIColor whiteColor];
+        label.text = @"Loading.. Please wait. ";
+        
+        [self.splashView addSubview:label];
+        
+        [activityIndicator startAnimating];
+        
+        //// load you web-service here and get data. After 2 sec iphone rootview controller will display
+        [self performSelector:@selector(loadViewIphone) withObject:nil afterDelay:2.0];
+        
+        
+    }
+    
 //    [lvc release];
     
  [GMSServices provideAPIKey:@"AIzaSyDLkTZIlmtvEqH36PlaSfvT4d4Jw8oQSKk"];
@@ -49,6 +89,71 @@
     return YES;
 }
 
+#pragma mark - Sample protocol delegate
+-(void)processCompleted{
+    //    [myLabel setText:@"Process Completed"];
+    NSLog(@"Delegate fired ..");
+    
+    if (![NSThread isMainThread]) {
+        NSLog(@"Not in main thread 1..");
+    }
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        if (![NSThread isMainThread]) {
+            NSLog(@"Not in main thread 2..");
+        }
+        NSLog(@"In main thread 2..");
+        
+        
+        
+//        [activityIndicator stopAnimating];
+        //        [activityIndicator removeFromSuperview];
+        
+        //        // perform on main
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Title" message:@"Sync completed!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+//        [alert show];
+        
+        [activityIndicator stopAnimating];
+        [splashView removeFromSuperview];
+        
+        LoginViewController *lvc = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+        lvc.delegate = self;
+        [self.switchTabBarController presentModalViewController:lvc animated:NO];
+        //        APPViewController *controller2 = [[APPViewController alloc] init];
+        //        [[self navigationController] pushViewController:controller2 animated:YES];
+        
+    });
+    
+    
+    
+}
+
+-(void)loadViewIphone
+{
+    PhotoDownloader *sampleProtocol = [[PhotoDownloader alloc]init];
+    sampleProtocol.delegate = self;
+    //        [myLabel setText:@"Processing..."];
+    [sampleProtocol startSampleProcess];
+    
+//    [splashView removeFromSuperview];
+//
+//    LoginViewController *lvc = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+//    lvc.delegate = self;
+//    [self.switchTabBarController presentModalViewController:lvc animated:NO];
+
+
+//    self.window.rootViewController = self.tabBarController;
+//    [self.window makeKeyAndVisible];
+//    CATransition *animation = [CATransition animation];
+//    [animation setDelegate:self];
+//    [animation setType:kCATransitionFade];
+//    [animation setDuration:0.5];
+//    [animation setTimingFunction:[CAMediaTimingFunction functionWithName:
+//                                  kCAMediaTimingFunctionEaseInEaseOut]];
+//    [[self.window layer] addAnimation:animation forKey:kAnimationKey];
+}
+
 -(void)loginViewControllerDidFinish:(LoginViewController *)loginViewController {
     [self.switchTabBarController dismissModalViewControllerAnimated:NO];
 }
@@ -58,6 +163,7 @@
 
     LoginViewController *loginViewController = [[LoginViewController alloc]init];
     LocViewController *locViewController = [[LocViewController alloc]init];
+    APPViewController *appViewController = [[APPViewController alloc] init];
     
 //    CustomMarkersViewController *customMarkersViewController = [[CustomMarkersViewController alloc] init];
     MainMenuViewController *mainMenuViewController = [[MainMenuViewController alloc]init];
@@ -65,7 +171,7 @@
     LocationsViewController *locationsViewController = [[LocationsViewController alloc] init];
     MoreViewController *moreViewController = [[MoreViewController alloc] init];
     
-    UINavigationController * LoginNav = [[UINavigationController alloc] initWithRootViewController:mainMenuViewController];
+    UINavigationController * LoginNav = [[UINavigationController alloc] initWithRootViewController:appViewController];
     UINavigationController * DirectoryNav = [[UINavigationController alloc] initWithRootViewController:directoryViewController];
     UINavigationController * LocationsNav = [[UINavigationController alloc] initWithRootViewController:locViewController];
     UINavigationController * MoreNav = [[UINavigationController alloc] initWithRootViewController:moreViewController];
