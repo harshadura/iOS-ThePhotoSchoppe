@@ -63,7 +63,7 @@
 		3A9514C719B0B1700062F588 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A9514C619B0B1700062F588 /* MessageUI.framework */; };
 		3AB65FE019B9D42100444CD0 /* thephotoschoppe.sql in Resources */ = {isa = PBXBuildFile; fileRef = 3AB65FDF19B9D42100444CD0 /* thephotoschoppe.sql */; };
 		3AB926CD19A62FA100D98FA4 /* PortfolioMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB926CA19A62FA100D98FA4 /* PortfolioMainViewController.m */; };
-		3AB926CE19A62FA100D98FA4 /* PortfolioChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB926CC19A62FA100D98FA4 /* PortfolioChildViewController.m */; };
+		3AB926CE19A62FA100D98FA4 /* PortfolioChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB926CC19A62FA100D98FA4 /* PortfolioChildViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3AC6889019AB51C300B99388 /* PhotoDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6888D19AB51C300B99388 /* PhotoDownloader.m */; };
 		3ACCF84E19AF4C1C00E12C66 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACCF84D19AF4C1C00E12C66 /* GoogleMaps.framework */; };
 		3ACCF85019AF4C3000E12C66 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3ACCF84F19AF4C3000E12C66 /* GoogleMaps.bundle */; };

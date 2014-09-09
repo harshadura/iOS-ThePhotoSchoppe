@@ -147,7 +147,7 @@
     [[UITapGestureRecognizer alloc] initWithTarget:self
                                             action:@selector(tapTwice:)];
 
-    tapOnce.numberOfTapsRequired = 1;
+    tapOnce.numberOfTapsRequired = 2;
     tapTwice.numberOfTapsRequired = 1;
 
     //stops tapOnce from overriding tapTwice
