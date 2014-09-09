@@ -122,7 +122,7 @@
     [btnRegister setBackgroundColor: [UIColor whiteColor]];
     [btnRegister setTitleColor:[UIColor blackColor] forState: UIControlStateHighlighted];
     
-    [btnRegister addTarget:self action:@selector(userRegTapped) forControlEvents:UIControlEventTouchUpInside];
+    [btnRegister addTarget:self action:@selector(userLoginTapped) forControlEvents:UIControlEventTouchUpInside];
     [btnRegister setTitle:@"SignIn" forState:UIControlStateNormal];
     
     // Set the background for any states you plan to use
@@ -156,9 +156,9 @@
 }
 
 #pragma mark - private methods
-- (void)userRegTapped {
+- (void)userLoginTapped {
     
-    [self buttonPressed];
+    [self.delegate loginViewControllerDidFinish:self];
     
     //     [self dismissModalViewControllerAnimated:YES];
     
@@ -222,12 +222,6 @@
     
     //    MainMenuViewController *controller2 = [[MainMenuViewController alloc] init];
     //    [[self navigationController] pushViewController:controller2 animated:YES];
-}
-
-- (void)buttonPressed{
-    //do NOT removeFromSuperview, delegate will dismiss
-    //[self.view removeFromSuperview];
-    [self.delegate loginViewControllerDidFinish:self];
 }
 
 @end

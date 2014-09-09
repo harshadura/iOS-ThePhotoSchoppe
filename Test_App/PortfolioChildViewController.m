@@ -1,3 +1,11 @@
+//
+//  APPChildViewController.m
+//  PageApp
+//
+//  Created by Rafael Garcia Leiva on 10/06/13.
+//  Copyright (c) 2013 Appcoda. All rights reserved.
+//
+
 #import "PortfolioChildViewController.h"
 
 @interface PortfolioChildViewController ()
@@ -5,7 +13,7 @@
 @end
 
 @implementation PortfolioChildViewController
-@synthesize btnShare, btnRate, isTappFirstTime, lblOveralRating, textOveralRating, rateView, statusLabel, textUserRating, imageView;
+@synthesize btnShare, tapTwice, btnRate, pngPath, fullscreenImageView, prevFrame, isTappFirstTime, lblOveralRating, textOveralRating, rateView, statusLabel, textUserRating, imageView;
 
 - (id)init {
     self = [super init];
@@ -14,6 +22,64 @@
     }
     
     return self;
+}
+
+
+- (void)tapOnce:(UIGestureRecognizer *)gesture
+{
+    //on a single  tap, call zoomToRect in UIScrollView
+//    [self.imageView zoomToRect:rectToZoomInTo animated:NO];
+//    [self.navigationController setNavigationBarHidden:YES animated:YES];
+
+
+//    [self.navigationController.tabBarController.tabBar setHidden:true];
+
+//    [[self navigationController] setHidesBottomBarWhenPushed:YES];
+
+//    [self hideTabBar: self.tabBarController];
+//    imageView.frame=CGRectMake(0,0,320,480);
+
+
+    prevFrame = imageView.frame;
+
+//    NSData *archivedData = [NSKeyedArchiver archivedDataWithRootObject: imageView];
+//    fullscreenImageView = [NSKeyedUnarchiver unarchiveObjectWithData: archivedData];
+    
+    fullscreenImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 65, 320, 460)]; //initWithFrame:CGRectMake(40+100+10, 80+100, 140, 25)];
+    fullscreenImageView.image = [UIImage imageWithContentsOfFile: pngPath];
+    [fullscreenImageView setFrame:[[UIScreen mainScreen] bounds]];
+    [fullscreenImageView setUserInteractionEnabled:YES];
+    
+    UIWindow* mainWindow = [[UIApplication sharedApplication] keyWindow];
+//    [mainWindow addSubview: fullscreenImageView];
+    
+    [UIView transitionWithView:mainWindow duration:0.5
+                       options:UIViewAnimationOptionTransitionCrossDissolve //change to whatever animation you like
+                    animations:^ { [mainWindow addSubview:fullscreenImageView]; }
+                    completion:nil];
+    
+    [self.fullscreenImageView addGestureRecognizer:tapTwice];
+
+    
+}
+- (void)tapTwice:(UIGestureRecognizer *)gesture
+{
+    //on a double tap, call zoomToRect in UIScrollView
+//    [self.imageView zoomToRect:rectToZoomOutTo animated:NO];
+//      imageView.frame=CGRectMake(0,0,320,480);
+//    [self.navigationController setNavigationBarHidden:NO animated:YES];
+//    [self showTabBar: self.tabBarController];
+//    imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 65, 320, 460)];
+    
+//    UIWindow* mainWindow = [[UIApplication sharedApplication] keyWindow];
+//    [mainWindow addSubview: imageView];
+    
+    
+    [UIView animateWithDuration:0.5
+                     animations:^{fullscreenImageView.alpha = 0.0;}
+                     completion:^(BOOL finished){ [fullscreenImageView removeFromSuperview]; }];
+    
+//    [fullscreenImageView removeFromSuperview];
 }
 
 - (void) hideTabBar:(UITabBarController *) tabbarcontroller
@@ -72,6 +138,27 @@
 }
 
 - (void)viewDidLoad {
+    
+    
+    UITapGestureRecognizer *tapOnce =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(tapOnce:)];
+    tapTwice =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(tapTwice:)];
+
+    tapOnce.numberOfTapsRequired = 1;
+    tapTwice.numberOfTapsRequired = 1;
+
+    //stops tapOnce from overriding tapTwice
+    [tapOnce requireGestureRecognizerToFail:tapTwice];
+
+    // then need to add the gesture recogniser to a view
+    // - this will be the view that recognises the gesture
+    [self.imageView addGestureRecognizer:tapOnce];
+//    [self.fullscreenImageView addGestureRecognizer:tapTwice];
+    
+    ///
     
     [self getOverallRatingByImageID: [NSString stringWithFormat:@"%d", self.index+1]];
     [self getIndividualRatingByUserId: @"1" AndImageID: @"1"];
@@ -279,7 +366,7 @@
     NSLog (@"Image >>  %i = %@", self.index, [images_list_array objectAtIndex: self.index]);
     
     NSString *Dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *pngPath = [NSString stringWithFormat:@"%@",[images_list_array objectAtIndex: self.index]];
+    pngPath = [NSString stringWithFormat:@"%@",[images_list_array objectAtIndex: self.index]];
     
     //NSString *pngPath = [NSString stringWithFormat:@"%@/test1234.png",Dir];// this path if you want save reference path in sqlite
     // this path if you want save reference path in sqlite
@@ -292,6 +379,12 @@
     imageView.image = [UIImage imageWithContentsOfFile: pngPath];
     imageView.backgroundColor = [UIColor redColor];
     [self.view addSubview:imageView];
+    
+    
+    //    UIButton *btnDetail = [UIButton buttonWithType: UIButtonTypeDetailDisclosure];
+    //    btnDetail.frame = CGRectMake(0,0,100,100);
+    //    [btnDetail addTarget:self action:@selector(buttonClicked) forControlEvents:UIControlEventAllTouchEvents];
+    
     
     UIImage *bluebuttonImage = [[UIImage imageNamed:@"blueButton.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
     UIImage *bluebuttonImageHighlight = [[UIImage imageNamed:@"blueButtonHighlight.png"]
@@ -311,6 +404,51 @@
     UIImage *greybuttonImage = [[UIImage imageNamed:@"greyButton.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
     UIImage *greybuttonImageHighlight = [[UIImage imageNamed:@"greyButtonHighlight.png"]
                                          resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+    
+    UITapGestureRecognizer *scrlTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrlTapREcotTap:)];
+    [scrlTap setNumberOfTapsRequired:1];
+    [self.view addGestureRecognizer:scrlTap];
+    
+    //    btnShare = [UIButton buttonWithType: UIButtonTypeCustom];
+    //    [btnShare setBackgroundColor: [UIColor clearColor]];
+    //    [btnShare setTitleColor:[UIColor blackColor] forState: UIControlStateHighlighted];
+    //
+    //    [btnShare setBackgroundImage:greenbuttonImage forState:UIControlStateNormal];
+    //    [btnShare setBackgroundImage:greenbuttonImageHighlight forState:UIControlStateHighlighted];
+    //
+    //    [btnShare addTarget:self action:@selector(doneButtonPressed)  forControlEvents:UIControlEventTouchUpInside];
+    //    [btnShare setTitle:@"Share" forState:UIControlStateNormal];
+    //    btnShare.frame = CGRectMake(10, 400, 100, 40);
+    //    [self.view addSubview:btnShare];
+    //
+    //    [imageView addSubview:btnShare];
+    //    [imageView bringSubviewToFront:btnShare];
+    //    [imageView setUserInteractionEnabled:YES];
+    //
+    //    //
+    //
+    //    btnRate = [UIButton buttonWithType: UIButtonTypeCustom];
+    //    [btnRate setBackgroundColor: [UIColor clearColor]];
+    //    [btnRate setTitleColor:[UIColor blackColor] forState: UIControlStateHighlighted];
+    //
+    //    [btnRate setBackgroundImage:orangebuttonImage forState:UIControlStateNormal];
+    //    [btnRate setBackgroundImage:orangebuttonImageHighlight forState:UIControlStateHighlighted];
+    //
+    //    [btnRate addTarget:self action:@selector(doneButtonPressed)  forControlEvents:UIControlEventTouchUpInside];
+    //    [btnRate setTitle:@"Rate" forState:UIControlStateNormal];
+    //    btnRate.frame = CGRectMake(210, 400, 100, 40);
+    //    [self.view addSubview:btnRate];
+    
+    
+    
+    
+    //    lblOveralRating = [[UILabel alloc] init];
+    //    lblOveralRating.textColor = [UIColor redColor];
+    //    [lblOveralRating setFrame:CGRectMake(10+100+20, 470, 250, 40)];
+    //    lblOveralRating.backgroundColor=[UIColor clearColor];
+    //    lblOveralRating.userInteractionEnabled=NO;
+    //    lblOveralRating.text= textOveralRating;
+    //    [self.view addSubview:lblOveralRating];
     
     [imageView addSubview:btnRate];
     [imageView bringSubviewToFront:btnRate];
