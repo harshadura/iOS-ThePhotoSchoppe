@@ -161,7 +161,7 @@
         PhotoDownloader *sampleProtocol = [[PhotoDownloader alloc]init];
         sampleProtocol.delegate = self;
         //        [myLabel setText:@"Processing..."];
-        [sampleProtocol startSampleProcess];
+        [sampleProtocol startPhotoDownloadProcess];
 
     
 //        APPViewController *controller2 = [[APPViewController alloc] init];
@@ -205,7 +205,7 @@
 }
 
 #pragma mark - Sample protocol delegate
--(void)processCompleted{
+-(void)photoDownloadProcessCompleted{
     //    [myLabel setText:@"Process Completed"];
     NSLog(@"Delegate fired ..");
     

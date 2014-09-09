@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "PhotoDownloader.h"
+#import "DirectoryDataDownloader.h"
 
 @class SwitchTabBarController;
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, PhotoDownloaderDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, PhotoDownloaderDelegate, DirectoryDataDownloaderDelegate>
 {
     UIWindow                    *_window;
     SwitchTabBarController      *_switchTabBarController;

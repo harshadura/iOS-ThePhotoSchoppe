@@ -29,13 +29,42 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = self.switchTabBarController;
-
-    
     [self initTabBar];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
- 
+    [GMSServices provideAPIKey:@"AIzaSyDLkTZIlmtvEqH36PlaSfvT4d4Jw8oQSKk"];
     
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        
+//        if (![NSThread isMainThread]) {
+//            NSLog(@"Not in main thread 2..");
+//        }
+//        
+//        NSLog(@"In main thread 2..");
+    
+        
+        if([[NSUserDefaults standardUserDefaults] boolForKey:@"flag_synced_once"]){
+            //        [splashView removeFromSuperview];
+            LoginViewController *lvc = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+            lvc.delegate = self;
+            [self.switchTabBarController presentModalViewController:lvc animated:NO];
+            return YES;
+        }
+        
+//    });
+    
+    //    [lvc release];
+    
+   
+    
+    //    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController2];
+    //
+    //    self.tabBarController = [[UITabBarController alloc] init];
+    //    self.tabBarController.viewControllers = [NSArray arrayWithObjects:viewController1, navController,viewController3, viewController4, nil];
+    
+    
+    
+
     
 //    LoginViewController *lvc = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
 //    lvc.delegate = self;
@@ -75,22 +104,12 @@
         
         
     }
-    
-//    [lvc release];
-    
- [GMSServices provideAPIKey:@"AIzaSyDLkTZIlmtvEqH36PlaSfvT4d4Jw8oQSKk"];
-    
-//    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController2];
-//    
-//    self.tabBarController = [[UITabBarController alloc] init];
-//    self.tabBarController.viewControllers = [NSArray arrayWithObjects:viewController1, navController,viewController3, viewController4, nil];
-  
-    
     return YES;
+
 }
 
 #pragma mark - Sample protocol delegate
--(void)processCompleted{
+-(void)photoDownloadProcessCompleted{
     //    [myLabel setText:@"Process Completed"];
     NSLog(@"Delegate fired ..");
     
@@ -104,15 +123,36 @@
             NSLog(@"Not in main thread 2..");
         }
         NSLog(@"In main thread 2..");
+
         
+        NSLog(@"*** Accessing Directory Downloader data ....");
+        DirectoryDataDownloader *sampleProtocol = [[DirectoryDataDownloader alloc]init];
+        sampleProtocol.delegate = self;
+        [sampleProtocol startDirectoryDownloadProcess];
         
+    });
+}
+
+#pragma mark - Sample protocol delegate
+-(void)directoryDownloadProcessCompleted{
+    //    [myLabel setText:@"Process Completed"];
+    NSLog(@"Delegate fired ..");
+    
+    if (![NSThread isMainThread]) {
+        NSLog(@"Not in main thread 1..");
+    }
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
         
-//        [activityIndicator stopAnimating];
-        //        [activityIndicator removeFromSuperview];
+        if (![NSThread isMainThread]) {
+            NSLog(@"Not in main thread 2..");
+        }
         
-        //        // perform on main
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Title" message:@"Sync completed!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-//        [alert show];
+        NSLog(@"In main thread 2..");
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setBool:YES forKey:@"flag_synced_once"];
+        [defaults synchronize];
         
         [activityIndicator stopAnimating];
         [splashView removeFromSuperview];
@@ -129,29 +169,13 @@
     
 }
 
+
 -(void)loadViewIphone
 {
     PhotoDownloader *sampleProtocol = [[PhotoDownloader alloc]init];
     sampleProtocol.delegate = self;
     //        [myLabel setText:@"Processing..."];
-    [sampleProtocol startSampleProcess];
-    
-//    [splashView removeFromSuperview];
-//
-//    LoginViewController *lvc = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-//    lvc.delegate = self;
-//    [self.switchTabBarController presentModalViewController:lvc animated:NO];
-
-
-//    self.window.rootViewController = self.tabBarController;
-//    [self.window makeKeyAndVisible];
-//    CATransition *animation = [CATransition animation];
-//    [animation setDelegate:self];
-//    [animation setType:kCATransitionFade];
-//    [animation setDuration:0.5];
-//    [animation setTimingFunction:[CAMediaTimingFunction functionWithName:
-//                                  kCAMediaTimingFunctionEaseInEaseOut]];
-//    [[self.window layer] addAnimation:animation forKey:kAnimationKey];
+    [sampleProtocol startPhotoDownloadProcess];
 }
 
 -(void)loginViewControllerDidFinish:(LoginViewController *)loginViewController {

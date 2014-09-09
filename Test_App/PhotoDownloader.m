@@ -4,7 +4,7 @@
 @implementation PhotoDownloader
 @synthesize value, dic, book_array, array_of_image_filenames, spinner, internetReachableFoo;
 
--(void)startSampleProcess{
+-(void)startPhotoDownloadProcess{
     
 //    [NSTimer scheduledTimerWithTimeInterval:3.0 target:self.delegate
 //                                   selector:@selector(processCompleted) userInfo:nil repeats:NO];
@@ -227,7 +227,7 @@
     [defaults setObject:book_array forKey:@"photos_list"];
     [defaults synchronize];
     
-    [_delegate processCompleted];
+    [_delegate photoDownloadProcessCompleted];
     
 }
 

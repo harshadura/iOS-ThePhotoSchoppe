@@ -23,7 +23,7 @@
     PhotoDownloader *sampleProtocol = [[PhotoDownloader alloc]init];
     sampleProtocol.delegate = self;
     [myLabel setText:@"Processing..."];
-    [sampleProtocol startSampleProcess];
+    [sampleProtocol startPhotoDownloadProcess];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -34,7 +34,7 @@
 }
 
 #pragma mark - Sample protocol delegate
--(void)processCompleted{
+-(void)photoDownloadProcessCompleted{
     [myLabel setText:@"Process Completed"];
 }
 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3A00977019BEE7CC0038BE58 /* MyLaunchImage-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A00976F19BEE7CC0038BE58 /* MyLaunchImage-568h@2x.png */; };
+		3A00977319BEFE6F0038BE58 /* DirectoryDataDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A00977219BEFE6F0038BE58 /* DirectoryDataDownloader.m */; };
 		3A01AB9319B9C99B00C5DCD4 /* rate_webservice.php in Resources */ = {isa = PBXBuildFile; fileRef = 3A01AB9219B9C99B00C5DCD4 /* rate_webservice.php */; };
 		3A0232BF19A5E50B006D499E /* PortfolioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0232BE19A5E50B006D499E /* PortfolioViewController.m */; };
 		3A0232C219A5E541006D499E /* DirectoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0232C119A5E541006D499E /* DirectoryViewController.m */; };
@@ -103,6 +104,8 @@
 
 /* Begin PBXFileReference section */
 		3A00976F19BEE7CC0038BE58 /* MyLaunchImage-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MyLaunchImage-568h@2x.png"; sourceTree = "<group>"; };
+		3A00977119BEFE6F0038BE58 /* DirectoryDataDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectoryDataDownloader.h; sourceTree = "<group>"; };
+		3A00977219BEFE6F0038BE58 /* DirectoryDataDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectoryDataDownloader.m; sourceTree = "<group>"; };
 		3A01AB9219B9C99B00C5DCD4 /* rate_webservice.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; name = rate_webservice.php; path = Test_App/rate_webservice.php; sourceTree = "<group>"; };
 		3A0232BD19A5E50B006D499E /* PortfolioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortfolioViewController.h; sourceTree = "<group>"; };
 		3A0232BE19A5E50B006D499E /* PortfolioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortfolioViewController.m; sourceTree = "<group>"; };
@@ -375,6 +378,8 @@
 				3ACF332419AE09DD00FDE5B2 /* SwitchTabBarController.m */,
 				3AC6888C19AB51C300B99388 /* PhotoDownloader.h */,
 				3AC6888D19AB51C300B99388 /* PhotoDownloader.m */,
+				3A00977119BEFE6F0038BE58 /* DirectoryDataDownloader.h */,
+				3A00977219BEFE6F0038BE58 /* DirectoryDataDownloader.m */,
 				3AC6888E19AB51C300B99388 /* ViewController.h */,
 				3AC6888F19AB51C300B99388 /* ViewController.m */,
 				3AC687FB19AB2F6D00B99388 /* LocationsViewController.h */,
@@ -555,6 +560,7 @@
 				3A9514C519B09CD50062F588 /* CustomCell.m in Sources */,
 				3A3D114C19A2289A003FB729 /* LoginViewController.m in Sources */,
 				3AC6889019AB51C300B99388 /* PhotoDownloader.m in Sources */,
+				3A00977319BEFE6F0038BE58 /* DirectoryDataDownloader.m in Sources */,
 				3AB3CA6C19A3794C00EDA940 /* MainMenuViewController.m in Sources */,
 				3AC687FD19AB2F6D00B99388 /* LocationsViewController.m in Sources */,
 				3A6D6BB619AF3B1E00A789A9 /* Reachability.m in Sources */,
