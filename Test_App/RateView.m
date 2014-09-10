@@ -32,7 +32,7 @@
     _maxRating = 5;
     _midMargin = 5;
     _leftMargin = 0;
-    _minImageSize = CGSizeMake(5, 5);
+    _minImageSize = CGSizeMake(10, 10);
     _delegate = nil;    
 }
 

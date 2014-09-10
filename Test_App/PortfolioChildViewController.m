@@ -28,22 +28,22 @@
 - (void)tapOnce:(UIGestureRecognizer *)gesture
 {
     //on a single  tap, call zoomToRect in UIScrollView
-//    [self.imageView zoomToRect:rectToZoomInTo animated:NO];
-//    [self.navigationController setNavigationBarHidden:YES animated:YES];
-
-
-//    [self.navigationController.tabBarController.tabBar setHidden:true];
-
-//    [[self navigationController] setHidesBottomBarWhenPushed:YES];
-
-//    [self hideTabBar: self.tabBarController];
-//    imageView.frame=CGRectMake(0,0,320,480);
-
-
+    //    [self.imageView zoomToRect:rectToZoomInTo animated:NO];
+    //    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    
+    
+    //    [self.navigationController.tabBarController.tabBar setHidden:true];
+    
+    //    [[self navigationController] setHidesBottomBarWhenPushed:YES];
+    
+    //    [self hideTabBar: self.tabBarController];
+    //    imageView.frame=CGRectMake(0,0,320,480);
+    
+    
     prevFrame = imageView.frame;
-
-//    NSData *archivedData = [NSKeyedArchiver archivedDataWithRootObject: imageView];
-//    fullscreenImageView = [NSKeyedUnarchiver unarchiveObjectWithData: archivedData];
+    
+    //    NSData *archivedData = [NSKeyedArchiver archivedDataWithRootObject: imageView];
+    //    fullscreenImageView = [NSKeyedUnarchiver unarchiveObjectWithData: archivedData];
     
     fullscreenImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 65, 320, 460)]; //initWithFrame:CGRectMake(40+100+10, 80+100, 140, 25)];
     fullscreenImageView.image = [UIImage imageWithContentsOfFile: pngPath];
@@ -51,7 +51,7 @@
     [fullscreenImageView setUserInteractionEnabled:YES];
     
     UIWindow* mainWindow = [[UIApplication sharedApplication] keyWindow];
-//    [mainWindow addSubview: fullscreenImageView];
+    //    [mainWindow addSubview: fullscreenImageView];
     
     [UIView transitionWithView:mainWindow duration:0.5
                        options:UIViewAnimationOptionTransitionCrossDissolve //change to whatever animation you like
@@ -59,27 +59,27 @@
                     completion:nil];
     
     [self.fullscreenImageView addGestureRecognizer:tapTwice];
-
+    
     
 }
 - (void)tapTwice:(UIGestureRecognizer *)gesture
 {
     //on a double tap, call zoomToRect in UIScrollView
-//    [self.imageView zoomToRect:rectToZoomOutTo animated:NO];
-//      imageView.frame=CGRectMake(0,0,320,480);
-//    [self.navigationController setNavigationBarHidden:NO animated:YES];
-//    [self showTabBar: self.tabBarController];
-//    imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 65, 320, 460)];
+    //    [self.imageView zoomToRect:rectToZoomOutTo animated:NO];
+    //      imageView.frame=CGRectMake(0,0,320,480);
+    //    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    //    [self showTabBar: self.tabBarController];
+    //    imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 65, 320, 460)];
     
-//    UIWindow* mainWindow = [[UIApplication sharedApplication] keyWindow];
-//    [mainWindow addSubview: imageView];
+    //    UIWindow* mainWindow = [[UIApplication sharedApplication] keyWindow];
+    //    [mainWindow addSubview: imageView];
     
     
     [UIView animateWithDuration:0.5
                      animations:^{fullscreenImageView.alpha = 0.0;}
                      completion:^(BOOL finished){ [fullscreenImageView removeFromSuperview]; }];
     
-//    [fullscreenImageView removeFromSuperview];
+    //    [fullscreenImageView removeFromSuperview];
 }
 
 - (void) hideTabBar:(UITabBarController *) tabbarcontroller
@@ -146,17 +146,17 @@
     tapTwice =
     [[UITapGestureRecognizer alloc] initWithTarget:self
                                             action:@selector(tapTwice:)];
-
+    
     tapOnce.numberOfTapsRequired = 2;
     tapTwice.numberOfTapsRequired = 1;
-
+    
     //stops tapOnce from overriding tapTwice
     [tapOnce requireGestureRecognizerToFail:tapTwice];
-
+    
     // then need to add the gesture recogniser to a view
     // - this will be the view that recognises the gesture
     [self.imageView addGestureRecognizer:tapOnce];
-//    [self.fullscreenImageView addGestureRecognizer:tapTwice];
+    //    [self.fullscreenImageView addGestureRecognizer:tapTwice];
     
     ///
     
@@ -322,38 +322,38 @@
     
 }
 
-- (void)scrlTapREcotTap:(UITapGestureRecognizer *)gestureRecognizer
-{
-    if(isTappFirstTime)
-    {
-        //put code of hide
-        
-        [UIView animateWithDuration:1.0 animations:^{
-            btnShare.alpha = 0;
-            btnRate.alpha = 0;
-            //            imgView.alpha = 0;
-        } completion: ^(BOOL finished) {
-            btnRate.hidden = YES;
-            btnShare.hidden = YES;
-            //            imgView.hidden = YES;
-        }];
-        isTappFirstTime = NO;
-    }
-    else
-    {
-        // put code of show
-        [UIView animateWithDuration:1.0 animations:^{
-            btnShare.alpha = 1;
-            btnRate.alpha = 1;
-            //            imgView.alpha = 1;
-        } completion: ^(BOOL finished) {
-            btnRate.hidden = NO;
-            btnShare.hidden = NO;
-            //            imgView.hidden = NO;
-        }];
-        isTappFirstTime = YES;
-    }
-}
+//- (void)scrlTapREcotTap:(UITapGestureRecognizer *)gestureRecognizer
+//{
+//    if(isTappFirstTime)
+//    {
+//        //put code of hide
+//        
+//        [UIView animateWithDuration:1.0 animations:^{
+//            btnShare.alpha = 0;
+//            btnRate.alpha = 0;
+//            //            imgView.alpha = 0;
+//        } completion: ^(BOOL finished) {
+//            btnRate.hidden = YES;
+//            btnShare.hidden = YES;
+//            //            imgView.hidden = YES;
+//        }];
+//        isTappFirstTime = NO;
+//    }
+//    else
+//    {
+//        // put code of show
+//        [UIView animateWithDuration:1.0 animations:^{
+//            btnShare.alpha = 1;
+//            btnRate.alpha = 1;
+//            //            imgView.alpha = 1;
+//        } completion: ^(BOOL finished) {
+//            btnRate.hidden = NO;
+//            btnShare.hidden = NO;
+//            //            imgView.hidden = NO;
+//        }];
+//        isTappFirstTime = YES;
+//    }
+//}
 
 - (void) loadView
 {
@@ -405,9 +405,9 @@
     UIImage *greybuttonImageHighlight = [[UIImage imageNamed:@"greyButtonHighlight.png"]
                                          resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
     
-    UITapGestureRecognizer *scrlTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrlTapREcotTap:)];
-    [scrlTap setNumberOfTapsRequired:1];
-    [self.view addGestureRecognizer:scrlTap];
+//    UITapGestureRecognizer *scrlTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrlTapREcotTap:)];
+//    [scrlTap setNumberOfTapsRequired:1];
+//    [self.view addGestureRecognizer:scrlTap];
     
     //    btnShare = [UIButton buttonWithType: UIButtonTypeCustom];
     //    [btnShare setBackgroundColor: [UIColor clearColor]];
